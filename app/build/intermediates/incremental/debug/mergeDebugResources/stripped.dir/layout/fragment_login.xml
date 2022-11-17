@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/ocean_blue"
+    tools:context=".LoginFragment">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/colorBox"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="2dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/foodmenu2"
+        app:layout_constraintHeight_percent="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etUsername"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input_holder"
+        android:gravity="center_vertical"
+        android:hint="Enter username"
+        android:textSize="16sp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/cairo_semi_bold"
+        android:layout_marginHorizontal="16dp"
+        android:paddingStart="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/colorBox"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/input_holder"
+        android:gravity="center_vertical"
+        android:hint="Password"
+        android:textSize="16sp"
+        android:fontFamily="@font/cairo_semi_bold"
+        android:layout_marginHorizontal="16dp"
+        android:paddingStart="8dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etUsername"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/app_btn"
+        android:fontFamily="@font/cairo_medium"
+        android:textColor="@color/black"
+        android:layout_marginHorizontal="24dp"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textSize="18dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/cairo_medium"
+        android:gravity="center"
+        android:text="New User ? Register "
+        android:textAllCaps="false"
+        android:textColor="@color/tint_white"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin"/>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nested_navgraph"
+    app:startDestination="@id/foodHomeFragment">
+
+    <fragment
+        android:id="@+id/foodHomeFragment"
+        android:name="uk.ac.tees.w9544151.Passenger.FoodHomeFragment"
+        android:label="fragment_food_home"
+        tools:layout="@layout/fragment_food_home" />
+    <fragment
+        android:id="@+id/foodListFragment2"
+        android:name="uk.ac.tees.w9544151.admin.FoodListFragment"
+        android:label="fragment_food_list"
+        tools:layout="@layout/fragment_food_list" />
+    <fragment
+        android:id="@+id/orderListFragment2"
+        android:name="uk.ac.tees.w9544151.DBoy.OrderListFragment"
+        android:label="fragment_order_list"
+        tools:layout="@layout/fragment_order_list" />
+    <fragment
+        android:id="@+id/feedbackFragments"
+        android:name="uk.ac.tees.w9544151.Passenger.FeedbackFragment"
+        android:label="fragment_feedback"
+        tools:layout="@layout/fragment_feedback" />
+</navigation>

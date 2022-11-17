@@ -1,0 +1,478 @@
+[
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-hdpi_ic_appicon_round.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-hdpi/ic_appicon_round.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-anydpi-v26_ic_appicon.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-anydpi-v26/ic_appicon.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_rating.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/rating.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_white_frame.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/white_frame.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_train_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_train_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_baseline_search_24.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_baseline_search_24.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_place_order.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_place_order.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-mdpi_ic_appicon_foreground.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-mdpi/ic_appicon_foreground.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_signboard.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/signboard.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxxhdpi_ic_appicon_foreground.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxxhdpi/ic_appicon_foreground.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_add.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/add.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_train.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/train.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxhdpi_ic_appicon_round.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxhdpi/ic_appicon_round.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_jotia_medium.otf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/jotia_medium.otf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_curved.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/curved.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxhdpi_ic_appicon_foreground.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxhdpi/ic_appicon_foreground.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable-v24_plus.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable-v24/plus.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_feedback.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/feedback.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_white_round.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/white_round.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_account.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_account.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xhdpi_ic_appicon_round.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xhdpi/ic_appicon_round.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_edit.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/edit.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_camera.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/camera.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_amaranth_italic.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/amaranth_italic.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_food_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_food_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_baseline_restaurant_menu_24.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_baseline_restaurant_menu_24.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_order_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_order_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_home.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/home.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_home.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_healthy_drink.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/healthy_drink.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_hacen_regular.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/hacen_regular.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_button.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/button.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_amaranth_bolditalic.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/amaranth_bolditalic.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_placeholder.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/placeholder.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable-v24_minus.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable-v24/minus.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/xml_data_extraction_rules.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_activity_main.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/activity_main.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable-v24_app_btn.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable-v24/app_btn.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_splash.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_splash.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_baseline_arrow_back_24.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_baseline_arrow_back_24.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_cafe.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_cafe.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_jotia_light.otf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/jotia_light.otf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_feedback.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_feedback.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxxhdpi_ic_appicon.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxxhdpi/ic_appicon.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_train.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_train.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_register.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_register.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_track.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/track.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_feedback_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_feedback_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-hdpi_ic_appicon.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-hdpi/ic_appicon.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_regular.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_regular.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_extra_bold.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_extra_bold.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_amaranth.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/amaranth.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xhdpi_ic_appicon.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xhdpi/ic_appicon.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_medium.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_medium.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_cart_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_cart_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_launcher_background.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxhdpi_ic_appicon.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxhdpi/ic_appicon.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-anydpi-v26_ic_appicon_round.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-anydpi-v26/ic_appicon_round.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_train_card.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/train_card.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_location.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/location.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xhdpi_ic_appicon_foreground.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xhdpi/ic_appicon_foreground.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-hdpi_ic_appicon_foreground.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-hdpi/ic_appicon_foreground.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_bus.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/bus.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_ic_baseline_close_24.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/ic_baseline_close_24.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_delivery_man__1_.png.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/delivery_man__1_.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_food_home.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_food_home.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-mdpi_ic_appicon.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-mdpi/ic_appicon.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/navigation_navgraph.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/navigation/navgraph.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_login.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_login.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/xml_backup_rules.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-xxxhdpi_ic_appicon_round.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-xxxhdpi/ic_appicon_round.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_whitebox.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/whitebox.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_profile_card.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/profile_card.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/raw_metrorail.json.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/raw/metrorail.json"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_input_holder.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/input_holder.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_jotia_bold.otf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/jotia_bold.otf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_add_food.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_add_food.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_admin_home.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_admin_home.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/navigation_nested_navgraph.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/navigation/nested_navgraph.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/mipmap-mdpi_ic_appicon_round.png.flat",
+        "source": "uk.ac.tees.w9544151.app-debug-44:/mipmap-mdpi/ic_appicon_round.png"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_jotia_regular.otf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/jotia_regular.otf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_logout.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/logout.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_curved_background.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/curved_background.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_foodmenu2.webp.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/foodmenu2.webp"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_extra_light.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_extra_light.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_delete.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/delete.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_black.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_black.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_feedback_tile.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/feedback_tile.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_orders.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/orders.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_register_train.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_register_train.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_d_boy_home.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_d_boy_home.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_bold.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_bold.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_food_card.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/food_card.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_amaranth_bold.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/amaranth_bold.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable-v24_box.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable-v24/box.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_d_boy.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_d_boy.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable-anydpi-v24_ic_launcher_foreground.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-pngs-38:/drawable-anydpi-v24/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_edit_profile.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_edit_profile.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_light.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_light.ttf"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_order_card.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/order_card.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_sort.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/sort.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_d_boy_list.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_d_boy_list.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/drawable_cart.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/drawable/cart.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_add_boy.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_add_boy.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_fragment_add_stop.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/fragment_add_stop.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/layout_cart_card.xml.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/layout/cart_card.xml"
+    },
+    {
+        "merged": "uk.ac.tees.w9544151.app-merged_res-43:/font_cairo_semi_bold.ttf.flat",
+        "source": "uk.ac.tees.w9544151.app-main-45:/font/cairo_semi_bold.ttf"
+    }
+]

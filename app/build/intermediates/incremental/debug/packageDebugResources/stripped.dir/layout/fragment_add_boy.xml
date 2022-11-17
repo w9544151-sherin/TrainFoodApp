@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ocean_blue"
+    tools:context=".admin.AddBoyFragment">
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/amaranth"
+        android:text="Register Delivery Boy"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:padding="4dp"
+        android:scaleType="fitXY"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeading" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/CameraContainer"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="50dp"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintStart_toStartOf="@+id/image">
+
+        <ImageView
+            android:id="@+id/cameraImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:scaleType="fitCenter"
+            android:src="@drawable/camera" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <EditText
+        android:id="@+id/etBoyId"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/input_holder"
+        android:hint="Enter ID"
+        android:paddingStart="10dp"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/image"
+        app:layout_constraintEnd_toEndOf="@+id/etBoyName"
+        app:layout_constraintStart_toEndOf="@id/image" />
+
+    <EditText
+        android:id="@+id/etBoyName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/input_holder"
+        android:hint="Enter Name"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/image"
+        app:layout_constraintTop_toBottomOf="@id/image" />
+
+    <EditText
+        android:id="@+id/etStopName"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:background="@drawable/input_holder"
+        android:hint="Enter Pickup Point"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/etBoyName"
+        app:layout_constraintStart_toStartOf="@+id/etBoyName"
+        app:layout_constraintTop_toBottomOf="@id/etBoyName" />
+
+    <EditText
+        android:id="@+id/etBoyMobile"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:background="@drawable/input_holder"
+        android:hint="Mobile Number "
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/etBoyName"
+        app:layout_constraintStart_toStartOf="@+id/etBoyName"
+        app:layout_constraintTop_toBottomOf="@id/etStopName" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnAddBoy"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginHorizontal="64dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/app_btn"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Authorize"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etBoyMobile" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

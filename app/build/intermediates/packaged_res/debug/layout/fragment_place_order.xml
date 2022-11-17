@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/tint_white"
+    tools:context=".Passenger.PlaceOrderFragment">
+
+    <TextView
+        android:id="@+id/labelTotalAmountPaid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="Total Amount to be Paid:- "
+        android:textColor="@color/ocean_blue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTotalAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="500"
+        android:textColor="@color/ocean_blue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/labelTotalAmountPaid"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/labelDelivery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_bold"
+        android:text="Delivery Address :- "
+        android:textColor="@color/ocean_blue"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/labelTotalAmountPaid" />
+
+    <TextView
+        android:id="@+id/labelChooseTrain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_semi_bold"
+        android:text="Train Number"
+        android:textColor="@color/ocean_blue"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/labelDelivery"
+        app:layout_constraintTop_toBottomOf="@id/labelDelivery" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/SpinnerTrain"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/curved"
+        app:layout_constraintBottom_toBottomOf="@+id/labelChooseTrain"
+        app:layout_constraintStart_toEndOf="@id/labelChooseTrain"
+        app:layout_constraintTop_toTopOf="@+id/labelChooseTrain" />
+
+    <TextView
+        android:id="@+id/labelChooseStop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/cairo_semi_bold"
+        android:text="Select Stop"
+        android:textColor="@color/ocean_blue"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/labelDelivery"
+        app:layout_constraintTop_toBottomOf="@id/labelChooseTrain" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/SpinnerStop"
+        android:layout_width="120dp"
+        android:layout_height="30dp"
+        android:background="@drawable/curved"
+        app:layout_constraintBottom_toBottomOf="@+id/labelChooseStop"
+        app:layout_constraintStart_toStartOf="@+id/SpinnerTrain"
+        app:layout_constraintTop_toTopOf="@+id/labelChooseStop" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/selectionClass"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/SpinnerStop">
+
+        <TextView
+            android:id="@+id/labelReserved"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/ocean_blue"
+            android:fontFamily="@font/cairo_semi_bold"
+            android:gravity="center"
+            android:text="Reserved"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <TextView
+            android:id="@+id/labelGeneral"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/ocean_blue"
+            android:fontFamily="@font/cairo_semi_bold"
+            android:gravity="center"
+            android:text="General"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintStart_toEndOf="@id/labelReserved"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.5" />
+
+        <EditText
+            android:id="@+id/etCoachName"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/curved"
+            android:hint="Coach Name"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelReserved" />
+
+        <EditText
+            android:id="@+id/etSeat"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/curved"
+            android:hint="Seat Number"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCoachName" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnBuy"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/box"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Confirm Order"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

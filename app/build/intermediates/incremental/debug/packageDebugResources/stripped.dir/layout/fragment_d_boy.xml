@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ocean_blue"
+    tools:context=".admin.DBoyFragment">
+
+    <View
+        android:id="@+id/guideline"
+        android:layout_width="70dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:background="@color/tint_white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/addSymbol"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:alpha="0.8"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/add" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/white_frame"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Add Delivery Boy"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/addSymbol"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/addSymbol" />
+
+    <!-- <androidx.appcompat.widget.AppCompatImageView
+         android:id="@+id/addStop"
+         android:layout_width="70dp"
+         android:layout_height="60dp"
+         android:alpha="0.8"
+         android:padding="4dp"
+         android:layout_marginTop="24dp"
+         app:layout_constraintEnd_toEndOf="@+id/guideline"
+         app:layout_constraintStart_toStartOf="@+id/guideline"
+         app:layout_constraintTop_toBottomOf="@id/addSymbol"
+         app:srcCompat="@drawable/placeholder" />
+
+     <androidx.appcompat.widget.AppCompatTextView
+         android:layout_width="0dp"
+         android:layout_height="60dp"
+         android:background="@drawable/white_frame"
+         android:fontFamily="@font/amaranth"
+         android:gravity="center"
+         android:text="Add Stop"
+         android:textColor="@color/black"
+         android:textSize="20sp"
+         app:layout_constraintBottom_toBottomOf="@+id/addStop"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toEndOf="@id/guideline"
+         app:layout_constraintTop_toTopOf="@+id/addStop" />-->
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/dboylist"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:alpha="0.8"
+        android:padding="4dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/addSymbol"
+        app:srcCompat="@drawable/sort" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/white_frame"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Delivery Boys"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dboylist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/dboylist" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

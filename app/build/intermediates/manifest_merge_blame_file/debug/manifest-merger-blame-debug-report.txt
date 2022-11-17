@@ -1,0 +1,98 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="uk.ac.tees.w9544151"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="32" />
+9-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml
+10
+11    <application
+11-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:5:5-29:19
+12        android:allowBackup="true"
+12-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\87a796fe63836d99a2198ac6a6284cb3\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
+14        android:dataExtractionRules="@xml/data_extraction_rules"
+14-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:7:9-65
+15        android:debuggable="true"
+16        android:fullBackupContent="@xml/backup_rules"
+16-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:8:9-54
+17        android:icon="@mipmap/ic_appicon"
+17-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:9:9-42
+18        android:label="@string/app_name"
+18-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:10:9-41
+19        android:roundIcon="@mipmap/ic_appicon_round"
+19-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:11:9-53
+20        android:supportsRtl="true"
+20-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:12:9-35
+21        android:testOnly="true"
+22        android:theme="@style/Theme.Train_food" >
+22-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:13:9-48
+23        <activity
+23-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:15:9-28:20
+24            android:name="uk.ac.tees.w9544151.MainActivity"
+24-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:16:13-41
+25            android:exported="true"
+25-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:17:13-36
+26            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+26-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:18:13-69
+27            <intent-filter>
+27-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:19:13-23:29
+28                <action android:name="android.intent.action.MAIN" />
+28-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:20:17-69
+28-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:20:25-66
+29
+30                <category android:name="android.intent.category.LAUNCHER" />
+30-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:22:17-77
+30-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:22:27-74
+31            </intent-filter>
+32
+33            <meta-data
+33-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:25:13-27:36
+34                android:name="android.app.lib_name"
+34-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:26:17-52
+35                android:value="" />
+35-->C:\Users\HP\StudioProjects\trainfoodapp\app\src\main\AndroidManifest.xml:27:17-33
+36        </activity>
+37
+38        <provider
+38-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+39            android:name="androidx.startup.InitializationProvider"
+39-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+40            android:authorities="uk.ac.tees.w9544151.androidx-startup"
+40-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+41            android:exported="false" >
+41-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+42            <meta-data
+42-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+43                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+43-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+44                android:value="androidx.startup" />
+44-->[androidx.emoji2:emoji2:1.2.0] C:\Users\HP\.gradle\caches\transforms-3\c03fa7bc00a04a375204b573f0966d9f\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+45            <meta-data
+45-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\HP\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+46                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+46-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\HP\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+47                android:value="androidx.startup" />
+47-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\HP\.gradle\caches\transforms-3\0ce9e5f033589fdf0ab757f82f7808ec\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+48        </provider>
+49
+50        <uses-library
+50-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+51            android:name="androidx.window.extensions"
+51-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+52            android:required="false" />
+52-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+53        <uses-library
+53-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+54            android:name="androidx.window.sidecar"
+54-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+55            android:required="false" />
+55-->[androidx.window:window:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\073f10b23065a04cd4c659168bad23fb\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+56    </application>
+57
+58</manifest>
