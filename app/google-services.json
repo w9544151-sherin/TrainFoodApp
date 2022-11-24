@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "639255045684",
+    "project_id": "relfood-37da0",
+    "storage_bucket": "relfood-37da0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:639255045684:android:60b83d3a9cc06951628c61",
+        "android_client_info": {
+          "package_name": "uk.ac.tees.w9544151"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "639255045684-kfpnabqmqqn8ddo28m5ik55uuqmttfea.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPYPQniLScVF-sRWvSCCPk-nSLzt4LMao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "639255045684-kfpnabqmqqn8ddo28m5ik55uuqmttfea.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
