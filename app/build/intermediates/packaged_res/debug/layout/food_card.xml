@@ -29,7 +29,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivImage"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="150dp"
         android:scaleType="centerCrop"
         android:src="@drawable/foodmenu2"
         android:layout_margin="4dp"
@@ -39,10 +39,10 @@
         />
     <TextView
         android:id="@+id/tvFoodName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name of item"
-        android:layout_marginTop="4dp"
+      android:layout_margin="5dp"
         android:textAllCaps="true"
         android:ellipsize="end"
         android:layout_marginStart="8dp"
@@ -74,16 +74,16 @@
             android:fontFamily="@font/cairo_bold"
             android:text="250/-"
             android:textColor="@color/ocean_blue"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintBaseline_toBaselineOf="@id/tvPriceKey"
             app:layout_constraintStart_toEndOf="@id/tvPriceKey"
             app:layout_constraintTop_toBottomOf="@id/tvFoodName" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/clQuantity"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
-            android:alpha="0.8"
+            android:alpha="0.7"
             android:background="@drawable/white_frame"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -91,8 +91,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivMinus"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_marginStart="8dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/minus"
@@ -104,10 +104,12 @@
                 android:id="@+id/valueCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/cairo_bold"
-                android:text=" 0 "
-                android:textColor="@color/ocean_blue"
-                android:textSize="18sp"
+                android:text="1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/ivPlus"
                 app:layout_constraintStart_toEndOf="@+id/ivMinus"
@@ -115,8 +117,8 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPlus"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_margin="4dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
@@ -131,23 +133,25 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnBuy"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:background="@drawable/app_btn"
+            android:background="@color/tint_white"
             android:fontFamily="@font/amaranth"
             android:gravity="center"
-            android:padding="10dp"
+            android:elevation="6dp"
+            android:shadowColor="@color/ocean_blue"
+            android:outlineAmbientShadowColor="@color/ocean_blue"
+            android:padding="6dp"
             android:text="Add to Cart"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/ocean_blue"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/ivImage"
             app:layout_constraintTop_toBottomOf="@+id/tvFoodName" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivDelete"
+            android:id="@+id/ivRound"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="4dp"
@@ -160,6 +164,25 @@
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnPurchase"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/bluebtn"
+            android:alpha="0.8"
+            android:fontFamily="@font/amaranth"
+            android:gravity="center"
+            android:text="Buy now"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/ivImage"
+            app:layout_constraintTop_toBottomOf="@+id/btnBuy" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

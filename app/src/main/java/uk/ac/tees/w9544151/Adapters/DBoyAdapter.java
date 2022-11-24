@@ -1,5 +1,8 @@
 package uk.ac.tees.w9544151.Adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import uk.ac.tees.w9544151.Models.DBoyModel;
 import uk.ac.tees.w9544151.databinding.ProfileCardBinding;
@@ -39,6 +44,11 @@ public class DBoyAdapter extends RecyclerView.Adapter<DBoyAdapter.MyviewHolder> 
         holder.boyMobile.setText(dm.getBoyMobile());
         holder.pickup.setText(dm.getStop());
         holder.boyId.setText(dm.getBoyId());
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] imageBytes = baos.toByteArray();
+        imageBytes = Base64.decode(dm.getBoyImage(), Base64.DEFAULT);
+        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        holder.boyImage.setImageBitmap(decodedImage);
       //  holder.boyImage.setImageBitmap(dm.getBoyImage());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +76,7 @@ public class DBoyAdapter extends RecyclerView.Adapter<DBoyAdapter.MyviewHolder> 
             pickup = binding.tvStopName;
             boyId = binding.tvBoyId;
             boyImage=binding.ivBoy;
-            delete=binding.ivDelete;
+            delete=binding.ivRound;
 
         }
     }

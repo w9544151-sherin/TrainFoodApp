@@ -58,13 +58,20 @@
         app:layout_constraintStart_toStartOf="@id/labelDelivery"
         app:layout_constraintTop_toBottomOf="@id/labelDelivery" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/SpinnerTrain"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etTrain"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
         android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:paddingStart="8dp"
+        android:singleLine="true"
+        android:hint="Train Number"
+        android:imeOptions="actionDone"
         android:background="@drawable/curved"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="@+id/labelChooseTrain"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/labelChooseTrain"
         app:layout_constraintTop_toTopOf="@+id/labelChooseTrain" />
 
@@ -72,21 +79,28 @@
         android:id="@+id/labelChooseStop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/cairo_semi_bold"
         android:text="Select Stop"
+
         android:textColor="@color/ocean_blue"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/labelDelivery"
         app:layout_constraintTop_toBottomOf="@id/labelChooseTrain" />
 
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/SpinnerStop"
-        android:layout_width="120dp"
-        android:layout_height="30dp"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etStop"
+        android:layout_width="0dp"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
+        android:layout_height="40dp"
         android:background="@drawable/curved"
+        android:focusable="false"
+        android:hint="Stop Name"
+        android:paddingStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/labelChooseStop"
-        app:layout_constraintStart_toStartOf="@+id/SpinnerTrain"
+        app:layout_constraintEnd_toEndOf="@+id/etTrain"
+        app:layout_constraintStart_toStartOf="@+id/etTrain"
         app:layout_constraintTop_toTopOf="@+id/labelChooseStop" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -97,7 +111,7 @@
         android:layout_marginTop="24dp"
         android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/SpinnerStop">
+        app:layout_constraintTop_toBottomOf="@id/etStop">
 
         <TextView
             android:id="@+id/labelReserved"
@@ -134,7 +148,24 @@
             android:layout_marginHorizontal="64dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/curved"
-            android:hint="Coach Name"
+            android:hint="Coach Name/ Position"
+            android:paddingStart="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/labelReserved" />
+        <EditText
+            android:id="@+id/etCoachPosition"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginHorizontal="64dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/curved"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
+            android:hint="Coach Position"
+            android:visibility="gone"
             android:paddingStart="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
@@ -150,6 +181,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/curved"
             android:hint="Seat Number"
+            android:singleLine="true"
+            android:imeOptions="actionDone"
             android:paddingStart="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"

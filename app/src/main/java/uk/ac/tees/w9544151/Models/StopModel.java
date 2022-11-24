@@ -1,13 +1,14 @@
 package uk.ac.tees.w9544151.Models;
 
 public class StopModel {
-    String stopId,stopName,stopNumber,trainNumber;
+    String stopId, stopName, stopNumber, trainNumber, path;
 
-    public StopModel(String stopId, String stopName, String stopNumber, String trainNumber) {
+    public StopModel(String stopId, String stopName, String stopNumber, String trainNumber, String path) {
         this.stopId = stopId;
         this.stopName = stopName;
         this.stopNumber = stopNumber;
         this.trainNumber = trainNumber;
+        this.path = path;
     }
 
     public String getStopId() {
@@ -41,4 +42,14 @@ public class StopModel {
     public void setTrainNumber(String trainNumber) {
         this.trainNumber = trainNumber;
     }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }
+
+

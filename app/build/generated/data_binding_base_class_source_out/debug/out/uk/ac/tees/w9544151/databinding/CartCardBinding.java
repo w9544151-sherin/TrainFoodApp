@@ -25,16 +25,16 @@ public final class CartCardBinding implements ViewBinding {
   public final AppCompatTextView btnBuy;
 
   @NonNull
-  public final AppCompatImageView ivDelete;
+  public final AppCompatImageView ivDeleteIcon;
 
   @NonNull
   public final AppCompatImageView ivImage;
 
   @NonNull
-  public final ConstraintLayout subSec;
+  public final AppCompatImageView ivRound;
 
   @NonNull
-  public final View topBackground;
+  public final ConstraintLayout subSec;
 
   @NonNull
   public final TextView tvFoodName;
@@ -46,15 +46,15 @@ public final class CartCardBinding implements ViewBinding {
   public final TextView tvPriceKey;
 
   private CartCardBinding(@NonNull ConstraintLayout rootView, @NonNull AppCompatTextView btnBuy,
-      @NonNull AppCompatImageView ivDelete, @NonNull AppCompatImageView ivImage,
-      @NonNull ConstraintLayout subSec, @NonNull View topBackground, @NonNull TextView tvFoodName,
-      @NonNull TextView tvFoodPrice, @NonNull TextView tvPriceKey) {
+      @NonNull AppCompatImageView ivDeleteIcon, @NonNull AppCompatImageView ivImage,
+      @NonNull AppCompatImageView ivRound, @NonNull ConstraintLayout subSec,
+      @NonNull TextView tvFoodName, @NonNull TextView tvFoodPrice, @NonNull TextView tvPriceKey) {
     this.rootView = rootView;
     this.btnBuy = btnBuy;
-    this.ivDelete = ivDelete;
+    this.ivDeleteIcon = ivDeleteIcon;
     this.ivImage = ivImage;
+    this.ivRound = ivRound;
     this.subSec = subSec;
-    this.topBackground = topBackground;
     this.tvFoodName = tvFoodName;
     this.tvFoodPrice = tvFoodPrice;
     this.tvPriceKey = tvPriceKey;
@@ -93,9 +93,9 @@ public final class CartCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.ivDelete;
-      AppCompatImageView ivDelete = ViewBindings.findChildViewById(rootView, id);
-      if (ivDelete == null) {
+      id = R.id.ivDeleteIcon;
+      AppCompatImageView ivDeleteIcon = ViewBindings.findChildViewById(rootView, id);
+      if (ivDeleteIcon == null) {
         break missingId;
       }
 
@@ -105,15 +105,15 @@ public final class CartCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.subSec;
-      ConstraintLayout subSec = ViewBindings.findChildViewById(rootView, id);
-      if (subSec == null) {
+      id = R.id.ivRound;
+      AppCompatImageView ivRound = ViewBindings.findChildViewById(rootView, id);
+      if (ivRound == null) {
         break missingId;
       }
 
-      id = R.id.topBackground;
-      View topBackground = ViewBindings.findChildViewById(rootView, id);
-      if (topBackground == null) {
+      id = R.id.subSec;
+      ConstraintLayout subSec = ViewBindings.findChildViewById(rootView, id);
+      if (subSec == null) {
         break missingId;
       }
 
@@ -135,8 +135,8 @@ public final class CartCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new CartCardBinding((ConstraintLayout) rootView, btnBuy, ivDelete, ivImage, subSec,
-          topBackground, tvFoodName, tvFoodPrice, tvPriceKey);
+      return new CartCardBinding((ConstraintLayout) rootView, btnBuy, ivDeleteIcon, ivImage,
+          ivRound, subSec, tvFoodName, tvFoodPrice, tvPriceKey);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,23 +38,31 @@ public final class FragmentRegisterBinding implements ViewBinding {
   public final EditText etPassword;
 
   @NonNull
+  public final ProgressBar progressbar;
+
+  @NonNull
   public final ConstraintLayout scrollView;
 
   @NonNull
   public final TextView tvHeading;
 
+  @NonNull
+  public final EditText tvId;
+
   private FragmentRegisterBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppCompatTextView btnAddUser, @NonNull EditText etEmail, @NonNull EditText etMobile,
-      @NonNull EditText etName, @NonNull EditText etPassword, @NonNull ConstraintLayout scrollView,
-      @NonNull TextView tvHeading) {
+      @NonNull EditText etName, @NonNull EditText etPassword, @NonNull ProgressBar progressbar,
+      @NonNull ConstraintLayout scrollView, @NonNull TextView tvHeading, @NonNull EditText tvId) {
     this.rootView = rootView;
     this.btnAddUser = btnAddUser;
     this.etEmail = etEmail;
     this.etMobile = etMobile;
     this.etName = etName;
     this.etPassword = etPassword;
+    this.progressbar = progressbar;
     this.scrollView = scrollView;
     this.tvHeading = tvHeading;
+    this.tvId = tvId;
   }
 
   @Override
@@ -113,6 +122,12 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.progressbar;
+      ProgressBar progressbar = ViewBindings.findChildViewById(rootView, id);
+      if (progressbar == null) {
+        break missingId;
+      }
+
       id = R.id.scrollView;
       ConstraintLayout scrollView = ViewBindings.findChildViewById(rootView, id);
       if (scrollView == null) {
@@ -125,8 +140,14 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tvId;
+      EditText tvId = ViewBindings.findChildViewById(rootView, id);
+      if (tvId == null) {
+        break missingId;
+      }
+
       return new FragmentRegisterBinding((ConstraintLayout) rootView, btnAddUser, etEmail, etMobile,
-          etName, etPassword, scrollView, tvHeading);
+          etName, etPassword, progressbar, scrollView, tvHeading, tvId);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

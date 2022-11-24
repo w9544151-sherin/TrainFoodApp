@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
@@ -23,19 +23,22 @@ public final class FragmentPlaceOrderBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final AppCompatSpinner SpinnerStop;
-
-  @NonNull
-  public final AppCompatSpinner SpinnerTrain;
-
-  @NonNull
   public final AppCompatTextView btnBuy;
 
   @NonNull
   public final EditText etCoachName;
 
   @NonNull
+  public final EditText etCoachPosition;
+
+  @NonNull
   public final EditText etSeat;
+
+  @NonNull
+  public final AppCompatEditText etStop;
+
+  @NonNull
+  public final AppCompatEditText etTrain;
 
   @NonNull
   public final TextView labelChooseStop;
@@ -62,18 +65,20 @@ public final class FragmentPlaceOrderBinding implements ViewBinding {
   public final TextView tvTotalAmount;
 
   private FragmentPlaceOrderBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatSpinner SpinnerStop, @NonNull AppCompatSpinner SpinnerTrain,
-      @NonNull AppCompatTextView btnBuy, @NonNull EditText etCoachName, @NonNull EditText etSeat,
+      @NonNull AppCompatTextView btnBuy, @NonNull EditText etCoachName,
+      @NonNull EditText etCoachPosition, @NonNull EditText etSeat,
+      @NonNull AppCompatEditText etStop, @NonNull AppCompatEditText etTrain,
       @NonNull TextView labelChooseStop, @NonNull TextView labelChooseTrain,
       @NonNull TextView labelDelivery, @NonNull TextView labelGeneral,
       @NonNull TextView labelReserved, @NonNull TextView labelTotalAmountPaid,
       @NonNull ConstraintLayout selectionClass, @NonNull TextView tvTotalAmount) {
     this.rootView = rootView;
-    this.SpinnerStop = SpinnerStop;
-    this.SpinnerTrain = SpinnerTrain;
     this.btnBuy = btnBuy;
     this.etCoachName = etCoachName;
+    this.etCoachPosition = etCoachPosition;
     this.etSeat = etSeat;
+    this.etStop = etStop;
+    this.etTrain = etTrain;
     this.labelChooseStop = labelChooseStop;
     this.labelChooseTrain = labelChooseTrain;
     this.labelDelivery = labelDelivery;
@@ -111,18 +116,6 @@ public final class FragmentPlaceOrderBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.SpinnerStop;
-      AppCompatSpinner SpinnerStop = ViewBindings.findChildViewById(rootView, id);
-      if (SpinnerStop == null) {
-        break missingId;
-      }
-
-      id = R.id.SpinnerTrain;
-      AppCompatSpinner SpinnerTrain = ViewBindings.findChildViewById(rootView, id);
-      if (SpinnerTrain == null) {
-        break missingId;
-      }
-
       id = R.id.btnBuy;
       AppCompatTextView btnBuy = ViewBindings.findChildViewById(rootView, id);
       if (btnBuy == null) {
@@ -135,9 +128,27 @@ public final class FragmentPlaceOrderBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etCoachPosition;
+      EditText etCoachPosition = ViewBindings.findChildViewById(rootView, id);
+      if (etCoachPosition == null) {
+        break missingId;
+      }
+
       id = R.id.etSeat;
       EditText etSeat = ViewBindings.findChildViewById(rootView, id);
       if (etSeat == null) {
+        break missingId;
+      }
+
+      id = R.id.etStop;
+      AppCompatEditText etStop = ViewBindings.findChildViewById(rootView, id);
+      if (etStop == null) {
+        break missingId;
+      }
+
+      id = R.id.etTrain;
+      AppCompatEditText etTrain = ViewBindings.findChildViewById(rootView, id);
+      if (etTrain == null) {
         break missingId;
       }
 
@@ -189,9 +200,10 @@ public final class FragmentPlaceOrderBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentPlaceOrderBinding((ConstraintLayout) rootView, SpinnerStop, SpinnerTrain,
-          btnBuy, etCoachName, etSeat, labelChooseStop, labelChooseTrain, labelDelivery,
-          labelGeneral, labelReserved, labelTotalAmountPaid, selectionClass, tvTotalAmount);
+      return new FragmentPlaceOrderBinding((ConstraintLayout) rootView, btnBuy, etCoachName,
+          etCoachPosition, etSeat, etStop, etTrain, labelChooseStop, labelChooseTrain,
+          labelDelivery, labelGeneral, labelReserved, labelTotalAmountPaid, selectionClass,
+          tvTotalAmount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

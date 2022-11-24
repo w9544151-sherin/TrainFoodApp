@@ -1,5 +1,7 @@
 package uk.ac.tees.w9544151.Adapters;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,18 +13,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import uk.ac.tees.w9544151.Models.Foodmodel;
 import uk.ac.tees.w9544151.Models.OrderModel;
-import uk.ac.tees.w9544151.databinding.FoodCardBinding;
 import uk.ac.tees.w9544151.databinding.OrderCardBinding;
 
 public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyviewHolder> {
     public List<OrderModel> ordersList;
     OrderCardBinding binding;
     private AdapterCallback mAdapterCallback;
-
-    public OrdersAdapter(AdapterCallback callback) {
+    String type;
+Context ctx;
+    public OrdersAdapter(AdapterCallback callback, Context context, String type) {
         this.mAdapterCallback = callback;
+        this.ctx=context;
+        this.type=type;
     }
     @NonNull
     @Override
@@ -40,6 +43,11 @@ public class OrdersAdapter extends RecyclerView.Adapter<OrdersAdapter.MyviewHold
     @Override
     public void onBindViewHolder(@NonNull OrdersAdapter.MyviewHolder holder, int position) {
         OrderModel dm = ordersList.get(position);
+        SharedPreferences sp = ctx.getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        if (type.equals("admin") || type.equals("dboy")){
+            holder.dboyImage.setVisibility(View.GONE);
+          //  holder.btnbuy.setVisibility(View.GONE);
+        }
         holder.foodname.setText(dm.getItemName());
         holder.foodprice.setText(dm.getItemPrice());
         //holder.foodImage.setImageResource(dm.getItemImage());

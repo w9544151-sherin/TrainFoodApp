@@ -17,16 +17,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Adapters.AdapterCallback;
+import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Adapters.FeedbackAdapter;
-import uk.ac.tees.w9544151.Adapters.TrainAdapter;
 import uk.ac.tees.w9544151.Models.FeedbackModel;
-import uk.ac.tees.w9544151.Models.TrainModel;
-import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentFeedbackListBinding;
-import uk.ac.tees.w9544151.databinding.FragmentTrainListBinding;
 
 
-public class FeedbackListFragment extends Fragment  implements AdapterCallback {
+public class FeedbackListFragment extends Fragment  implements AdapterCallback, CallBackTwice {
 FragmentFeedbackListBinding binding;
     FeedbackAdapter adapter=new FeedbackAdapter(this);
     List<FeedbackModel> feedbackList = new ArrayList();
@@ -60,6 +57,11 @@ FragmentFeedbackListBinding binding;
 
     @Override
     public void onMethodCallback() {
+
+    }
+
+    @Override
+    public void onStopCallback(String routeName) {
 
     }
 }

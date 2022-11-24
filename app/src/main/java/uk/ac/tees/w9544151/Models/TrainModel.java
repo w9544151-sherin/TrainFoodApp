@@ -1,14 +1,15 @@
 package uk.ac.tees.w9544151.Models;
 
 public class TrainModel {
-    String trainId,trainNumber,trainName,startPoint,endPoint;
+    String trainId, trainNumber, trainName, startPoint, endPoint, path;
 
-    public TrainModel(String trainId, String trainNumber, String trainName, String startPoint, String endPoint) {
+    public TrainModel(String trainId, String trainNumber, String trainName, String startPoint, String endPoint, String path) {
         this.trainId = trainId;
         this.trainNumber = trainNumber;
         this.trainName = trainName;
         this.startPoint = startPoint;
         this.endPoint = endPoint;
+        this.path = path;
     }
 
     public String getTrainId() {
@@ -49,5 +50,13 @@ public class TrainModel {
 
     public void setEndPoint(String endPoint) {
         this.endPoint = endPoint;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }

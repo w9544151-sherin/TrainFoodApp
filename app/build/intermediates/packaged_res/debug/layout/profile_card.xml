@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/subSec"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         android:elevation="8dp"
         app:layout_constraintWidth_percent="0.45"
         android:background="@drawable/white_frame"
@@ -22,7 +21,7 @@
         <View
             android:id="@+id/topBackground"
             android:layout_width="match_parent"
-            android:layout_height="160dp"
+            android:layout_height="140dp"
             android:background="@color/light_blue"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -30,26 +29,31 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivBoy"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="140dp"
+            android:layout_margin="2dp"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_baseline_close_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
+
         <TextView
             android:id="@+id/tvBoyName"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Person Name "
-            android:layout_marginTop="4dp"
-            android:textAllCaps="true"
             android:layout_marginStart="8dp"
-            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:ellipsize="end"
             android:fontFamily="@font/cairo_bold"
+            android:text="Person Name "
+            android:maxLines="1"
+            android:textAllCaps="true"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/topBackground"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            app:layout_constraintTop_toBottomOf="@id/topBackground" />
         <TextView
             android:id="@+id/tvBoyNumber"
             android:layout_width="wrap_content"
@@ -89,17 +93,25 @@
             app:layout_constraintTop_toBottomOf="@id/tvBoyNumber" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivDelete"
+            android:id="@+id/ivRound"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:fontFamily="@font/amaranth"
-            android:gravity="center"
-            android:src="@drawable/delete"
-            android:text="Buy"
-            android:textAllCaps="false"
-            android:textSize="14sp"
+            android:src="@drawable/round"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDeleteIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:src="@drawable/delete"
+            app:layout_constraintEnd_toEndOf="@id/ivRound"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="@id/ivRound"
+            app:layout_constraintBottom_toBottomOf="@id/ivRound"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

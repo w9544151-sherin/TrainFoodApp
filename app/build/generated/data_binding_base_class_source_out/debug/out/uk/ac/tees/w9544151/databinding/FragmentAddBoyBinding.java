@@ -42,7 +42,13 @@ public final class FragmentAddBoyBinding implements ViewBinding {
   public final EditText etBoyName;
 
   @NonNull
+  public final EditText etPassword;
+
+  @NonNull
   public final EditText etStopName;
+
+  @NonNull
+  public final EditText etUsername;
 
   @NonNull
   public final ImageView image;
@@ -53,8 +59,8 @@ public final class FragmentAddBoyBinding implements ViewBinding {
   private FragmentAddBoyBinding(@NonNull ConstraintLayout rootView,
       @NonNull CardView CameraContainer, @NonNull AppCompatTextView btnAddBoy,
       @NonNull ImageView cameraImage, @NonNull EditText etBoyId, @NonNull EditText etBoyMobile,
-      @NonNull EditText etBoyName, @NonNull EditText etStopName, @NonNull ImageView image,
-      @NonNull TextView tvHeading) {
+      @NonNull EditText etBoyName, @NonNull EditText etPassword, @NonNull EditText etStopName,
+      @NonNull EditText etUsername, @NonNull ImageView image, @NonNull TextView tvHeading) {
     this.rootView = rootView;
     this.CameraContainer = CameraContainer;
     this.btnAddBoy = btnAddBoy;
@@ -62,7 +68,9 @@ public final class FragmentAddBoyBinding implements ViewBinding {
     this.etBoyId = etBoyId;
     this.etBoyMobile = etBoyMobile;
     this.etBoyName = etBoyName;
+    this.etPassword = etPassword;
     this.etStopName = etStopName;
+    this.etUsername = etUsername;
     this.image = image;
     this.tvHeading = tvHeading;
   }
@@ -130,9 +138,21 @@ public final class FragmentAddBoyBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etPassword;
+      EditText etPassword = ViewBindings.findChildViewById(rootView, id);
+      if (etPassword == null) {
+        break missingId;
+      }
+
       id = R.id.etStopName;
       EditText etStopName = ViewBindings.findChildViewById(rootView, id);
       if (etStopName == null) {
+        break missingId;
+      }
+
+      id = R.id.etUsername;
+      EditText etUsername = ViewBindings.findChildViewById(rootView, id);
+      if (etUsername == null) {
         break missingId;
       }
 
@@ -149,7 +169,8 @@ public final class FragmentAddBoyBinding implements ViewBinding {
       }
 
       return new FragmentAddBoyBinding((ConstraintLayout) rootView, CameraContainer, btnAddBoy,
-          cameraImage, etBoyId, etBoyMobile, etBoyName, etStopName, image, tvHeading);
+          cameraImage, etBoyId, etBoyMobile, etBoyName, etPassword, etStopName, etUsername, image,
+          tvHeading);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

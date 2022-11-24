@@ -25,7 +25,10 @@ public final class FragmentAddStopBinding implements ViewBinding {
   public final AppCompatTextView btnAddStop;
 
   @NonNull
-  public final EditText etAddTrainName;
+  public final EditText etAddTrainNumber;
+
+  @NonNull
+  public final EditText etRoute;
 
   @NonNull
   public final EditText etStopName;
@@ -37,11 +40,13 @@ public final class FragmentAddStopBinding implements ViewBinding {
   public final TextView tvHeading;
 
   private FragmentAddStopBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatTextView btnAddStop, @NonNull EditText etAddTrainName,
-      @NonNull EditText etStopName, @NonNull EditText etStopNumber, @NonNull TextView tvHeading) {
+      @NonNull AppCompatTextView btnAddStop, @NonNull EditText etAddTrainNumber,
+      @NonNull EditText etRoute, @NonNull EditText etStopName, @NonNull EditText etStopNumber,
+      @NonNull TextView tvHeading) {
     this.rootView = rootView;
     this.btnAddStop = btnAddStop;
-    this.etAddTrainName = etAddTrainName;
+    this.etAddTrainNumber = etAddTrainNumber;
+    this.etRoute = etRoute;
     this.etStopName = etStopName;
     this.etStopNumber = etStopNumber;
     this.tvHeading = tvHeading;
@@ -80,9 +85,15 @@ public final class FragmentAddStopBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.etAddTrainName;
-      EditText etAddTrainName = ViewBindings.findChildViewById(rootView, id);
-      if (etAddTrainName == null) {
+      id = R.id.etAddTrainNumber;
+      EditText etAddTrainNumber = ViewBindings.findChildViewById(rootView, id);
+      if (etAddTrainNumber == null) {
+        break missingId;
+      }
+
+      id = R.id.etRoute;
+      EditText etRoute = ViewBindings.findChildViewById(rootView, id);
+      if (etRoute == null) {
         break missingId;
       }
 
@@ -104,8 +115,8 @@ public final class FragmentAddStopBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAddStopBinding((ConstraintLayout) rootView, btnAddStop, etAddTrainName,
-          etStopName, etStopNumber, tvHeading);
+      return new FragmentAddStopBinding((ConstraintLayout) rootView, btnAddStop, etAddTrainNumber,
+          etRoute, etStopName, etStopNumber, tvHeading);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

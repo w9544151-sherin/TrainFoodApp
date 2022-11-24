@@ -3,10 +3,5 @@
     "name": "navgraph",
     "navigationXmlIds": [],
     "deepLinks": []
-  },
-  {
-    "name": "nested_navgraph",
-    "navigationXmlIds": [],
-    "deepLinks": []
   }
 ]

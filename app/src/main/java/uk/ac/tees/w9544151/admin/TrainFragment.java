@@ -58,5 +58,12 @@ public class TrainFragment extends Fragment {
                 Navigation.findNavController(getView()).navigate(R.id.action_trainFragment_to_trainListFragment);
             }
         });
+
+        binding.stopList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(R.id.action_trainFragment_to_stopListFragment);
+            }
+        });
     }
 }

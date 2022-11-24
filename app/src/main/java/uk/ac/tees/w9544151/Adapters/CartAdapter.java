@@ -1,5 +1,8 @@
 package uk.ac.tees.w9544151.Adapters;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Models.CartModel;
@@ -43,7 +47,11 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyviewHolder> 
 
         holder.itemName.setText(dm.getItemName());
         holder.price.setText(dm.getItemPrice()+"*"+dm.getItemQuantity()+"="+dm.getTotalAmount());
-
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        byte[] imageBytes = baos.toByteArray();
+        imageBytes = Base64.decode(dm.getImage(), Base64.DEFAULT);
+        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
+        holder.image.setImageBitmap(decodedImage);
         //holder.image.setImageBitmap(dm.getImage());
 
        /* holder.delete.setOnClickListener(new View.OnClickListener() {
@@ -69,8 +77,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyviewHolder> 
             super(binding.getRoot());
             itemName= binding.tvFoodName;
             price =binding.tvFoodPrice;
-
-            delete=binding.ivDelete;
+            delete=binding.ivRound;
+            image=binding.ivImage;
 
         }
     }

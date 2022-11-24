@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.List;
 
 import uk.ac.tees.w9544151.Models.TrainModel;
@@ -50,6 +52,12 @@ public class TrainAdapter extends RecyclerView.Adapter<TrainAdapter.MyviewHolder
             @Override
             public void onClick(View view) {
                 mAdapterCallback.onMethodCallback();
+            }
+        });
+        holder.ivDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
             }
         });
 

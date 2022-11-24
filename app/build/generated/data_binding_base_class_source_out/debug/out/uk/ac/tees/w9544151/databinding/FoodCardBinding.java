@@ -25,10 +25,10 @@ public final class FoodCardBinding implements ViewBinding {
   public final AppCompatTextView btnBuy;
 
   @NonNull
-  public final ConstraintLayout clQuantity;
+  public final AppCompatTextView btnPurchase;
 
   @NonNull
-  public final AppCompatImageView ivDelete;
+  public final ConstraintLayout clQuantity;
 
   @NonNull
   public final AppCompatImageView ivImage;
@@ -38,6 +38,9 @@ public final class FoodCardBinding implements ViewBinding {
 
   @NonNull
   public final AppCompatImageView ivPlus;
+
+  @NonNull
+  public final AppCompatImageView ivRound;
 
   @NonNull
   public final ConstraintLayout subSec;
@@ -58,18 +61,19 @@ public final class FoodCardBinding implements ViewBinding {
   public final TextView valueCount;
 
   private FoodCardBinding(@NonNull ConstraintLayout rootView, @NonNull AppCompatTextView btnBuy,
-      @NonNull ConstraintLayout clQuantity, @NonNull AppCompatImageView ivDelete,
+      @NonNull AppCompatTextView btnPurchase, @NonNull ConstraintLayout clQuantity,
       @NonNull AppCompatImageView ivImage, @NonNull AppCompatImageView ivMinus,
-      @NonNull AppCompatImageView ivPlus, @NonNull ConstraintLayout subSec,
-      @NonNull View topBackground, @NonNull TextView tvFoodName, @NonNull TextView tvFoodPrice,
-      @NonNull TextView tvPriceKey, @NonNull TextView valueCount) {
+      @NonNull AppCompatImageView ivPlus, @NonNull AppCompatImageView ivRound,
+      @NonNull ConstraintLayout subSec, @NonNull View topBackground, @NonNull TextView tvFoodName,
+      @NonNull TextView tvFoodPrice, @NonNull TextView tvPriceKey, @NonNull TextView valueCount) {
     this.rootView = rootView;
     this.btnBuy = btnBuy;
+    this.btnPurchase = btnPurchase;
     this.clQuantity = clQuantity;
-    this.ivDelete = ivDelete;
     this.ivImage = ivImage;
     this.ivMinus = ivMinus;
     this.ivPlus = ivPlus;
+    this.ivRound = ivRound;
     this.subSec = subSec;
     this.topBackground = topBackground;
     this.tvFoodName = tvFoodName;
@@ -111,15 +115,15 @@ public final class FoodCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.clQuantity;
-      ConstraintLayout clQuantity = ViewBindings.findChildViewById(rootView, id);
-      if (clQuantity == null) {
+      id = R.id.btnPurchase;
+      AppCompatTextView btnPurchase = ViewBindings.findChildViewById(rootView, id);
+      if (btnPurchase == null) {
         break missingId;
       }
 
-      id = R.id.ivDelete;
-      AppCompatImageView ivDelete = ViewBindings.findChildViewById(rootView, id);
-      if (ivDelete == null) {
+      id = R.id.clQuantity;
+      ConstraintLayout clQuantity = ViewBindings.findChildViewById(rootView, id);
+      if (clQuantity == null) {
         break missingId;
       }
 
@@ -138,6 +142,12 @@ public final class FoodCardBinding implements ViewBinding {
       id = R.id.ivPlus;
       AppCompatImageView ivPlus = ViewBindings.findChildViewById(rootView, id);
       if (ivPlus == null) {
+        break missingId;
+      }
+
+      id = R.id.ivRound;
+      AppCompatImageView ivRound = ViewBindings.findChildViewById(rootView, id);
+      if (ivRound == null) {
         break missingId;
       }
 
@@ -177,8 +187,9 @@ public final class FoodCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FoodCardBinding((ConstraintLayout) rootView, btnBuy, clQuantity, ivDelete, ivImage,
-          ivMinus, ivPlus, subSec, topBackground, tvFoodName, tvFoodPrice, tvPriceKey, valueCount);
+      return new FoodCardBinding((ConstraintLayout) rootView, btnBuy, btnPurchase, clQuantity,
+          ivImage, ivMinus, ivPlus, ivRound, subSec, topBackground, tvFoodName, tvFoodPrice,
+          tvPriceKey, valueCount);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

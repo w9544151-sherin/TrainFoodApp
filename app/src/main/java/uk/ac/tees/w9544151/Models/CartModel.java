@@ -1,9 +1,11 @@
 package uk.ac.tees.w9544151.Models;
 
 public class CartModel {
-    String image,itemName,itemQuantity,itemPrice,totalAmount;
+    String userid,username,image, itemName, itemQuantity, itemPrice, totalAmount;
 
-    public CartModel(String image, String itemName, String itemQuantity, String itemPrice, String totalAmount) {
+    public CartModel(String userid,String username, String image, String itemName, String itemQuantity, String itemPrice, String totalAmount) {
+        this.userid = userid;
+        this.username = username;
         this.image = image;
         this.itemName = itemName;
         this.itemQuantity = itemQuantity;
@@ -11,6 +13,19 @@ public class CartModel {
         this.totalAmount = totalAmount;
     }
 
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+    public String getUsername() {
+        return userid;
+    }
+    public void setUsername(String userid) {
+        this.userid = userid;
+    }
     public String getImage() {
         return image;
     }

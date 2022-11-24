@@ -87,13 +87,41 @@
         android:background="@drawable/white_frame"
         android:fontFamily="@font/amaranth"
         android:gravity="center"
-        android:text="TRain List"
+        android:text="Train List"
         android:textColor="@color/black"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@+id/trainList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@+id/trainList" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/stopList"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:padding="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/trainList"
+        app:srcCompat="@drawable/sort" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/white_frame"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Stop List"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stopList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/stopList" />
+
+
 
 
 

@@ -21,11 +21,11 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="60dp"
         android:layout_marginBottom="24dp"
         android:background="@drawable/white_frame"
         app:layout_constraintBottom_toBottomOf="@+id/appBar"
-        app:layout_constraintEnd_toStartOf="@id/ivLogout"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
@@ -98,16 +98,14 @@
 
     <ImageView
         android:id="@+id/ivLogout"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:scaleType="centerCrop"
-        android:layout_marginEnd="30dp"
-        android:elevation="1dp"
-        app:layout_constraintStart_toEndOf="@+id/profileBox"
+        android:src="@drawable/logout"
         app:layout_constraintBottom_toBottomOf="@+id/profileBox"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/profileBox"
-        tools:src="@drawable/logout" />
+        app:layout_constraintStart_toEndOf="@+id/profileBox"
+        app:layout_constraintTop_toTopOf="@+id/profileBox" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scrollView"

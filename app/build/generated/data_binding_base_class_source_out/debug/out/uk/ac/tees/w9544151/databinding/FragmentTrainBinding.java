@@ -33,17 +33,21 @@ public final class FragmentTrainBinding implements ViewBinding {
   public final View guideline;
 
   @NonNull
+  public final AppCompatImageView stopList;
+
+  @NonNull
   public final AppCompatImageView trainList;
 
   private FragmentTrainBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppCompatImageView addStop, @NonNull AppCompatImageView addSymbol,
       @NonNull AppCompatTextView addtrain, @NonNull View guideline,
-      @NonNull AppCompatImageView trainList) {
+      @NonNull AppCompatImageView stopList, @NonNull AppCompatImageView trainList) {
     this.rootView = rootView;
     this.addStop = addStop;
     this.addSymbol = addSymbol;
     this.addtrain = addtrain;
     this.guideline = guideline;
+    this.stopList = stopList;
     this.trainList = trainList;
   }
 
@@ -98,6 +102,12 @@ public final class FragmentTrainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.stopList;
+      AppCompatImageView stopList = ViewBindings.findChildViewById(rootView, id);
+      if (stopList == null) {
+        break missingId;
+      }
+
       id = R.id.trainList;
       AppCompatImageView trainList = ViewBindings.findChildViewById(rootView, id);
       if (trainList == null) {
@@ -105,7 +115,7 @@ public final class FragmentTrainBinding implements ViewBinding {
       }
 
       return new FragmentTrainBinding((ConstraintLayout) rootView, addStop, addSymbol, addtrain,
-          guideline, trainList);
+          guideline, stopList, trainList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

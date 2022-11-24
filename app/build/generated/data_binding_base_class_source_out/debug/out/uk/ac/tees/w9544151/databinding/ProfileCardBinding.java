@@ -24,7 +24,10 @@ public final class ProfileCardBinding implements ViewBinding {
   public final AppCompatImageView ivBoy;
 
   @NonNull
-  public final AppCompatImageView ivDelete;
+  public final AppCompatImageView ivDeleteIcon;
+
+  @NonNull
+  public final AppCompatImageView ivRound;
 
   @NonNull
   public final ConstraintLayout subSec;
@@ -45,12 +48,13 @@ public final class ProfileCardBinding implements ViewBinding {
   public final TextView tvStopName;
 
   private ProfileCardBinding(@NonNull ConstraintLayout rootView, @NonNull AppCompatImageView ivBoy,
-      @NonNull AppCompatImageView ivDelete, @NonNull ConstraintLayout subSec,
-      @NonNull View topBackground, @NonNull TextView tvBoyId, @NonNull TextView tvBoyName,
-      @NonNull TextView tvBoyNumber, @NonNull TextView tvStopName) {
+      @NonNull AppCompatImageView ivDeleteIcon, @NonNull AppCompatImageView ivRound,
+      @NonNull ConstraintLayout subSec, @NonNull View topBackground, @NonNull TextView tvBoyId,
+      @NonNull TextView tvBoyName, @NonNull TextView tvBoyNumber, @NonNull TextView tvStopName) {
     this.rootView = rootView;
     this.ivBoy = ivBoy;
-    this.ivDelete = ivDelete;
+    this.ivDeleteIcon = ivDeleteIcon;
+    this.ivRound = ivRound;
     this.subSec = subSec;
     this.topBackground = topBackground;
     this.tvBoyId = tvBoyId;
@@ -92,9 +96,15 @@ public final class ProfileCardBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.ivDelete;
-      AppCompatImageView ivDelete = ViewBindings.findChildViewById(rootView, id);
-      if (ivDelete == null) {
+      id = R.id.ivDeleteIcon;
+      AppCompatImageView ivDeleteIcon = ViewBindings.findChildViewById(rootView, id);
+      if (ivDeleteIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.ivRound;
+      AppCompatImageView ivRound = ViewBindings.findChildViewById(rootView, id);
+      if (ivRound == null) {
         break missingId;
       }
 
@@ -134,8 +144,8 @@ public final class ProfileCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ProfileCardBinding((ConstraintLayout) rootView, ivBoy, ivDelete, subSec,
-          topBackground, tvBoyId, tvBoyName, tvBoyNumber, tvStopName);
+      return new ProfileCardBinding((ConstraintLayout) rootView, ivBoy, ivDeleteIcon, ivRound,
+          subSec, topBackground, tvBoyId, tvBoyName, tvBoyNumber, tvStopName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

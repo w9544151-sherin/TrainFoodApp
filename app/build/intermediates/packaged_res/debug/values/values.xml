@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
+    <color name="blue">#2196F3</color>
     <color name="ic_appicon_background">#ECFCDA</color>
     <color name="light_blue">#e6e6ff</color>
     <color name="ocean_blue">#00004d</color>
@@ -12,7 +13,14 @@
     <color name="tint_white">#F1f5f8</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">RelFoodApp</string>
+    <string name="default_web_client_id" translatable="false">639255045684-kfpnabqmqqn8ddo28m5ik55uuqmttfea.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">639255045684</string>
+    <string name="google_api_key" translatable="false">AIzaSyCPYPQniLScVF-sRWvSCCPk-nSLzt4LMao</string>
+    <string name="google_app_id" translatable="false">1:639255045684:android:60b83d3a9cc06951628c61</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCPYPQniLScVF-sRWvSCCPk-nSLzt4LMao</string>
+    <string name="google_storage_bucket" translatable="false">relfood-37da0.appspot.com</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="project_id" translatable="false">relfood-37da0</string>
     <style name="Theme.Train_food" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>

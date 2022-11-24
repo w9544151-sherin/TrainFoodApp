@@ -22,12 +22,15 @@
        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <EditText
-        android:id="@+id/etAddTrainName"
+        android:id="@+id/etAddTrainNumber"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:layout_marginEnd="24dp"
         android:background="@drawable/input_holder"
         android:hint="Enter Train Number"
@@ -39,6 +42,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHeading" />
+    <EditText
+        android:id="@+id/etRoute"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Select a route"
+        android:background="@drawable/input_holder"
+        android:focusable="false"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:clickable="true"
+        android:editable="false"
+        android:textSize="16sp"
+        android:gravity="center_vertical"
+        android:paddingStart="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etAddTrainNumber" />
 
     <EditText
         android:id="@+id/etStopNumber"
@@ -46,6 +71,8 @@
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
         android:layout_marginEnd="24dp"
         android:textSize="16sp"
         android:gravity="center_vertical"
@@ -56,13 +83,15 @@
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etAddTrainName" />
+        app:layout_constraintTop_toBottomOf="@id/etRoute" />
 
     <EditText
         android:id="@+id/etStopName"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
+        android:singleLine="true"
+        android:imeOptions="actionDone"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/input_holder"

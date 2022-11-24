@@ -1,7 +1,9 @@
 package uk.ac.tees.w9544151.admin;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -10,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,8 @@ FragmentAdminHomeBinding binding;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        Log.d("in admin home q", sp.getString("userType","error") );
         binding.clTrain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
