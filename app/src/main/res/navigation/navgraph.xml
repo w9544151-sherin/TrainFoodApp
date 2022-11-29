@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navgraph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/splashFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -29,6 +29,9 @@
         <action
             android:id="@+id/action_loginFragment_to_passengerHome"
             app:destination="@id/passengerHome" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment2"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/adminHomeFragment"
@@ -47,6 +50,9 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_feedbackListFragment"
             app:destination="@id/feedbackListFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/addBoyFragment"
@@ -67,7 +73,14 @@
         android:id="@+id/DBoyListFragment"
         android:name="uk.ac.tees.w9544151.admin.DBoyListFragment"
         android:label="fragment_d_boy_list"
-        tools:layout="@layout/fragment_d_boy_list" />
+        tools:layout="@layout/fragment_d_boy_list" >
+        <action
+            android:id="@+id/action_DBoyListFragment_self"
+            app:destination="@id/DBoyListFragment" />
+        <action
+            android:id="@+id/action_DBoyListFragment_to_DBoyFragment"
+            app:destination="@id/DBoyFragment" />
+    </fragment>
     <fragment
         android:id="@+id/trainFragment"
         android:name="uk.ac.tees.w9544151.admin.TrainFragment"
@@ -85,6 +98,9 @@
         <action
             android:id="@+id/action_trainFragment_to_stopListFragment"
             app:destination="@id/stopListFragment" />
+        <action
+            android:id="@+id/action_trainFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerTrainFragment"
@@ -95,7 +111,14 @@
         android:id="@+id/trainListFragment"
         android:name="uk.ac.tees.w9544151.admin.TrainListFragment"
         android:label="fragment_train_list"
-        tools:layout="@layout/fragment_train_list" />
+        tools:layout="@layout/fragment_train_list" >
+        <action
+            android:id="@+id/action_trainListFragment_self"
+            app:destination="@id/trainListFragment" />
+        <action
+            android:id="@+id/action_trainListFragment_to_trainFragment"
+            app:destination="@id/trainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/cafeFragment"
         android:name="uk.ac.tees.w9544151.admin.CafeFragment"
@@ -107,12 +130,22 @@
         <action
             android:id="@+id/action_cafeFragment_to_foodListFragment"
             app:destination="@id/foodListFragment" />
+        <action
+            android:id="@+id/action_cafeFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodListFragment"
         android:name="uk.ac.tees.w9544151.admin.FoodListFragment"
         android:label="fragment_food_list"
-        tools:layout="@layout/fragment_food_list" />
+        tools:layout="@layout/fragment_food_list" >
+        <action
+            android:id="@+id/action_foodListFragment_self"
+            app:destination="@id/foodListFragment" />
+        <action
+            android:id="@+id/action_foodListFragment_to_cafeFragment"
+            app:destination="@id/cafeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/DBoyFragment"
         android:name="uk.ac.tees.w9544151.admin.DBoyFragment"
@@ -124,6 +157,9 @@
         <action
             android:id="@+id/action_DBoyFragment_to_DBoyListFragment"
             app:destination="@id/DBoyListFragment" />
+        <action
+            android:id="@+id/action_DBoyFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/DBoyHomeFragment"
@@ -146,7 +182,14 @@
         android:id="@+id/orderListFragment"
         android:name="uk.ac.tees.w9544151.DBoy.OrderListFragment"
         android:label="fragment_order_list"
-        tools:layout="@layout/fragment_order_list" />
+        tools:layout="@layout/fragment_order_list" >
+        <action
+            android:id="@+id/action_orderListFragment_self"
+            app:destination="@id/orderListFragment" />
+        <action
+            android:id="@+id/action_orderListFragment_to_passengerHome"
+            app:destination="@id/passengerHome" />
+    </fragment>
     <fragment
         android:id="@+id/feedbackListFragment"
         android:name="uk.ac.tees.w9544151.admin.FeedbackListFragment"
@@ -183,6 +226,13 @@
         <action
             android:id="@+id/action_cartListFragment_to_placeOrderFragment"
             app:destination="@id/placeOrderFragment" />
+        <action
+            android:id="@+id/action_cartListFragment_self"
+            app:destination="@id/cartListFragment" />
+        <action
+            android:id="@+id/action_cartListFragment_to_passengerHome"
+            app:destination="@id/passengerHome" />
+
     </fragment>
     <fragment
         android:id="@+id/placeOrderFragment"
@@ -204,12 +254,22 @@
         <argument android:name="image"
             android:defaultValue="null"
             app:nullable="true"/>
+        <action
+            android:id="@+id/action_placeOrderFragment_to_orderListFragment"
+            app:destination="@id/orderListFragment" />
     </fragment>
     <fragment
         android:id="@+id/stopListFragment"
         android:name="uk.ac.tees.w9544151.admin.StopListFragment"
         android:label="fragment_stop_list"
-        tools:layout="@layout/fragment_stop_list" />
+        tools:layout="@layout/fragment_stop_list" >
+        <action
+            android:id="@+id/action_stopListFragment_self"
+            app:destination="@id/stopListFragment" />
+        <action
+            android:id="@+id/action_stopListFragment_to_trainFragment"
+            app:destination="@id/trainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/foodHomeFragment"
         android:name="uk.ac.tees.w9544151.Passenger.FoodHomeFragment"

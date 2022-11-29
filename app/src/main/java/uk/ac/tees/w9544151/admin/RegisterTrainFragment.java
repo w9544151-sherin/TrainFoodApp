@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -23,6 +24,7 @@ import com.google.firebase.storage.StorageReference;
 
 import uk.ac.tees.w9544151.Models.TrainModel;
 import uk.ac.tees.w9544151.Models.UserModel;
+import uk.ac.tees.w9544151.Models.Validation;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentRegisterBinding;
 import uk.ac.tees.w9544151.databinding.FragmentRegisterTrainBinding;
@@ -34,21 +36,23 @@ public class RegisterTrainFragment extends Fragment {
     FirebaseFirestore db;
 
     FragmentRegisterTrainBinding binding;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(getView()).navigateUp();
             }
         });
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        firebaseStorage=FirebaseStorage.getInstance();
-        storageReference=FirebaseStorage.getInstance().getReference();
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
         // Inflate the layout for this fragment
         binding = FragmentRegisterTrainBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
@@ -60,21 +64,33 @@ public class RegisterTrainFragment extends Fragment {
 
         binding.btnAddTrain.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-
-            {
-                if(validate())
-                {
-                    String id,trainName,trainNumber,start,destiny;
-                    trainName=binding.etTrainName.getText().toString();
-                    id="T"+binding.etTrainNumber.getText().toString();
-                    trainNumber=binding.etTrainNumber.getText().toString();
-                    start=binding.etStart.getText().toString();
-                    destiny=binding.etDestiny.getText().toString();
-                    String path=start+"-"+destiny;
-                    fireStoreDatabase : FirebaseFirestore.getInstance();
-                    TrainModel obj=new TrainModel(id,trainNumber,trainName,start,destiny,path);
-                    db=FirebaseFirestore.getInstance();
+            public void onClick(View v) {
+                final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+                progressDoalog.setMessage("Checking....");
+                progressDoalog.setTitle("Please wait");
+                progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                progressDoalog.show();
+                String id, trainName, trainNumber, start, destiny;
+                trainName = binding.etTrainName.getText().toString();
+                id = "T" + binding.etTrainNumber.getText().toString();
+                trainNumber = binding.etTrainNumber.getText().toString();
+                start = binding.etStart.getText().toString();
+                destiny = binding.etDestiny.getText().toString();
+                String path = start + "-" + destiny;
+                if (trainNumber.isEmpty()) {
+                    binding.etTrainNumber.setError("Enter a valid train number");
+                }
+                else if (!trainName.matches(Validation.text)) {
+                    binding.etTrainName.setError("Enter a valid train name");
+                } else if (!start.matches(Validation.text)) {
+                    binding.etStart.setError("Enter a valid starting place");
+                } else if (!destiny.matches(Validation.text)) {
+                    binding.etDestiny.setError("Enter a Ending place");
+                } else {
+                    fireStoreDatabase:
+                    FirebaseFirestore.getInstance();
+                    TrainModel obj = new TrainModel(id, trainNumber, trainName, start, destiny, path);
+                    db = FirebaseFirestore.getInstance();
                     db.collection("Train").add(obj).
                             addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
@@ -83,31 +99,20 @@ public class RegisterTrainFragment extends Fragment {
                                     binding.etTrainNumber.getText().clear();
                                     binding.etStart.getText().clear();
                                     binding.etDestiny.getText().clear();
-                                    Snackbar.make(requireView(),"Train added Successfully",Snackbar.LENGTH_LONG).show();
+                                    Snackbar.make(requireView(), "Train added Successfully", Snackbar.LENGTH_LONG).show();
                                 }
                             }).
                             addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(requireContext(),"Creation failed", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                                 }
                             });
 
                 }
-
+                progressDoalog.dismiss();
             }
         });
     }
 
-    private boolean validate(){
-        if (binding.etTrainNumber.getText().equals("")|| binding.etTrainName.getText().equals("")||binding.etStart.getText().equals("")||
-                binding.etDestiny.getText().equals(""))
-        {
-            Toast.makeText(requireActivity(),"All fields are mandatory",Toast.LENGTH_LONG);
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 }

@@ -55,13 +55,14 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvFoodname"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:fontFamily="@font/cairo_bold"
         android:text="Item Name "
         android:textColor="@color/ocean_blue"
         android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/dboyimage"
         app:layout_constraintStart_toEndOf="@id/image"
         app:layout_constraintTop_toTopOf="@+id/image" />
 
@@ -89,19 +90,21 @@
         android:textColor="@color/ocean_blue"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@+id/tvQuantity" />
+        app:layout_constraintTop_toBottomOf="@+id/tvQuantity"
+        />
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBillingAddress"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:textStyle="italic"
+        android:layout_height="0dp"
+        android:layout_marginTop="36dp"
         android:fontFamily="@font/cairo_bold"
         android:text="Biilling Address"
         android:textColor="@color/black"
         android:textSize="20sp"
+        android:textStyle="italic"
         app:layout_constraintStart_toStartOf="@id/image"
-        app:layout_constraintTop_toBottomOf="@+id/image" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPrice" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/labelUsername"

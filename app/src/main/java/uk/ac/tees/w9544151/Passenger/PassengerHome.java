@@ -1,6 +1,7 @@
 package uk.ac.tees.w9544151.Passenger;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -36,32 +37,34 @@ import uk.ac.tees.w9544151.Models.Foodmodel;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentFoodHomeBinding;
 
-public class PassengerHome extends Fragment implements ActionCallback  {
+public class PassengerHome extends Fragment implements ActionCallback {
     FragmentFoodHomeBinding binding;
     FoodAdapter adapter;
     String total;
     private ActionCallback action;
-   // public List<Foodmodel> foodList;
+    // public List<Foodmodel> foodList;
     List<Foodmodel> foodList = new ArrayList();
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentFoodHomeBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentFoodHomeBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
     }
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
-        String name = sp.getString("userName","Welcome");
-        String heading="Welcome "+name;
+        String name = sp.getString("userName", "Welcome");
+        String heading = "Welcome " + name;
         binding.tvHeading.setText(heading);
-        Log.d("in userhome q", sp.getString("userType","error") );
+        Log.d("in userhome q", sp.getString("userType", "error"));
         /*for(int i=0;i<10;i++) {
             foodList.add(new Foodmodel("i","Chicken Biriyani", "260", "R.drawable.foodmenu2"));
         }*/
-         adapter=new FoodAdapter( this, getContext(), sp.getString("userType", "error"));
+        adapter = new FoodAdapter(this, getContext(), sp.getString("userType", "error"));
         binding.rvFoodMenu.setLayoutManager(new LinearLayoutManager(requireContext()));
         showData();
 
@@ -69,13 +72,13 @@ public class PassengerHome extends Fragment implements ActionCallback  {
         binding.userFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_feedbackFragments);
+                Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_feedbackFragments);
             }
         });
         binding.usertrackOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_orderListFragment);
+                Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_orderListFragment);
             }
         });
         binding.userlog.setOnClickListener(new View.OnClickListener() {
@@ -87,25 +90,32 @@ public class PassengerHome extends Fragment implements ActionCallback  {
         binding.ivcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_cartListFragment);
+                Navigation.findNavController(view).navigate(R.id.action_passengerHome_to_cartListFragment);
             }
         });
 
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                AlertDialog.Builder alertbox=new AlertDialog.Builder(requireContext());
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(requireContext());
                 alertbox.setMessage("Do you really wants to logout from this app?");
                 alertbox.setTitle("Logout!!");
 
                 alertbox.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("userType", "");
+                        editor.putString("userName", "");
+                        editor.putString("userMobile", "");
+                        editor.putString("userId", "");
+                        editor.commit();
                         Navigation.findNavController(getView()).navigateUp();
 
                     }
@@ -120,7 +130,6 @@ public class PassengerHome extends Fragment implements ActionCallback  {
                 alertbox.show();
 
 
-
             }
         });
     }
@@ -128,7 +137,11 @@ public class PassengerHome extends Fragment implements ActionCallback  {
 
     private void showData() {
         //Log.d("@", "showData: Called")
-
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         foodList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -147,7 +160,7 @@ public class PassengerHome extends Fragment implements ActionCallback  {
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice")
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodImage")));
                         }
-                        adapter.fooodList=foodList;
+                        adapter.fooodList = foodList;
                         binding.rvFoodMenu.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                     }
@@ -157,10 +170,9 @@ public class PassengerHome extends Fragment implements ActionCallback  {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
 
     }
-
-
 
 
     @Override
@@ -175,6 +187,11 @@ public class PassengerHome extends Fragment implements ActionCallback  {
             total = String.valueOf(Integer.parseInt(s) * Integer.parseInt(foodPrice));
             Log.d("price", "total price" + total);
             //to db
+            final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+            progressDoalog.setMessage("Checking....");
+            progressDoalog.setTitle("Please wait");
+            progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDoalog.show();
             FirebaseFirestore db;
             db = FirebaseFirestore.getInstance();
             CartModel obj = new CartModel(uid, name, foodImage, foodName, s, foodPrice, total);
@@ -194,21 +211,20 @@ public class PassengerHome extends Fragment implements ActionCallback  {
 
                         }
                     });
-            Toast.makeText(requireContext(), "Qunatity" + total, Toast.LENGTH_SHORT).show();
-        }
-        else {
+           // Toast.makeText(requireContext(), "Qunatity" + total, Toast.LENGTH_SHORT).show();
+            progressDoalog.dismiss();
+        } else {
             String amount;
-            amount=String.valueOf(Integer.parseInt(s) * Integer.parseInt(foodPrice));
-             Bundle b=new Bundle();
-             b.putString("itemname",foodName);
-             b.putString("itemprice",foodPrice);
-             b.putString("itemqty",s);
-             b.putString("total",amount);
-             b.putString("image",foodImage);
-            Navigation.findNavController(getView()).navigate(R.id.action_passengerHome_to_placeOrderFragment,b);
+            amount = String.valueOf(Integer.parseInt(s) * Integer.parseInt(foodPrice));
+            Bundle b = new Bundle();
+            b.putString("itemname", foodName);
+            b.putString("itemprice", foodPrice);
+            b.putString("itemqty", s);
+            b.putString("total", amount);
+            b.putString("image", foodImage);
+            Navigation.findNavController(getView()).navigate(R.id.action_passengerHome_to_placeOrderFragment, b);
         }
     }
-
 
 
 }

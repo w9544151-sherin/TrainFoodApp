@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.Passenger;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,14 +38,15 @@ public class CartListFragment extends Fragment implements AdapterCallback {
     FragmentCartListBinding binding;
     CartAdapter adapter = new CartAdapter(this);
     List<CartModel> cartList = new ArrayList();
-
+String items="",qty="",image="",price="";
+float total=0.0f;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_cartListFragment_to_passengerHome);
             }
         });
     }
@@ -67,8 +69,14 @@ public class CartListFragment extends Fragment implements AdapterCallback {
         binding.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_adminHomeFragment);
-                Navigation.findNavController(view).navigate(R.id.action_cartListFragment_to_placeOrderFragment);
+                Bundle ed = new Bundle();
+                ed.putString("itemname",items);
+                ed.putString("itemqty",qty);
+                ed.putString("total",total+"");
+                ed.putString("image",image);
+                ed.putString("itemprice","");
+                Navigation.findNavController(getView()).navigate(R.id.action_cartListFragment_to_placeOrderFragment, ed);
+
             }
         });
     }
@@ -79,6 +87,11 @@ public class CartListFragment extends Fragment implements AdapterCallback {
     }
 
     private void showData() {
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         //Log.d("@", "showData: Called")
         SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
         String uid = sp.getString("userId", "error");
@@ -97,7 +110,7 @@ public class CartListFragment extends Fragment implements AdapterCallback {
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodName"));
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice"));*/
                             cartList.add(new CartModel(
-                                    "", "",
+                                    queryDocumentSnapshots.getDocuments().get(i).getId(), "",
                                     queryDocumentSnapshots.getDocuments().get(i).getString("image"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("itemName"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("itemQuantity"),
@@ -105,7 +118,14 @@ public class CartListFragment extends Fragment implements AdapterCallback {
                                     queryDocumentSnapshots.getDocuments().get(i).getString("totalAmount")
 
                             ));
+                            items=items+queryDocumentSnapshots.getDocuments().get(i).getString("itemName")+",";
+                            qty=qty+queryDocumentSnapshots.getDocuments().get(i).getString("itemQuantity")+",";
+                            total=total+(Float.parseFloat(queryDocumentSnapshots.getDocuments().get(i).getString("itemPrice"))*Float.parseFloat(queryDocumentSnapshots.getDocuments().get(i).getString("itemQuantity")));
+                            image=queryDocumentSnapshots.getDocuments().get(i).getString("image");
+                            price=price+(Float.parseFloat(queryDocumentSnapshots.getDocuments().get(i).getString("itemPrice")))+",";
+
                         }
+
 
                         adapter.cartList = cartList;
                         binding.rvCarts.setAdapter(adapter);
@@ -117,6 +137,7 @@ public class CartListFragment extends Fragment implements AdapterCallback {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
 
     }
 

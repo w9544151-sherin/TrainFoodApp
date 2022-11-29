@@ -54,7 +54,12 @@ public class FeedbackFragment extends Fragment {
         binding.btnAddComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addFeedbacktoDatabase();
+                if(binding.etFeedback.getText().toString().isEmpty()){
+                    binding.etFeedback.setError("Enter your feedback");
+                }
+                else {
+                    addFeedbacktoDatabase();
+                }
             }
         });
     }

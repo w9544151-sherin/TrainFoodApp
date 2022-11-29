@@ -1,6 +1,9 @@
 package uk.ac.tees.w9544151.Passenger;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
@@ -22,6 +25,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.Random;
 
@@ -36,11 +40,11 @@ import uk.ac.tees.w9544151.databinding.FragmentOrderListBinding;
 import uk.ac.tees.w9544151.databinding.FragmentPlaceOrderBinding;
 
 
-public class PlaceOrderFragment extends Fragment  implements CallBackTwice {
+public class PlaceOrderFragment extends Fragment implements CallBackTwice {
     FragmentPlaceOrderBinding binding;
-    String foodname,foodimage,quantity,price,total,username,mobile,stop,address,userid;
+    String foodname, foodimage, quantity, price, total, username, mobile, stop, address, userid;
     private CallBackTwice mAdapterCallback;
-    public String selectedValue="";
+    public String selectedValue = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,8 +71,8 @@ public class PlaceOrderFragment extends Fragment  implements CallBackTwice {
         super.onViewCreated(view, savedInstanceState);
         Random random = new Random();
         int number = random.nextInt(99999999);
-        String orderId="Order"+number;
-        mAdapterCallback=this;
+        String orderId = "Order" + number;
+        mAdapterCallback = this;
         foodname = getArguments().getString("itemname");
         Log.d("#", "onViewCreated: " + foodname);
         binding.tvTotalAmount.setText(getArguments().getString("total"));
@@ -76,23 +80,23 @@ public class PlaceOrderFragment extends Fragment  implements CallBackTwice {
         binding.etStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetFragment bottomSheet = new BottomSheetFragment(requireContext(),mAdapterCallback,binding.etTrain.getText().toString(),"stop");
-                bottomSheet.show(getChildFragmentManager(),"BottomSheet");
+                BottomSheetFragment bottomSheet = new BottomSheetFragment(requireContext(), mAdapterCallback, binding.etTrain.getText().toString(), "stop");
+                bottomSheet.show(getChildFragmentManager(), "BottomSheet");
             }
         });
 
         binding.labelGeneral.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedValue="General";
-             binding.labelGeneral.setBackgroundResource(R.color.blue);
+                selectedValue = "General";
+                binding.labelGeneral.setBackgroundResource(R.color.blue);
                 binding.labelReserved.setBackgroundResource(R.color.ocean_blue);
             }
         });
         binding.labelReserved.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                selectedValue="Reserved";
+                selectedValue = "Reserved";
                 binding.labelReserved.setBackgroundResource(R.color.blue);
                 binding.labelGeneral.setBackgroundResource(R.color.ocean_blue);
             }
@@ -102,10 +106,10 @@ public class PlaceOrderFragment extends Fragment  implements CallBackTwice {
 
             @Override
             public void onClick(View v) {
-
                 String seat = binding.etSeat.getText().toString();
                 String coach = binding.etCoachName.getText().toString();
                 String trainNo = binding.etTrain.getText().toString();
+                String stop = binding.etStop.getText().toString();
                 if (trainNo.isEmpty() || seat.isEmpty() || binding.etStop.getText().toString().isEmpty() || coach.isEmpty()) {
                     Toast.makeText(requireContext(), "All fields are mandatory", Toast.LENGTH_LONG).show();
                 } else {
@@ -120,18 +124,25 @@ public class PlaceOrderFragment extends Fragment  implements CallBackTwice {
                     total = getArguments().getString("total");
                     foodimage = getArguments().getString("image");
                     Log.d("aq", "order check-: " + username + "," + mobile + "," + userid + "," + address + "," + seat + "," + coach + "\n,(stop)" + binding.etStop.getText().toString());
-
+                    final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+                    progressDoalog.setMessage("Checking....");
+                    progressDoalog.setTitle("Please wait");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.show();
                     FirebaseFirestore db;
                     db = FirebaseFirestore.getInstance();
                     OrderModel obj = new OrderModel(orderId, foodname, price, quantity, username, userid, mobile,
-                            trainNo, seat, coach, total, foodimage, address, "ordered");
+                            trainNo, seat, coach, total, foodimage, address, "ordered", stop);
                     db.collection("Orders").add(obj).
                             addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
-binding.etTrain.setText("");binding.etStop.setText("");
-binding.etCoachName.setText("");binding.etSeat.setText("");
+                                    binding.etTrain.setText("");
+                                    binding.etStop.setText("");
+                                    binding.etCoachName.setText("");
+                                    binding.etSeat.setText("");
                                     Snackbar.make(requireView(), "Order Placed", Snackbar.LENGTH_LONG).show();
+                                    Navigation.findNavController(getView()).navigate(R.id.action_placeOrderFragment_to_orderListFragment);
                                 }
                             }).
                             addOnFailureListener(new OnFailureListener() {
@@ -142,17 +153,29 @@ binding.etCoachName.setText("");binding.etSeat.setText("");
 
                                 }
                             });
+
+                    db.collection("Cart").whereEqualTo("userid",userid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                @Override
+                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+
+                                }
+                            });
+                    progressDoalog.dismiss();
                 }
             }
         });
     }
 
 
-
     @Override
     public void onStopCallback(String routeName) {
-        Log.d("@", "onStopCallback: "+routeName);
-        binding.etStop.setText(routeName+"");
+        Log.d("@", "onStopCallback: " + routeName);
+        binding.etStop.setText(routeName + "");
     }
 
 }

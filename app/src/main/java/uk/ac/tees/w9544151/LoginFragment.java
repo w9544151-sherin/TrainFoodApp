@@ -83,6 +83,8 @@ public class LoginFragment extends Fragment {
                         editor = sp.edit();
                         editor.putString("userType", "admin");
                         editor.commit();
+                        binding.etUsername.setText("");
+                        binding.etPassword.setText("");
                         Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_adminHomeFragment);
                         progressDoalog.dismiss();
                     } else {
@@ -102,7 +104,7 @@ public class LoginFragment extends Fragment {
                                                     editor = sp.edit();
                                                     Log.d("##", queryDocumentSnapshots.getDocuments().get(0).getString("name") + "");
                                                     editor.putString("userType", queryDocumentSnapshots.getDocuments().get(0).getString("type"));
-                                                    editor.putString("userName", queryDocumentSnapshots.getDocuments().get(0).getString("username"));
+                                                    editor.putString("userName", queryDocumentSnapshots.getDocuments().get(0).getString("name"));
                                                     editor.putString("userMobile", queryDocumentSnapshots.getDocuments().get(0).getString("mobile"));
                                                     editor.putString("userId", queryDocumentSnapshots.getDocuments().get(0).getString("userId"));
                                                     editor.commit();
@@ -160,7 +162,7 @@ public class LoginFragment extends Fragment {
         requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_loginFragment_to_homeFragment);
             }
         });
     }

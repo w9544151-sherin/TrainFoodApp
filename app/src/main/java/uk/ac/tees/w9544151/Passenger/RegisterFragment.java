@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.Passenger;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -34,6 +35,7 @@ import com.google.firebase.storage.StorageReference;
 import java.util.Random;
 
 import uk.ac.tees.w9544151.Models.UserModel;
+import uk.ac.tees.w9544151.Models.Validation;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentRegisterBinding;
 
@@ -43,7 +45,7 @@ public class RegisterFragment extends Fragment {
     StorageReference storageReference;
     FirebaseFirestore db;
     FragmentRegisterBinding binding;
-    private EditText emailTextView, passwordTextView,nameTextView,mobileTextView;
+    private EditText emailTextView, passwordTextView, nameTextView, mobileTextView;
     private AppCompatTextView Btn;
     private ProgressBar progressbar;
     private FirebaseAuth mAuth;
@@ -52,8 +54,8 @@ public class RegisterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        firebaseStorage=FirebaseStorage.getInstance();
-        storageReference=FirebaseStorage.getInstance().getReference();
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = FirebaseStorage.getInstance().getReference();
         // Inflate the layout for this fragment
         binding = FragmentRegisterBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
@@ -78,60 +80,84 @@ public class RegisterFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         Random random = new Random();
         int number = random.nextInt(655999);
-        binding.tvId.setText("UserId : "+number+"");
+        binding.tvId.setText("UserId : " + number + "");
 
         // initialising all views through id defined above
         emailTextView = binding.etEmail;
-        passwordTextView =binding.etPassword;
-        nameTextView =binding.etName;
-        mobileTextView =binding.etMobile;
+        passwordTextView = binding.etPassword;
+        nameTextView = binding.etName;
+        mobileTextView = binding.etMobile;
         Btn = binding.btnAddUser;
         progressbar = binding.progressbar;
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate())
-                {
-                    String username;
-                username = binding.etEmail.getText().toString();
-                db = FirebaseFirestore.getInstance();
-                try {
+                if (binding.etName.getText().toString().isEmpty() || !binding.etName.getText().toString().matches(Validation.text)) {
+                    binding.etName.setError("Enter your Name");
+                } else if (binding.etMobile.getText().toString().isEmpty() || !binding.etMobile.getText().toString().matches(Validation.mobile)) {
+                    binding.etMobile.setError("Enter your valid 10 digit phone number,{eg: 0, starts with only 6-9}");
+                } else if (binding.etEmail.getText().toString().isEmpty() || !binding.etEmail.getText().toString().matches(Validation.email)) {
+                    binding.etEmail.setError("Enter valid email address");
+                } else if (binding.etPassword.getText().toString().isEmpty()) {
+                    binding.etPassword.setError("Enter password");
 
-                    db.collection("User").whereEqualTo("username", username).get().
-                            addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                @Override
-                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                    if (queryDocumentSnapshots.getDocuments().isEmpty()) {
-                                        userRegistration(number);
-                                    } else {
-                                        Toast.makeText(requireContext(), "Please Take Another Username", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+                    progressDoalog.setMessage("Checking....");
+                    progressDoalog.setTitle("Please wait");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.show();
+                    String username;
+                    username = binding.etEmail.getText().toString();
+                    db = FirebaseFirestore.getInstance();
+                    try {
+
+                        db.collection("User").whereEqualTo("username", username).get().
+                                addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                    @Override
+                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                        if (queryDocumentSnapshots.getDocuments().isEmpty()) {
+                                            userRegistration(number);
+                                        } else {
+                                            Toast.makeText(requireContext(), "Please Take Another Username", Toast.LENGTH_SHORT).show();
+                                        }
                                     }
-                                }
-                            }).
-                            addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    //userRegistration();
-                                    Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                } catch (Exception e) {
-                    Log.d("exception", "Exception" + e.toString());
+                                }).
+                                addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        //userRegistration();
+                                        Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                    } catch (Exception e) {
+                        Log.d("exception", "Exception" + e.toString());
+                    }
+                    progressDoalog.dismiss();
                 }
-            }
+
             }
         });
+
     }
 
 
-    private void userRegistration(int number){
+    private void userRegistration(int number) {
+
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         String username, name, mobile, password;
         username = binding.etEmail.getText().toString();
         password = binding.etPassword.getText().toString();
         name = binding.etName.getText().toString();
         mobile = binding.etMobile.getText().toString();
-        fireStoreDatabase:FirebaseFirestore.getInstance();
-        UserModel obj = new UserModel(number+"", "user", name, mobile, username, password);
+        fireStoreDatabase:
+        FirebaseFirestore.getInstance();
+        UserModel obj = new UserModel(number + "", "user", name, mobile, username, password);
         db = FirebaseFirestore.getInstance();
         db.collection("User").add(obj).
                 addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -152,20 +178,11 @@ public class RegisterFragment extends Fragment {
                         Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
     }
 
-    private boolean validate(){
-        if (binding.etName.getText().toString().isEmpty()|| binding.etMobile.getText().toString().isEmpty()||
-                binding.etEmail.getText().toString().isEmpty() || binding.etPassword.getText().toString().isEmpty() )
-        {
-            Toast.makeText(requireContext(), "All Fields are mandatory", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        else
-        {
-         return true;
-        }
-    }
+
+
     private void registerNewUser()
     {
 

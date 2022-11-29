@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -27,6 +28,7 @@ import uk.ac.tees.w9544151.Adapters.AdapterCallback;
 import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Adapters.DBoyAdapter;
 import uk.ac.tees.w9544151.Models.DBoyModel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentDBoyListBinding;
 
 
@@ -40,7 +42,7 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
         requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_DBoyListFragment_to_DBoyFragment);
             }
         });
     }
@@ -70,7 +72,11 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
 
     private void showData() {
         //Log.d("@", "showData: Called")
-
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         boyList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -86,7 +92,7 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodName"));
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice"));*/
                             boyList.add(new DBoyModel(
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("boyId"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getId(),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("boyName"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("boyMobile"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("stop"),
@@ -105,6 +111,7 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
 
     }
 

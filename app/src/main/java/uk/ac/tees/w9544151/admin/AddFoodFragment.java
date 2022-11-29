@@ -2,6 +2,7 @@ package uk.ac.tees.w9544151.admin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -41,6 +42,7 @@ import java.util.UUID;
 
 import uk.ac.tees.w9544151.Models.Foodmodel;
 import uk.ac.tees.w9544151.Models.TrainModel;
+import uk.ac.tees.w9544151.Models.Validation;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentAddFoodBinding;
 
@@ -105,7 +107,15 @@ public class AddFoodFragment extends Fragment {
         binding.btnAddFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()){
+                if (binding.etFoodName.getText().toString().isEmpty() || !binding.etFoodName.getText().toString().matches(Validation.text)) {
+                    binding.etFoodName.setError("Enter a food name");
+                } else if (binding.etFoodPrice.getText().toString().isEmpty()) {
+                    binding.etFoodPrice.setError("enter the price amount");
+                }
+                else if(encodedImage.equals("")){
+                    Toast.makeText(getContext(),"please choose an image",Toast.LENGTH_SHORT).show();
+                }
+                else {
                     addFoodToDatabase();
                 }
 
@@ -244,6 +254,11 @@ public class AddFoodFragment extends Fragment {
     }
 
     private void addFoodToDatabase() {
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         String id, foodName, price;
         foodName = binding.etFoodName.getText().toString();
         price = binding.etFoodPrice.getText().toString();
@@ -267,32 +282,6 @@ public class AddFoodFragment extends Fragment {
                         Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-
+        progressDoalog.dismiss();
     }
-
-    private boolean validate(){
-        if (binding.etFoodName.getText().equals("")|| binding.etFoodPrice.getText().equals(""))
-        {
-            Toast.makeText(requireActivity(),"All fields are mandatory",Toast.LENGTH_LONG);
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    /*private void uploadImage(){
-        if(encodedImage != null){
-            StorageReference reference;
-            reference=storageReference.child("Food_Image/"+UUID.randomUUID().toString());
-            //ref = storageReference.child("food_Images/" + UUID.randomUUID().toString());
-            UploadTask uploadTask;
-            uploadTask = reference.putFile(Uri.parse(encodedImage));
-            Log.d("url", reference.toString());
-            //encodedstring= ref.toString()
-
-        }else{
-            Toast.makeText(getContext(), "Please Upload an Image", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }

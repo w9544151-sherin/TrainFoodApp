@@ -1,6 +1,9 @@
 package uk.ac.tees.w9544151.Adapters;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -14,12 +17,18 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Models.Foodmodel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FoodCardBinding;
 
 public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> {
@@ -55,14 +64,14 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
         Foodmodel dm = fooodList.get(holder.getAdapterPosition());
         int q = 0;
         try {
-
-
             if (type.equals("admin") || type.equals("dboy")) {
                 holder.clQuantity.setVisibility(View.GONE);
                 holder.btnbuy.setVisibility(View.GONE);
+                binding.btnPurchase.setVisibility(View.GONE);
             }
             else
             {
+
                 holder.clQuantity.setVisibility(View.VISIBLE);
                 holder.btnbuy.setVisibility(View.VISIBLE);
             }
@@ -79,6 +88,32 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
         imageBytes = Base64.decode(dm.getFoodImage(), Base64.DEFAULT);
         Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         holder.ivphoto.setImageBitmap(decodedImage);
+        if(type.equals("admin")){
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder alertbox=new AlertDialog.Builder(view.getRootView().getContext());
+                    alertbox.setMessage("Do you  wants to Delete this Food from your menu?");
+                    alertbox.setTitle("Delete!!");
+
+                    alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            deleteTrainFood(dm.getFoodId(),view);
+
+                        }
+                    });
+                    alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+
+                    alertbox.show();
+                }
+            });
+        }
 
         holder.btnbuy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,7 +165,33 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
 
 
     }
+    private void deleteTrainFood(String doc_name, View view) {
+        //Log.d("@", "showData: Called")
 
+        final ProgressDialog progressDoalog = new ProgressDialog(view.getRootView().getContext());
+        progressDoalog.setMessage("Loading....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Food_Menu").document(doc_name).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Navigation.findNavController(view).navigate(R.id.action_foodListFragment_self);
+                        Toast.makeText(view.getRootView().getContext(), "food removed successfully", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(view.getRootView().getContext(), "Technical error occured", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+        progressDoalog.dismiss();
+
+    }
     @Override
     public int getItemCount() {
         return fooodList.size();

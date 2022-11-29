@@ -24,7 +24,7 @@ FragmentCafeBinding binding;
         requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_cafeFragment_to_adminHomeFragment);
             }
         });
     }

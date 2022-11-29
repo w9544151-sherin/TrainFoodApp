@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -27,6 +28,7 @@ import uk.ac.tees.w9544151.Adapters.AdapterCallback;
 import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Adapters.TrainAdapter;
 import uk.ac.tees.w9544151.Models.TrainModel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentTrainListBinding;
 
 
@@ -40,7 +42,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
         requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_trainListFragment_to_trainFragment);
             }
         });
     }
@@ -56,11 +58,6 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showData();
-        /*for(int i=0;i<10;i++) {
-            trainList.add(new TrainModel("Rajyarani","16350","Rajya Rani Express","Nilambur","Kochuveli"));
-            trainList.add(new TrainModel("Amritha","16234","Amritha Express","Trivandrum","Calicut"));
-            trainList.add(new TrainModel("Parasuram","16150","Parasuram Express","Nagarcoil","Mangalore"));
-        }*/
         binding.rvTrain.setLayoutManager(new LinearLayoutManager(requireContext()));
 
 
@@ -73,7 +70,11 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
 
     private void showData() {
         //Log.d("@", "showData: Called")
-
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         trainList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -84,23 +85,27 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Log.d("@", queryDocumentSnapshots + "");
                         int i;
-                        for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
+                        if (queryDocumentSnapshots.getDocuments().size() > 0) {
+                            for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
                             /*Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getId());
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodName"));
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice"));*/
-                            trainList.add(new TrainModel(
-                                    "",
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("trainNumber"),
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("trainName"),
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("startPoint"),
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("endPoint"),
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("path")
+                                trainList.add(new TrainModel(
+                                        queryDocumentSnapshots.getDocuments().get(i).getId(),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("trainNumber"),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("trainName"),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("startPoint"),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("endPoint"),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("path")
 
-                                    ));
+                                ));
+                            }
+                            adapter.trainList = trainList;
+                            binding.rvTrain.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        }else{
+                            Toast.makeText(getContext(), "No trains Available Now", Toast.LENGTH_SHORT).show();
                         }
-                        adapter.trainList=trainList;
-                        binding.rvTrain.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -108,6 +113,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
 
     }
 

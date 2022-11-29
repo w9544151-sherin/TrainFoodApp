@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import java.util.List;
 import uk.ac.tees.w9544151.Adapters.ActionCallback;
 import uk.ac.tees.w9544151.Adapters.FoodAdapter;
 import uk.ac.tees.w9544151.Models.Foodmodel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentFoodListBinding;
 
 
@@ -35,20 +37,22 @@ public class FoodListFragment extends Fragment implements ActionCallback {
     FragmentFoodListBinding binding;
     FoodAdapter adapter;
     List<Foodmodel> foodList = new ArrayList();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_foodListFragment_to_cafeFragment);
             }
         });
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding=FragmentFoodListBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentFoodListBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
     }
 
@@ -56,23 +60,22 @@ public class FoodListFragment extends Fragment implements ActionCallback {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
-        Log.d("in admin home q", sp.getString("userType","error") );
-        adapter=new FoodAdapter(this, getContext(),sp.getString("userType","error"));
-        showData();
-        Log.d("size", "onViewCreated: "+foodList.size());
-      /*  for(int i=0;i<5;i++) {
-            foodList.add(new Foodmodel("f001","Coffee","20","nil"));
-
-        }*/
+        Log.d("in admin home q", sp.getString("userType", "error"));
+        adapter = new FoodAdapter(this, getContext(), sp.getString("userType", "error"));
         binding.rvFood.setLayoutManager(new LinearLayoutManager(requireContext()));
+        showData();
+        Log.d("size", "onViewCreated: " + foodList.size());
 
     }
 
 
-
     private void showData() {
         //Log.d("@", "showData: Called")
-
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         foodList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -91,7 +94,7 @@ public class FoodListFragment extends Fragment implements ActionCallback {
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice")
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodImage")));
                         }
-                        adapter.fooodList=foodList;
+                        adapter.fooodList = foodList;
                         binding.rvFood.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                     }
@@ -101,8 +104,8 @@ public class FoodListFragment extends Fragment implements ActionCallback {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-            }
+        progressDoalog.dismiss();
+    }
 
     @Override
     public void onBuyCallback(String s, String foodName, String foodImage, String foodPrice, String cart) {

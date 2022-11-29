@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.DBoy;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,13 +16,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Adapters.AdapterCallback;
 import uk.ac.tees.w9544151.Adapters.OrdersAdapter;
+import uk.ac.tees.w9544151.Models.CartModel;
 import uk.ac.tees.w9544151.Models.OrderModel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentOrderListBinding;
 
 
@@ -35,7 +44,7 @@ public class OrderListFragment extends Fragment implements AdapterCallback {
         requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_orderListFragment_to_passengerHome);
             }
         });
     }
@@ -54,19 +63,68 @@ public class OrderListFragment extends Fragment implements AdapterCallback {
         Log.d("in userhome q", sp.getString("userType","error") );
         adapter=new OrdersAdapter(this,getContext(),sp.getString("userType","error"));
 
-       /* for(int i=0;i<10;i++) {
-            orderList.add(new OrderModel("01","Chicken Fry", "200", "2","Nithin","","9747062356","16350/s6/45","400","wdw"));
-        }*/
+//        for(int i=0;i<10;i++) {
+//            orderList.add(new OrderModel("01","Chicken Fry", "200", "2","Nithin","","9747062356","16350/s6/45","400","wdw"));
+//        }
         binding.rvOrders.setLayoutManager(new LinearLayoutManager(requireContext()));
-        adapter.ordersList=orderList;
-        binding.rvOrders.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+       showData();
     }
 
     @Override
     public void onMethodCallback() {
 
     }
+    private void showData() {
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
+        //Log.d("@", "showData: Called")
+        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        String uid = sp.getString("userId", "error");
+        orderList.clear();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        db.collection("Orders").whereEqualTo("userid", uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        Log.d("@", queryDocumentSnapshots + "");
+                        int i;
+                        for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
+                            /*Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getId());
+                            Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodName"));
+                            Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice"));*/
+                            orderList.add(new OrderModel(
+                                    queryDocumentSnapshots.getDocuments().get(i).getId(), queryDocumentSnapshots.getDocuments().get(i).getString("itemName"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("itemPrice"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("itemQty"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("username"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("userid"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("mobile"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("trainNumber"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("seatNumber"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("coachNumber"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("totalAmount"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("itemImage"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("address"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("status"),
+                                    queryDocumentSnapshots.getDocuments().get(i).getString("stop")));
+                        }
+                        adapter.ordersList=orderList;
+                        binding.rvOrders.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+        progressDoalog.dismiss();
+
+    }
 
 }

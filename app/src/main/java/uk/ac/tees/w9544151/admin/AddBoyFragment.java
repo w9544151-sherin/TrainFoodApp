@@ -2,6 +2,7 @@ package uk.ac.tees.w9544151.admin;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -40,6 +41,7 @@ import java.util.Random;
 import uk.ac.tees.w9544151.Models.DBoyModel;
 import uk.ac.tees.w9544151.Models.Foodmodel;
 import uk.ac.tees.w9544151.Models.LoginModel;
+import uk.ac.tees.w9544151.Models.Validation;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentAddBoyBinding;
 import uk.ac.tees.w9544151.databinding.FragmentAddFoodBinding;
@@ -105,9 +107,26 @@ public class AddBoyFragment extends Fragment {
         binding.btnAddBoy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if(validate())
+                if (binding.etUsername.getText().toString().isEmpty()|| binding.etBoyName.getText().toString().isEmpty()||binding.etBoyId.getText().toString().isEmpty()||
+                        binding.etBoyMobile.getText().toString().isEmpty()||binding.etPassword.getText().toString().isEmpty()||binding.etStopName.getText().toString().isEmpty())
                 {
+                    Toast.makeText(getContext(),"All fields are mandatory",Toast.LENGTH_SHORT).show();
+                }
+                else if(encodedImage.equals("")){
+                    Toast.makeText(getContext(),"please choose an image",Toast.LENGTH_SHORT).show();
+                }
+                else if(!binding.etBoyName.getText().toString().matches(Validation.text)){
+                    binding.etBoyName.setError("Enter a valid name");
+                }
+                else if(!binding.etBoyMobile.getText().toString().matches(Validation.mobile)){
+                    binding.etBoyMobile.setError("Enter a valid mobile number");
+                }
+                else {
+                    final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+                    progressDoalog.setMessage("Checking....");
+                    progressDoalog.setTitle("Please wait");
+                    progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    progressDoalog.show();
                     String username;
                     username = binding.etUsername.getText().toString();
                     db = FirebaseFirestore.getInstance();
@@ -134,6 +153,7 @@ public class AddBoyFragment extends Fragment {
                     } catch (Exception e) {
                         Log.d("exception", "Exception" + e.toString());
                     }
+                    progressDoalog.dismiss();
                 }
             }
         });
@@ -324,16 +344,5 @@ public class AddBoyFragment extends Fragment {
 
     }
 
-    private boolean validate(){
-        if (binding.etUsername.getText().equals("")|| binding.etBoyName.getText().equals("")||binding.etBoyId.getText().equals("")||
-                binding.etBoyMobile.getText().equals("")||binding.etPassword.getText().equals("")||binding.etStopName.getText().equals(""))
-        {
-            Toast.makeText(requireActivity(),"All fields are mandatory",Toast.LENGTH_LONG);
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
 
 }

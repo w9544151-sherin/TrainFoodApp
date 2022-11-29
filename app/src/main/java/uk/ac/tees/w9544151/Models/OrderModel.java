@@ -2,24 +2,7 @@ package uk.ac.tees.w9544151.Models;
 
 public class OrderModel {
     String orderId,itemName, itemPrice, itemQty, username,userid, mobile, trainNumber,
-            seatNumber,coachNumber, totalAmount,itemImage,Address,status;
-
-    public OrderModel(String orderId, String itemName, String itemPrice, String itemQty, String username, String userid, String mobile, String trainNumber, String seatNumber, String coachNumber, String totalAmount, String itemImage, String address, String status) {
-        this.orderId = orderId;
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
-        this.itemQty = itemQty;
-        this.username = username;
-        this.userid = userid;
-        this.mobile = mobile;
-        this.trainNumber = trainNumber;
-        this.seatNumber = seatNumber;
-        this.coachNumber = coachNumber;
-        this.totalAmount = totalAmount;
-        this.itemImage = itemImage;
-        Address = address;
-        this.status = status;
-    }
+            seatNumber,coachNumber, totalAmount,itemImage,Address,status,stop;
 
     public String getOrderId() {
         return orderId;
@@ -131,5 +114,31 @@ public class OrderModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getStop() {
+        return stop;
+    }
+
+    public void setStop(String stop) {
+        this.stop = stop;
+    }
+
+    public OrderModel(String orderId, String itemName, String itemPrice, String itemQty, String username, String userid, String mobile, String trainNumber, String seatNumber, String coachNumber, String totalAmount, String itemImage, String address, String status, String stop) {
+        this.orderId = orderId;
+        this.itemName = itemName;
+        this.itemPrice = itemPrice;
+        this.itemQty = itemQty;
+        this.username = username;
+        this.userid = userid;
+        this.mobile = mobile;
+        this.trainNumber = trainNumber;
+        this.seatNumber = seatNumber;
+        this.coachNumber = coachNumber;
+        this.totalAmount = totalAmount;
+        this.itemImage = itemImage;
+        Address = address;
+        this.status = status;
+        this.stop = stop;
     }
 }

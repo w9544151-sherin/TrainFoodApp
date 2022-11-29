@@ -2,6 +2,7 @@ package uk.ac.tees.w9544151.Passenger;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -65,7 +66,9 @@ SharedPreferences sp;
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        Log.d("##", sp.getString("userType", "error"));
         adapter= new HomeAdapter(this,getContext(), sp.getString("userType", "error"));
+
         requestPermission();
         showData();
 
@@ -159,7 +162,11 @@ SharedPreferences sp;
 
     private void showData() {
         //Log.d("@", "showData: Called")
-
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         foodList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -188,6 +195,7 @@ SharedPreferences sp;
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
 
     }
 

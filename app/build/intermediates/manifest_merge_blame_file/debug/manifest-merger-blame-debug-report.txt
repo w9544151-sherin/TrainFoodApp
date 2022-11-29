@@ -6,33 +6,33 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+8-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
 9        android:targetSdkVersion="32" />
-9-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+9-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:5-67
-11-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:22-64
+11-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:5-67
+11-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:22-64
 12    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-12-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:5-79
-12-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:22-76
+12-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:5-79
+12-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:22-76
 13    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-13-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:5-81
-13-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:22-78
+13-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:5-81
+13-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:22-78
 14    <uses-permission android:name="android.permission.CAMERA" />
-14-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:5-65
-14-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:22-62
+14-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:5-65
+14-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:22-62
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:5-80
-15-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:22-77
+15-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:5-80
+15-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:22-77
 16
 17    <uses-permission-sdk-23 android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-17-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:5-88
-17-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:29-85
+17-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:5-88
+17-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:29-85
 18
 19    <uses-permission android:name="android.permission.SEND_SMS" />
-19-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:5-67
-19-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:22-64
+19-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:5-67
+19-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:22-64
 20
 21    <!-- Although the *SdkVersion is captured in gradle build files, this is required for non gradle builds -->
 22    <!-- <uses-sdk android:minSdkVersion="14"/> -->
@@ -41,54 +41,54 @@
 23-->[com.google.firebase:firebase-database:20.1.0] C:\Users\HP\.gradle\caches\transforms-3\120a151daddca3044a3478db6b931538\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:24:22-76
 24
 25    <application
-25-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:14:5-40:19
+25-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:14:5-40:19
 26        android:allowBackup="true"
-26-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:15:9-35
+26-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:15:9-35
 27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 27-->[androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\102215101d21fdb02f0f27bbfd4ebd5d\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 28        android:dataExtractionRules="@xml/data_extraction_rules"
-28-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:16:9-65
+28-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:16:9-65
 29        android:debuggable="true"
 30        android:fullBackupContent="@xml/backup_rules"
-30-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:17:9-54
+30-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:17:9-54
 31        android:icon="@mipmap/ic_appicon"
-31-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:18:9-42
+31-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:18:9-42
 32        android:label="@string/app_name"
-32-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:19:9-41
+32-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:19:9-41
 33        android:largeHeap="true"
-33-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:22:9-33
+33-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:22:9-33
 34        android:roundIcon="@mipmap/ic_appicon_round"
-34-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:20:9-53
+34-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:20:9-53
 35        android:supportsRtl="true"
-35-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:21:9-35
+35-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:21:9-35
 36        android:testOnly="true"
 37        android:theme="@style/Theme.Train_food" >
-37-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:23:9-48
+37-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:23:9-48
 38        <activity
-38-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:26:9-39:20
+38-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:26:9-39:20
 39            android:name="uk.ac.tees.w9544151.MainActivity"
-39-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:27:13-41
+39-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:27:13-41
 40            android:exported="true"
-40-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:28:13-36
+40-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:28:13-36
 41            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-41-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:29:13-69
+41-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:29:13-69
 42            <intent-filter>
-42-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:30:13-34:29
+42-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:30:13-34:29
 43                <action android:name="android.intent.action.MAIN" />
-43-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:17-69
-43-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:25-66
+43-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:17-69
+43-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:25-66
 44
 45                <category android:name="android.intent.category.LAUNCHER" />
-45-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:17-77
-45-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:27-74
+45-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:17-77
+45-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:27-74
 46            </intent-filter>
 47
 48            <meta-data
-48-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:36:13-38:36
+48-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:36:13-38:36
 49                android:name="android.app.lib_name"
-49-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:37:17-52
+49-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:37:17-52
 50                android:value="" />
-50-->C:\Users\HP\StudioProjects\trainfoodapp_Original\app\src\main\AndroidManifest.xml:38:17-33
+50-->C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:38:17-33
 51        </activity>
 52        <activity
 52-->[com.karumi:dexter:5.0.0] C:\Users\HP\.gradle\caches\transforms-3\d77026ee8d62b148795bc6d7e17908eb\transformed\jetified-dexter-5.0.0\AndroidManifest.xml:27:9-29:72

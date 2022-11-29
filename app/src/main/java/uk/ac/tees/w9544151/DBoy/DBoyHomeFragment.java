@@ -83,7 +83,13 @@ FragmentDBoyHomeBinding binding;
                 alertbox.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("userType", "");
+                        editor.putString("userName", "");
+                        editor.putString("userMobile", "");
+                        editor.putString("userId", "");
+                        editor.commit();
                         Navigation.findNavController(getView()).navigateUp();
 
                     }

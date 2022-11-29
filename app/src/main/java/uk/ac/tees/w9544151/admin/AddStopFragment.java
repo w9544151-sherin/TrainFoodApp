@@ -1,5 +1,6 @@
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -23,19 +24,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Models.StopModel;
+import uk.ac.tees.w9544151.Models.Validation;
 import uk.ac.tees.w9544151.databinding.FragmentAddStopBinding;
 
 
-public class AddStopFragment extends Fragment  implements  CallBackTwice {
+public class AddStopFragment extends Fragment implements CallBackTwice {
     FirebaseFirestore db;
     FragmentAddStopBinding binding;
-    static String selectedValue="";
+    static String selectedValue = "";
     public static BottomSheetDialog response;
     private CallBackTwice mAdapterCallback;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(getView()).navigateUp();
@@ -53,28 +56,36 @@ public class AddStopFragment extends Fragment  implements  CallBackTwice {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mAdapterCallback=this;
+        mAdapterCallback = this;
         binding.btnAddStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validate()){
-                    addStopToDatabase();
-                }
+                    if (binding.etAddTrainNumber.getText().toString().isEmpty()) {
+                        binding.etAddTrainNumber.setError("Enter a valid train number");
+                    } else if (binding.etRoute.getText().toString().isEmpty()) {
+                        binding.etRoute.setError("Enter a valid troute");
+                    } else if (binding.etStopNumber.getText().toString().isEmpty()) {
+                        binding.etStopNumber.setError("Enter a valid stop number");
+                    } else if (!binding.etStopName.getText().toString().matches(Validation.text)) {
+                        binding.etStopName.setError("Enter a valid stop name");
+                    } else {
+                        addStopToDatabase();
+                    }
 
             }
         });
-binding.etStopNumber.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(requireContext(),selectedValue,Toast.LENGTH_LONG).show();
-        binding.etRoute.setText(selectedValue);
-    }
-});
+        binding.etStopNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(requireContext(), selectedValue, Toast.LENGTH_LONG).show();
+                binding.etRoute.setText(selectedValue);
+            }
+        });
         binding.etRoute.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BottomSheetFragment bottomSheet = new BottomSheetFragment(requireContext(),mAdapterCallback,binding.etAddTrainNumber.getText().toString(), "");
-                bottomSheet.show(getChildFragmentManager(),"BottomSheet");
+                BottomSheetFragment bottomSheet = new BottomSheetFragment(requireContext(), mAdapterCallback, binding.etAddTrainNumber.getText().toString(), "");
+                bottomSheet.show(getChildFragmentManager(), "BottomSheet");
             }
         });
 
@@ -82,11 +93,16 @@ binding.etStopNumber.setOnClickListener(new View.OnClickListener() {
     }
 
 
-    private void addStopToDatabase(){
+    private void addStopToDatabase() {
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         //path can taken from dropdown from train table and make it in a variable
-        String path=binding.etRoute.getText().toString();
-        String id="Stop"+binding.etAddTrainNumber.getText().toString();
-        StopModel obj=new StopModel(id,binding.etStopName.getText().toString(),binding.etStopNumber.getText().toString(),binding.etAddTrainNumber.getText().toString(),path);
+        String path = binding.etRoute.getText().toString();
+        String id = "Stop" + binding.etAddTrainNumber.getText().toString();
+        StopModel obj = new StopModel(id, binding.etStopName.getText().toString(), binding.etStopNumber.getText().toString(), binding.etAddTrainNumber.getText().toString(), path);
         db = FirebaseFirestore.getInstance();
         db.collection("Stop").add(obj).
                 addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -107,17 +123,7 @@ binding.etStopNumber.setOnClickListener(new View.OnClickListener() {
 
                     }
                 });
-    }
-
-    private boolean validate(){
-        if (binding.etAddTrainNumber.getText().equals("")|| binding.etStopNumber.getText().equals("")||binding.etStopName.getText().equals(""))
-        {
-            Toast.makeText(requireActivity(),"All fields are mandatory",Toast.LENGTH_LONG);
-            return false;
-        }
-        else {
-            return true;
-        }
+        progressDoalog.dismiss();
     }
 
 

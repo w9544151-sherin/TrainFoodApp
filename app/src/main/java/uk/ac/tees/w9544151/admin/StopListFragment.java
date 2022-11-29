@@ -1,6 +1,7 @@
 
 package uk.ac.tees.w9544151.admin;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -28,6 +29,7 @@ import uk.ac.tees.w9544151.Adapters.AdapterCallback;
 import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Adapters.StopAdapter;
 import uk.ac.tees.w9544151.Models.StopModel;
+import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentStopListBinding;
 
 public class StopListFragment extends Fragment implements CallBackTwice, AdapterCallback {
@@ -42,7 +44,7 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
         requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                Navigation.findNavController(getView()).navigateUp();
+                Navigation.findNavController(getView()).navigate(R.id.action_stopListFragment_to_trainFragment);
             }
         });
     }
@@ -65,7 +67,13 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
         binding.btnFindStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showData();
+                if (binding.etTrainNumber.getText().toString().isEmpty()) {
+                    binding.etTrainNumber.setError("Enter a valid train number");
+                } else if (binding.trainPath.getText().toString().isEmpty()) {
+                    binding.trainPath.setError("Enter a valid route");
+                }else {
+                    showData();
+                }
             }
         });
         binding.trainPath.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +87,11 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
 
 
     private void showData() {
+        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Checking....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
         //Log.d("@", "showData: Called")
         String enteredNumber = binding.etTrainNumber.getText().toString();
         String pathSelected = binding.trainPath.getText().toString();
@@ -93,17 +106,22 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Log.d("@", queryDocumentSnapshots + "");
                         int i;
-                        for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
-                            stopList.add(new StopModel("",
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("stopName"),
-                                    queryDocumentSnapshots.getDocuments().get(i).getString("stopNumber"),
-                                    "", ""
+                        if (queryDocumentSnapshots.getDocuments().size() > 0) {
+                            for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
+                                stopList.add(new StopModel(queryDocumentSnapshots.getDocuments().get(i).getId(),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("stopName"),
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("stopNumber"),
+                                        "", ""
 
-                            ));
+                                ));
+                            }
+                            adapter.stopList = stopList;
+                            binding.rvStop.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
                         }
-                        adapter.stopList = stopList;
-                        binding.rvStop.setAdapter(adapter);
-                        adapter.notifyDataSetChanged();
+                        else{
+                            Toast.makeText(getContext(), "No Stops Available now", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -111,6 +129,7 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
+        progressDoalog.dismiss();
     }
 
     @Override

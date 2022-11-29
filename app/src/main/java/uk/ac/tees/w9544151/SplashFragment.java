@@ -17,13 +17,14 @@ import android.view.ViewGroup;
 import uk.ac.tees.w9544151.databinding.FragmentSplashBinding;
 
 public class SplashFragment extends Fragment {
-FragmentSplashBinding binding;
+    FragmentSplashBinding binding;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        binding=FragmentSplashBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentSplashBinding.inflate(getLayoutInflater(), container, false);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         return binding.getRoot();
     }
@@ -31,13 +32,13 @@ FragmentSplashBinding binding;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-         //Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_homeFragment);
-        new Handler().postDelayed(new Runnable() {
+        binding.btnnext.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void run() {
+            public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_splashFragment_to_homeFragment);
-                //the current activity will get finished.
             }
-        },3000);
+        });
+
+
     }
 }
