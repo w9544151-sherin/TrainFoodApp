@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -54,12 +56,16 @@ public class DBoyAdapter extends RecyclerView.Adapter<DBoyAdapter.MyviewHolder> 
         holder.boyName.setText(dm.getBoyName());
         holder.boyMobile.setText(dm.getBoyMobile());
         holder.pickup.setText(dm.getStop());
-        holder.boyId.setText(dm.getBoyId());
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] imageBytes = baos.toByteArray();
-        imageBytes = Base64.decode(dm.getBoyImage(), Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.boyImage.setImageBitmap(decodedImage);
+        holder.boyId.setText(dm.getUserId());
+        try {
+            Log.d("##", dm.getBoyImage());
+            Glide.with(holder.boyImage.getContext())
+                    .load(dm.getBoyImage())
+                    .into(holder.boyImage);
+        }
+        catch (Exception e){
+
+        }
       //  holder.boyImage.setImageBitmap(dm.getBoyImage());
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,7 +77,7 @@ public class DBoyAdapter extends RecyclerView.Adapter<DBoyAdapter.MyviewHolder> 
                 alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        deleteDboy(dm.getBoyId(),view);
+                        deleteDboy(dm.getUserId(),view);
 
                     }
                 });

@@ -14,7 +14,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -32,7 +32,6 @@ import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Models.OrderModel;
-import uk.ac.tees.w9544151.Models.StopModel;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.OrderCardBinding;
 
@@ -64,9 +63,101 @@ Context ctx;
     public void onBindViewHolder(@NonNull OrdersAdapter.MyviewHolder holder, int position) {
         OrderModel dm = ordersList.get(position);
         SharedPreferences sp = ctx.getSharedPreferences("logDetails", Context.MODE_PRIVATE);
-        if (type.equals("admin") || type.equals("dboy")){
+        if (type.equals("admin")){
             holder.dboyImage.setVisibility(View.GONE);
+
           //  holder.btnbuy.setVisibility(View.GONE);
+        }
+        else if (type.equals("dboy")){
+            holder.dboyImage.setVisibility(View.GONE);
+            holder.btnstatus.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder alertbox=new AlertDialog.Builder(view.getRootView().getContext());
+                    alertbox.setMessage("Choose order status");
+                    alertbox.setTitle("Order Status!!");
+
+                    alertbox.setPositiveButton("Order Accepted", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            upDateOrderStatus(dm.getOrderId(),view,"Order Accepted");
+
+                        }
+                    });
+                    alertbox.setNegativeButton("Ready for Delivery", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            upDateOrderStatus(dm.getOrderId(),view,"Ready for Delivery");
+                        }
+
+                    });
+                    alertbox.setNeutralButton("Delivered", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            upDateOrderStatus(dm.getOrderId(),view,"Delivered");
+
+                        }
+                    });
+
+
+                    alertbox.show();
+                }
+            });
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (holder.btnstatus.getText().toString().equals("Delivered")) {
+                        AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                        alertbox.setMessage("Do you  wants to Remove this Order?is this delivered?");
+                        alertbox.setTitle("Delete order!!");
+
+                        alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteOrder(dm.getOrderId(), view);
+                            }
+                        });
+                        alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alertbox.show();
+
+                    }
+                }
+            });
+        }
+        else{
+            binding.getRoot().setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (holder.btnstatus.getText().toString().equals("ordered")) {
+                        AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                        alertbox.setMessage("Do you  wants to Cancel this Order?");
+                        alertbox.setTitle("Cancel order!!");
+
+                        alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                deleteOrder(dm.getOrderId(), view);
+                            }
+                        });
+                        alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alertbox.show();
+
+                    }
+                }
+            });
+
         }
         holder.foodname.setText(dm.getItemName());
         holder.foodprice.setText("Price\t:\t"+dm.getItemPrice());
@@ -76,11 +167,15 @@ Context ctx;
         holder.username.setText(dm.getUsername());
         holder.mobile.setText(dm.getMobile());
         holder.seatinfo.setText(dm.getAddress());
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] imageBytes = baos.toByteArray();
-        imageBytes = Base64.decode(dm.getItemImage(), Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.foodImage.setImageBitmap(decodedImage);
+        try {
+            Log.d("##", dm.getItemImage());
+            Glide.with(ctx)
+                    .load(dm.getItemImage())
+                    .into(holder.foodImage);
+        }
+        catch (Exception e){
+
+        }
         holder.btnstatus.setText(dm.getStatus());
       //  holder.foodImage.setImageResource(dm.getItemImage());
         holder.dboyImage.setOnClickListener(new View.OnClickListener() {
@@ -88,30 +183,6 @@ Context ctx;
             public void onClick(View view) {
 
                getDboyDetails(view,dm.getStop());
-            }
-        });
-        binding.getRoot().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder alertbox=new AlertDialog.Builder(view.getRootView().getContext());
-                alertbox.setMessage("Do you  wants to Cancel this Order?");
-                alertbox.setTitle("Cancel order!!");
-
-                alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        deleteOrder(dm.getOrderId(),view);
-                    }
-                });
-                alertbox.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-
-                alertbox.show();
-
             }
         });
 
@@ -157,8 +228,9 @@ Context ctx;
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         Log.d("@", queryDocumentSnapshots + "");
-                            AlertDialog.Builder alertbox=new AlertDialog.Builder(view.getRootView().getContext());
-                            alertbox.setMessage(queryDocumentSnapshots.getDocuments().get(0).getString("boyName")+"\n"+
+                        if (queryDocumentSnapshots.getDocuments().size()>0) {
+                            AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                            alertbox.setMessage(queryDocumentSnapshots.getDocuments().get(0).getString("boyName") + "\n" +
                                     queryDocumentSnapshots.getDocuments().get(0).getString("boyMobile"));
                             alertbox.setTitle("Contact DeliveryBoy!!");
 
@@ -166,7 +238,7 @@ Context ctx;
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + queryDocumentSnapshots.getDocuments().get(0).getString("boyMobile")));
-                                  intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     view.getRootView().getContext().startActivity(intent);
                                     dialogInterface.dismiss();
                                 }
@@ -174,6 +246,26 @@ Context ctx;
 
 
                             alertbox.show();
+                            progressDoalog.dismiss();
+                        }
+                        else
+                        {
+                            AlertDialog.Builder alertbox = new AlertDialog.Builder(view.getRootView().getContext());
+                            alertbox.setMessage("");
+                            alertbox.setTitle("THE SERVICE WILL BE AVAILABLE SOON!!");
+
+                            alertbox.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    dialogInterface.dismiss();
+                                }
+                            });
+
+
+                            alertbox.show();
+                            progressDoalog.dismiss();
+
+                        }
                         }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -181,7 +273,7 @@ Context ctx;
                         Toast.makeText(view.getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
     }
     private void deleteOrder(String doc_name, View view) {
         //Log.d("@", "showData: Called")
@@ -196,8 +288,16 @@ Context ctx;
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        Navigation.findNavController(view).navigate(R.id.action_orderListFragment_self);
+                        if(type.equals("dboy")){
+                            Navigation.findNavController(view).navigate(R.id.action_DBoyHomeFragment_self);
+
+                        }else{
+                            Navigation.findNavController(view).navigate(R.id.action_orderListFragment_self);
+                        }
+
                         Toast.makeText(view.getRootView().getContext(), "Order cancelled successfully", Toast.LENGTH_SHORT).show();
+
+                        progressDoalog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -207,7 +307,41 @@ Context ctx;
                     }
                 });
 
-        progressDoalog.dismiss();
+
+
+    }
+    private void upDateOrderStatus(String orderId, View view, String status) {
+        //Log.d("@", "showData: Called")
+
+        final ProgressDialog progressDoalog = new ProgressDialog(view.getRootView().getContext());
+        progressDoalog.setMessage("Loading....");
+        progressDoalog.setTitle("Please wait");
+        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDoalog.show();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("Orders").document(orderId).update("status",status)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        if(type.equals("dboy")){
+                            Navigation.findNavController(view).navigate(R.id.action_DBoyHomeFragment_self);
+
+                        }else{
+                            Navigation.findNavController(view).navigate(R.id.action_orderListFragment_self);
+                        }
+
+                        Toast.makeText(view.getRootView().getContext(), "Order Status Updated successfully", Toast.LENGTH_SHORT).show();
+                        progressDoalog.dismiss();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(view.getRootView().getContext(), "Technical error occured", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+
 
     }
 }

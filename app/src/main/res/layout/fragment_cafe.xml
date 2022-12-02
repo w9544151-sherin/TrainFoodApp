@@ -94,6 +94,31 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toTopOf="@+id/foodList" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/orderList"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:alpha="0.8"
+        android:padding="4dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/foodList"
+        app:srcCompat="@drawable/sort" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:background="@drawable/white_frame"
+        android:fontFamily="@font/amaranth"
+        android:gravity="center"
+        android:text="Orders"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/orderList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/orderList" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

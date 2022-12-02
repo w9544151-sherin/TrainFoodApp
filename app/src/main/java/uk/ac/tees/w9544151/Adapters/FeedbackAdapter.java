@@ -2,6 +2,7 @@ package uk.ac.tees.w9544151.Adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -37,9 +38,8 @@ public class FeedbackAdapter extends  RecyclerView.Adapter<FeedbackAdapter.Myvie
         FeedbackModel dm = feedbackList.get(position);
         holder.passengerName.setText(dm.getUserName());
         holder.feedback.setText(dm.getFeedback());
-        holder.rating.setText("Rating :- "+dm.getRatingValue());
-
-
+        //holder.rating.setText("Rating :- "+dm.getRatingValue());
+        holder.rate.setRating(Float.parseFloat(dm.getRatingValue()));
     }
 
     @Override
@@ -48,14 +48,16 @@ public class FeedbackAdapter extends  RecyclerView.Adapter<FeedbackAdapter.Myvie
     }
 
     public class MyviewHolder extends RecyclerView.ViewHolder {
-        TextView passengerName,feedback,rating;
+        TextView passengerName,feedback;
+        RatingBar rate;
 
 
         public MyviewHolder(@NonNull FeedbackTileBinding binding) {
             super(binding.getRoot());
             passengerName=binding.tvPassengerName;
             feedback=binding.tvFeedback;
-            rating=binding.tvRating;
+            rate=binding.rateStar;
+
 
         }
     }

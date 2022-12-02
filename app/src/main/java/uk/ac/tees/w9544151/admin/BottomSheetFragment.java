@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,6 +34,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
     FragmentBottomSheetBinding binding;
     DataAdapter adapter;
     List<DataModel> routeList = new ArrayList();
+    List<DataModel> stopList = new ArrayList();
     private CallBackTwice mAdapterCallback;
     String trainNumber, sheetType;
     Context ctx;
@@ -66,7 +68,10 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
         Log.d("@", "showData: Called");
         if (sheetType.equals("stop")) {
             showStop();
-        } else {
+        } else if(sheetType.equals("allstop")) {
+            showAllStop();
+        }
+        else {
             showData();
         }
     }
@@ -97,7 +102,13 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
                             binding.rvData.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         } else {
-                            dismiss();
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                public void run() {
+                                    dismiss();
+                                    //Snackbar.make(requireView(), "Invalid Train Number", Snackbar.LENGTH_SHORT).show();
+                                }
+                            }, 600);
                             Snackbar.make(requireView(), "Invalid Train Number", Snackbar.LENGTH_SHORT).show();
                         }
                     }
@@ -136,6 +147,44 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
                             adapter.notifyDataSetChanged();
                         } else {
                             Snackbar.make(requireView(), "Invalid Train Number", Snackbar.LENGTH_SHORT).show();
+                        }
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("@q", e + "");
+                        Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
+    private void showAllStop() {
+        //Log.d("@", "showData: Called")
+
+        routeList.clear();
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Stop")
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots.getDocuments().size() > 0) {
+                            Log.d("@", queryDocumentSnapshots.getDocuments().size() + "");
+                            int i;
+                            for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
+                                routeList.add(new DataModel(
+                                        queryDocumentSnapshots.getDocuments().get(i).getString("stopName")
+
+                                ));
+                                // Log.d("@", queryDocumentSnapshots.getDocuments().get(i).getString("path") + "");
+                            }
+                            adapter.routeList = routeList;
+                            binding.rvData.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                        } else {
+                            Toast.makeText(getContext(), "Unable to find stops", Toast.LENGTH_SHORT).show();
+                            //Snackbar.make(requireView(), "Invalid Train Number", Snackbar.LENGTH_SHORT).show();
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {

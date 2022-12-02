@@ -69,14 +69,19 @@ float total=0.0f;
         binding.btnPlaceOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Bundle ed = new Bundle();
-                ed.putString("itemname",items);
-                ed.putString("itemqty",qty);
-                ed.putString("total",total+"");
-                ed.putString("image",image);
-                ed.putString("itemprice","");
-                Navigation.findNavController(getView()).navigate(R.id.action_cartListFragment_to_placeOrderFragment, ed);
 
+                if(cartList.isEmpty()){
+                    Toast.makeText(requireContext(),"Please add atleast an item to ypur cart",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    Bundle ed = new Bundle();
+                    ed.putString("itemname",items);
+                    ed.putString("itemqty",qty);
+                    ed.putString("total",total+"");
+                    ed.putString("image",image);
+                    ed.putString("itemprice","");
+                    Navigation.findNavController(getView()).navigate(R.id.action_cartListFragment_to_placeOrderFragment, ed);
+                }
             }
         });
     }
@@ -88,7 +93,7 @@ float total=0.0f;
 
     private void showData() {
         final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog.setMessage("loading....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
@@ -126,7 +131,13 @@ float total=0.0f;
 
                         }
 
-
+if (cartList.isEmpty()){
+    binding.labelNoData.setVisibility(View.VISIBLE);
+}
+else {
+    binding.labelNoData.setVisibility(View.GONE);
+}
+                        progressDoalog.dismiss();
                         adapter.cartList = cartList;
                         binding.rvCarts.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
@@ -137,7 +148,7 @@ float total=0.0f;
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
 
     }
 

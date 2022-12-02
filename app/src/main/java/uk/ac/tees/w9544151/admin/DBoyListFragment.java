@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.GridLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -32,36 +34,37 @@ import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FragmentDBoyListBinding;
 
 
-public class DBoyListFragment extends Fragment implements AdapterCallback , CallBackTwice {
+public class DBoyListFragment extends Fragment implements AdapterCallback, CallBackTwice {
     FragmentDBoyListBinding binding;
-    DBoyAdapter adapter=new DBoyAdapter(this);
+    ProgressDialog progressDoalog;
+    DBoyAdapter adapter = new DBoyAdapter(this);
     List<DBoyModel> boyList = new ArrayList();
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requireActivity().getOnBackPressedDispatcher().addCallback( this,new OnBackPressedCallback(true){
+        requireActivity().getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 Navigation.findNavController(getView()).navigate(R.id.action_DBoyListFragment_to_DBoyFragment);
             }
         });
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding=FragmentDBoyListBinding.inflate(getLayoutInflater(),container,false);
+        binding = FragmentDBoyListBinding.inflate(getLayoutInflater(), container, false);
         return binding.getRoot();
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        /*for(int i=0;i<10;i++) {
-            boyList.add(new DBoyModel("B01","Rajashegar","9787890099","Kollam","nil"));
-        }*/
-        showData();
-        binding.rvBoys.setLayoutManager(new GridLayoutManager(requireContext(),2));
+
+       showData();
+        binding.rvBoys.setLayoutManager(new GridLayoutManager(requireContext(), 2));
 
     }
 
@@ -72,13 +75,14 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
 
     private void showData() {
         //Log.d("@", "showData: Called")
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         boyList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+
 
         db.collection("Delivery_Boys")
                 .get()
@@ -97,13 +101,17 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
                                     queryDocumentSnapshots.getDocuments().get(i).getString("boyMobile"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("stop"),
                                     queryDocumentSnapshots.getDocuments().get(i).getString("boyImage"),
-                                    "","",
+                                    "", "",
                                     queryDocumentSnapshots.getDocuments().get(i).getString("type")
                             ));
                         }
-                        adapter.boyList=boyList;
+                        if (boyList.isEmpty()) {
+                            Snackbar.make(requireView(), "DeliveryBoys Not Available", Snackbar.LENGTH_LONG).show();
+                        }
+                        adapter.boyList = boyList;
                         binding.rvBoys.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+                        progressDoalog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -111,7 +119,6 @@ public class DBoyListFragment extends Fragment implements AdapterCallback , Call
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
 
     }
 

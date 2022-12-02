@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -36,6 +37,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
     FragmentTrainListBinding binding;
     TrainAdapter adapter=new TrainAdapter(this);
     List<TrainModel> trainList = new ArrayList();
+    ProgressDialog progressDoalog;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +63,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
         binding.rvTrain.setLayoutManager(new LinearLayoutManager(requireContext()));
 
 
+
     }
 
     @Override
@@ -70,8 +73,8 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
 
     private void showData() {
         //Log.d("@", "showData: Called")
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog=new ProgressDialog(getContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
@@ -100,9 +103,13 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
 
                                 ));
                             }
+                            if (trainList.isEmpty()) {
+                                Snackbar.make(requireView(), "Trains Not Available", Snackbar.LENGTH_LONG).show();
+                            }
                             adapter.trainList = trainList;
                             binding.rvTrain.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
+                            progressDoalog.dismiss();
                         }else{
                             Toast.makeText(getContext(), "No trains Available Now", Toast.LENGTH_SHORT).show();
                         }
@@ -113,7 +120,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
 
     }
 

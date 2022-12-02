@@ -3,11 +3,16 @@ package uk.ac.tees.w9544151.admin;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.ContentResolver;
+import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -23,21 +28,28 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.firebase.storage.internal.StorageReferenceUri;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URL;
 import java.util.UUID;
 
 import uk.ac.tees.w9544151.Models.Foodmodel;
@@ -56,7 +68,13 @@ public class AddFoodFragment extends Fragment {
     private Bitmap bitmapProfile = null;
     private static int RESULT_LOAD_IMAGE = 1;
     private String userChosenTask;
+    String x;
+    int pictureCode = 101;
+    int cameracode = 100;
+    ProgressDialog progressDoalog;
+    Uri filePath=null;
 
+    StorageReference storageReference=null;
     int newWidth = 500;
     String gen;
     int newHeight = 500;
@@ -96,10 +114,12 @@ public class AddFoodFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.cameraImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                selectImage();
+                //selectImage();
+                PselectImage();
 
             }
         });
@@ -107,6 +127,10 @@ public class AddFoodFragment extends Fragment {
         binding.btnAddFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //keyboard hiding
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+
                 if (binding.etFoodName.getText().toString().isEmpty() || !binding.etFoodName.getText().toString().matches(Validation.text)) {
                     binding.etFoodName.setError("Enter a food name");
                 } else if (binding.etFoodPrice.getText().toString().isEmpty()) {
@@ -123,10 +147,9 @@ public class AddFoodFragment extends Fragment {
         });
 
     }
-
-    private void selectImage() {
-        //final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
-        final CharSequence[] items = {"Take Photo", "Cancel"};
+    private void PselectImage() {
+        final CharSequence[] items = {"Take Photo", "Choose from Library", "Cancel"};
+        //final CharSequence[] items = {"Take Photo", "Cancel"};
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Upload your documents");
         builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -137,11 +160,13 @@ public class AddFoodFragment extends Fragment {
                 if (items[item].equals("Take Photo")) {
                     userChosenTask = "Take Photo";
                     // if (result)
-                    cameraIntent();
+                    // cameraIntent();
+                    selectCamera();
                 } else if (items[item].equals("Choose from Library")) {
                     userChosenTask = "Choose from Library";
                     // if (result)
-                    galleryIntent();
+                    // galleryIntent();
+                    selectImage();
                 } else if (items[item].equals("Cancel")) {
                     dialog.dismiss();
                     Log.d("dialog dismiss ", "true");
@@ -150,112 +175,104 @@ public class AddFoodFragment extends Fragment {
         });
         builder.show();
     }
-
-
-    private void galleryIntent() {
-
-        Intent intent = new Intent();
+   private void selectImage(){
+        Intent intent=new Intent();
         intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);//
-        startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,"Select Pic"),pictureCode);
+    }
+    private void selectCamera(){
+        Intent intent=new Intent();
+        intent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(intent,cameracode);
+
     }
 
-    private void cameraIntent() {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        startActivityForResult(intent, REQUEST_CAMERA);
-    }
-
-    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == SELECT_FILE)
+        if (requestCode == pictureCode && resultCode == Activity.RESULT_OK) {
 
-                onSelectFromGalleryResult(data);
-            else if (requestCode == REQUEST_CAMERA)
-                onCaptureImageResult(data);
-        }
-    }
-
-
-    @SuppressWarnings("deprecation")
-    private void onSelectFromGalleryResult(Intent data) {
-        Bitmap bm = null;
-        if (data != null) {
+            if(data==null ||data.getData().equals(null)){
+                return;
+            }
+            filePath = data.getData();
             try {
-                bm = MediaStore.Images.Media.getBitmap(requireContext().getContentResolver(), data.getData());
-                int nh = (int) (bm.getHeight() * (512.0 / bm.getWidth()));
-                Bitmap scaled = Bitmap.createScaledBitmap(bm, 102, nh, true);
-                reZize(bm);
-                bitmapProfile = bm;
-                if (bitmapProfile != null) {
-                    getStringImage(bitmapProfile);
-                }
-            } catch (IOException e) {
+                Bitmap bitmap=MediaStore.Images.Media.getBitmap(getContext().getContentResolver(),filePath);
+                binding.image.setImageBitmap(bitmap);
+                uploadImage();
+            }
+            catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+
         }
+        else if(requestCode == cameracode && resultCode == Activity.RESULT_OK){
+            Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+            try {
+                binding.image.setImageBitmap(thumbnail);
+                filePath=  getImageUri(getContext(),thumbnail);
 
+                uploadImage();
+            }
+            catch (Exception e){
 
-    }
-
-    void reZize(Bitmap bp) {
-        int width = bp.getWidth();
-        int height = bp.getHeight();
-        Matrix matrix = new Matrix();
-        scaleWidth = ((float) newWidth) / width;
-        scaleHeight = ((float) newHeight) / height;
-        matrix.postScale(scaleWidth, scaleHeight);
-        resizedBitmap = Bitmap.createBitmap(bp, 0, 0, width, height, matrix, true);
-        outputStream = new ByteArrayOutputStream();
-        resizedBitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-        if (resizedBitmap != null) {
-            getStringImage(resizedBitmap);
+            }
         }
     }
-
-    public void getStringImage(Bitmap bmp) {
-
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-
-        encodedImage = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-        binding.image.setImageBitmap(bmp);
-        Toast.makeText(getContext(), encodedImage + "", Toast.LENGTH_SHORT).show();
-        //return encodedImage;
-    }
-
-    private void onCaptureImageResult(Intent data) {
-        Bitmap thumbnail = (Bitmap) data.getExtras().get("data");
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        inImage.compress(Bitmap.CompressFormat.PNG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 
-        File destination = new File(Environment.getExternalStorageDirectory(), System.currentTimeMillis() + ".jpg");
-        FileOutputStream fo;
-        //Toast.makeText(getContext(), "" + destination, Toast.LENGTH_SHORT).show();
-        try {
-            destination.createNewFile();
-            fo = new FileOutputStream(destination);
-            fo.write(bytes.toByteArray());
-            fo.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void uploadImage(){
+        Log.d("## filepath: inside", filePath+"");
+        if(filePath != null){
+            progressDoalog = new ProgressDialog(requireContext());
+            progressDoalog.setMessage("Uploading....");
+            progressDoalog.setTitle("Please wait");
+            progressDoalog.setCancelable(false);
+            progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progressDoalog.show();
+            Log.d("## filepath:", filePath+"");
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageReference = storage.getReference();
+             storageReference = storageReference.child("food_Images/" + UUID.randomUUID().toString());
+            UploadTask uploadTask=storageReference.putFile(filePath);
+           // encodedImage= storageReference.toString();
+            Log.d("## encodedImage:", encodedImage+"");
+           // Toast.makeText(requireContext(), encodedImage, Toast.LENGTH_SHORT).show();
+            uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    taskSnapshot.getStorage().getDownloadUrl().addOnCompleteListener(new OnCompleteListener<Uri>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Uri> task) {
+                            String uploadedImageUrl = task.getResult().toString();
+                            Log.d("##", uploadedImageUrl);
+                            encodedImage=uploadedImageUrl;
+                            progressDoalog.dismiss();
+                        }
+                    });
+                }
+            });
+
+        }else{
+            Toast.makeText(requireContext(), "Please Upload an Image", Toast.LENGTH_SHORT).show();
+
         }
-
-        bitmapProfile = thumbnail;
-        if (bitmapProfile != null) {
-            getStringImage(bitmapProfile);
-        }
-
-
     }
 
     private void addFoodToDatabase() {
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+
+        progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
@@ -264,7 +281,7 @@ public class AddFoodFragment extends Fragment {
         price = binding.etFoodPrice.getText().toString();
         fireStoreDatabase:
         FirebaseFirestore.getInstance();
-        Foodmodel obj = new Foodmodel("f", foodName, price, encodedImage);
+        Foodmodel obj = new Foodmodel("f0", foodName, price, encodedImage);
         db = FirebaseFirestore.getInstance();
         db.collection("Food_Menu").add(obj).
                 addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -273,6 +290,7 @@ public class AddFoodFragment extends Fragment {
                         binding.etFoodPrice.getText().clear();
                         binding.etFoodName.getText().clear();
                         binding.image.setImageResource(R.drawable.healthy_drink);
+                        progressDoalog.dismiss();
                         Snackbar.make(requireView(), "Food added Successfully", Snackbar.LENGTH_LONG).show();
                     }
                 }).
@@ -282,6 +300,6 @@ public class AddFoodFragment extends Fragment {
                         Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
     }
 }

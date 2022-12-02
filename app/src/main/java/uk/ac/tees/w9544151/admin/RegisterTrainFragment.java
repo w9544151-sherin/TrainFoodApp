@@ -1,6 +1,7 @@
 package uk.ac.tees.w9544151.admin;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -12,6 +13,7 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,7 +36,7 @@ public class RegisterTrainFragment extends Fragment {
     FirebaseStorage firebaseStorage;
     StorageReference storageReference;
     FirebaseFirestore db;
-
+    ProgressDialog progressDoalog;
     FragmentRegisterTrainBinding binding;
 
     @Override
@@ -65,8 +67,10 @@ public class RegisterTrainFragment extends Fragment {
         binding.btnAddTrain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-                progressDoalog.setMessage("Checking....");
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                progressDoalog=new ProgressDialog(getContext());
+                progressDoalog.setMessage("Data adding....");
                 progressDoalog.setTitle("Please wait");
                 progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                 progressDoalog.show();
@@ -99,6 +103,7 @@ public class RegisterTrainFragment extends Fragment {
                                     binding.etTrainNumber.getText().clear();
                                     binding.etStart.getText().clear();
                                     binding.etDestiny.getText().clear();
+                                    progressDoalog.dismiss();
                                     Snackbar.make(requireView(), "Train added Successfully", Snackbar.LENGTH_LONG).show();
                                 }
                             }).
@@ -110,7 +115,7 @@ public class RegisterTrainFragment extends Fragment {
                             });
 
                 }
-                progressDoalog.dismiss();
+
             }
         });
     }

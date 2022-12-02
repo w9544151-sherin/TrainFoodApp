@@ -75,6 +75,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/cairo_medium"
             android:text="B101"
+            android:visibility="gone"
             android:textColor="@color/black"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@id/topBackground"

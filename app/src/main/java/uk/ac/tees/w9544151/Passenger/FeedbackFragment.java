@@ -1,5 +1,7 @@
 package uk.ac.tees.w9544151.Passenger;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -12,6 +14,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.RatingBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,8 +25,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import uk.ac.tees.w9544151.Models.FeedbackModel;
-import uk.ac.tees.w9544151.R;
-import uk.ac.tees.w9544151.databinding.FragmentAddBoyBinding;
 import uk.ac.tees.w9544151.databinding.FragmentFeedbackBinding;
 
 
@@ -30,6 +32,7 @@ public class FeedbackFragment extends Fragment {
 
     FirebaseFirestore db;
     FragmentFeedbackBinding binding;
+    RatingBar ratingbar;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,21 +54,26 @@ public class FeedbackFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         binding.btnAddComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 if(binding.etFeedback.getText().toString().isEmpty()){
                     binding.etFeedback.setError("Enter your feedback");
                 }
                 else {
-                    addFeedbacktoDatabase();
+
+                    addFeedbacktoDatabase(binding.ratingStar.getRating());
                 }
             }
         });
     }
 
-    private void addFeedbacktoDatabase() {
-        FeedbackModel obj=new FeedbackModel("fid","username",binding.etFeedback.getText().toString(),"5");
+    private void addFeedbacktoDatabase(float ratingStar) {
+        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        FeedbackModel obj=new FeedbackModel("fid",sp.getString("userName",""),binding.etFeedback.getText().toString(),ratingStar+"");
         db = FirebaseFirestore.getInstance();
         db.collection("Feedback").add(obj).
                 addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
@@ -87,4 +95,5 @@ public class FeedbackFragment extends Fragment {
 
 
     }
-}
+
+    }

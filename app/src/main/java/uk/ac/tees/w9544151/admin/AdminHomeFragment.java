@@ -54,6 +54,12 @@ FragmentAdminHomeBinding binding;
                 Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_cafeFragment);
             }
         });
+        binding.clFeedback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_adminHomeFragment_to_feedbackListFragment);
+            }
+        });
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

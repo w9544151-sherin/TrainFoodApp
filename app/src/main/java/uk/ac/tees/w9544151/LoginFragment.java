@@ -69,7 +69,6 @@ public class LoginFragment extends Fragment {
                     binding.etUsername.setError("Enter Password");
                 } else {
 
-
                     final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
                     progressDoalog.setMessage("Checking....");
                     progressDoalog.setTitle("Please wait");

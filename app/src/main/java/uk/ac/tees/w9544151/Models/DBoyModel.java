@@ -1,25 +1,14 @@
 package uk.ac.tees.w9544151.Models;
 
 public class DBoyModel {
-    String boyId,boyName,boyMobile,stop,boyImage,username,password,type;
+    String userId,boyName,boyMobile,stop,boyImage,username,password,type;
 
-    public DBoyModel(String boyId, String boyName, String boyMobile, String stop, String boyImage, String username, String password, String type) {
-        this.boyId = boyId;
-        this.boyName = boyName;
-        this.boyMobile = boyMobile;
-        this.stop = stop;
-        this.boyImage = boyImage;
-        this.username = username;
-        this.password = password;
-        this.type = type;
+    public String getUserId() {
+        return userId;
     }
 
-    public String getBoyId() {
-        return boyId;
-    }
-
-    public void setBoyId(String boyId) {
-        this.boyId = boyId;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getBoyName() {
@@ -75,6 +64,17 @@ public class DBoyModel {
     }
 
     public void setType(String type) {
+        this.type = type;
+    }
+
+    public DBoyModel(String userId, String boyName, String boyMobile, String stop, String boyImage, String username, String password, String type) {
+        this.userId = userId;
+        this.boyName = boyName;
+        this.boyMobile = boyMobile;
+        this.stop = stop;
+        this.boyImage = boyImage;
+        this.username = username;
+        this.password = password;
         this.type = type;
     }
 }

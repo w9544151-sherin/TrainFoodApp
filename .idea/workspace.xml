@@ -4,67 +4,52 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e129cf49-64e1-498d-9b95-2e5744bd21bb" name="Changes" comment="Second Commit : FirebaseDb Added">
+    <list default="true" id="e129cf49-64e1-498d-9b95-2e5744bd21bb" name="Changes" comment="validations, deletions done">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/out" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugAssets/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugShaders/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugShaders/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/manifest-merger-blame-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values-night-v8.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/multi-v2/values.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/source_set_path_map/debug/file-map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/source_set_path_map/debug/file-map.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/CartAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/CartAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/DBoyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/DBoyAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/FeedbackAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/FeedbackAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/FoodAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/FoodAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/HomeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/HomeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/OrdersAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/OrdersAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/StopAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/StopAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/TrainAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Adapters/TrainAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/DBoyHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/DBoyHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/EditProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/EditProfileFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/OrderListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/DBoy/OrderListFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/LoginFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/LoginFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Models/OrderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Models/OrderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Models/DBoyModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Models/DBoyModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/CartListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/CartListFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/FeedbackFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/FeedbackFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/HomeFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/PassengerHome.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/PassengerHome.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/PlaceOrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/PlaceOrderFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/RegisterFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/Passenger/RegisterFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/SplashFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/SplashFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddBoyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddBoyFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddFoodFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddFoodFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddStopFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AddStopFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AdminHomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/AdminHomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/BottomSheetFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/BottomSheetFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/CafeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/CafeFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/DBoyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/DBoyFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/DBoyListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/DBoyListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/FeedbackListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/FeedbackListFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/FoodListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/FoodListFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/RegisterTrainFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/RegisterTrainFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/StopListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/StopListFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/TrainFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/TrainFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/TrainListFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/uk/ac/tees/w9544151/admin/TrainListFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/feedback_tile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/feedback_tile.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_boy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_boy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_food.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_food.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_stop.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_add_stop.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_admin_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cafe.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cafe.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_d_boy_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_d_boy_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_edit_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_feedback_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_food_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_food_home.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_order_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_order_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_place_order.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register_train.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_register_train.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_splash.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_splash.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stop_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_stop_list.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_train_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_train_list.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/order_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_card.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/profile_card.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/profile_card.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/navgraph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/navgraph.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -225,7 +210,14 @@
       <option name="project" value="LOCAL" />
       <updated>1669300994363</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="validations, deletions done">
+      <created>1669736134908</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669736134908</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -242,6 +234,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Second Commit : FirebaseDb Added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Second Commit : FirebaseDb Added" />
+    <MESSAGE value="validations, deletions done" />
+    <option name="LAST_COMMIT_MESSAGE" value="validations, deletions done" />
   </component>
 </project>

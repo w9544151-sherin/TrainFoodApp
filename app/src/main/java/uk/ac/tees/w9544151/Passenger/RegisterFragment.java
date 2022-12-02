@@ -1,6 +1,7 @@
 package uk.ac.tees.w9544151.Passenger;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -48,6 +50,7 @@ public class RegisterFragment extends Fragment {
     private EditText emailTextView, passwordTextView, nameTextView, mobileTextView;
     private AppCompatTextView Btn;
     private ProgressBar progressbar;
+    ProgressDialog progressDoalog;
     private FirebaseAuth mAuth;
 
 
@@ -92,6 +95,8 @@ public class RegisterFragment extends Fragment {
         Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 if (binding.etName.getText().toString().isEmpty() || !binding.etName.getText().toString().matches(Validation.text)) {
                     binding.etName.setError("Enter your Name");
                 } else if (binding.etMobile.getText().toString().isEmpty() || !binding.etMobile.getText().toString().matches(Validation.mobile)) {
@@ -103,8 +108,8 @@ public class RegisterFragment extends Fragment {
 
                 } else {
 
-                    final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-                    progressDoalog.setMessage("Checking....");
+                    progressDoalog = new ProgressDialog(requireContext());
+                    progressDoalog.setMessage("Adding Data....");
                     progressDoalog.setTitle("Please wait");
                     progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     progressDoalog.show();
@@ -120,6 +125,7 @@ public class RegisterFragment extends Fragment {
                                         if (queryDocumentSnapshots.getDocuments().isEmpty()) {
                                             userRegistration(number);
                                         } else {
+                                            progressDoalog.dismiss();
                                             Toast.makeText(requireContext(), "Please Take Another Username", Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -128,13 +134,14 @@ public class RegisterFragment extends Fragment {
                                     @Override
                                     public void onFailure(@NonNull Exception e) {
                                         //userRegistration();
+                                        progressDoalog.dismiss();
                                         Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                     } catch (Exception e) {
                         Log.d("exception", "Exception" + e.toString());
                     }
-                    progressDoalog.dismiss();
+
                 }
 
             }
@@ -145,11 +152,7 @@ public class RegisterFragment extends Fragment {
 
     private void userRegistration(int number) {
 
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
-        progressDoalog.setTitle("Please wait");
-        progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDoalog.show();
+
         String username, name, mobile, password;
         username = binding.etEmail.getText().toString();
         password = binding.etPassword.getText().toString();
@@ -168,6 +171,7 @@ public class RegisterFragment extends Fragment {
                         binding.etMobile.setText("");
                         binding.etEmail.setText("");
                         binding.etPassword.setText("");
+                        progressDoalog.dismiss();
                         Snackbar.make(requireView(), "User added Successfully", Snackbar.LENGTH_LONG).show();
                         Navigation.findNavController(getView()).navigateUp();
                     }
@@ -178,7 +182,7 @@ public class RegisterFragment extends Fragment {
                         Toast.makeText(requireContext(), "Creation failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
     }
 
 

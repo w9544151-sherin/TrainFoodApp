@@ -19,24 +19,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.Random;
-
-import io.grpc.NameResolver;
 import uk.ac.tees.w9544151.Adapters.CallBackTwice;
 import uk.ac.tees.w9544151.Models.CartModel;
 import uk.ac.tees.w9544151.Models.OrderModel;
 import uk.ac.tees.w9544151.Models.StopModel;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.admin.BottomSheetFragment;
-import uk.ac.tees.w9544151.databinding.FragmentOrderListBinding;
 import uk.ac.tees.w9544151.databinding.FragmentPlaceOrderBinding;
 
 
@@ -112,20 +107,24 @@ public class PlaceOrderFragment extends Fragment implements CallBackTwice {
                 String stop = binding.etStop.getText().toString();
                 if (trainNo.isEmpty() || seat.isEmpty() || binding.etStop.getText().toString().isEmpty() || coach.isEmpty()) {
                     Toast.makeText(requireContext(), "All fields are mandatory", Toast.LENGTH_LONG).show();
-                } else {
+                }
+                else if(selectedValue.equals("")){
+                    Toast.makeText(requireContext(), "Choose Reserved/General", Toast.LENGTH_LONG).show();
+                }
+                else {
                     SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
                     username = sp.getString("userName", "");
                     mobile = sp.getString("userMobile", "");
                     userid = sp.getString("userId", "");
-                    address = binding.etTrain.getText().toString() + "/" + binding.etStop.getText().toString() + "/" +
-                            coach + "/" + seat;
+                    address = binding.etStop.getText().toString()+" /"+binding.etTrain.getText().toString() + " /" +selectedValue+ " /" +
+                            coach + " /" + seat;
                     price = getArguments().getString("itemprice");
                     quantity = getArguments().getString("itemqty");
                     total = getArguments().getString("total");
                     foodimage = getArguments().getString("image");
                     Log.d("aq", "order check-: " + username + "," + mobile + "," + userid + "," + address + "," + seat + "," + coach + "\n,(stop)" + binding.etStop.getText().toString());
                     final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-                    progressDoalog.setMessage("Checking....");
+                    progressDoalog.setMessage("Loading....");
                     progressDoalog.setTitle("Please wait");
                     progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
                     progressDoalog.show();
@@ -137,11 +136,26 @@ public class PlaceOrderFragment extends Fragment implements CallBackTwice {
                             addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                                 @Override
                                 public void onSuccess(DocumentReference documentReference) {
+                                    db.collection("Cart").whereEqualTo("userid",userid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                                            for(int i=0;i< queryDocumentSnapshots.size();i++) {
+                                                String uid=queryDocumentSnapshots.getDocuments().get(i).getId();
+                                                db.collection("Cart").document(uid).delete();
+                                            }
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+
+                                        }
+                                    });
                                     binding.etTrain.setText("");
                                     binding.etStop.setText("");
                                     binding.etCoachName.setText("");
                                     binding.etSeat.setText("");
-                                    Snackbar.make(requireView(), "Order Placed", Snackbar.LENGTH_LONG).show();
+                                    progressDoalog.dismiss();
+                                  //  Snackbar.make(requireView(), "Order Placed", Snackbar.LENGTH_LONG).show();
                                     Navigation.findNavController(getView()).navigate(R.id.action_placeOrderFragment_to_orderListFragment);
                                 }
                             }).
@@ -154,18 +168,8 @@ public class PlaceOrderFragment extends Fragment implements CallBackTwice {
                                 }
                             });
 
-                    db.collection("Cart").whereEqualTo("userid",userid).get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                @Override
-                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
 
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
 
-                                }
-                            });
-                    progressDoalog.dismiss();
                 }
             }
         });

@@ -6,11 +6,15 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,22 +24,29 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import uk.ac.tees.w9544151.Models.Foodmodel;
 import uk.ac.tees.w9544151.R;
 import uk.ac.tees.w9544151.databinding.FoodCardBinding;
 
-public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> {
+public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> implements Filterable {
     public List<Foodmodel> fooodList;
     FoodCardBinding binding;
     Context ctx;
     String type;
+    public List<Foodmodel> exampleListFull;
     private AdapterCallback mAdapterCallback;
     private ActionCallback action;
     public int i = 0;
@@ -83,11 +94,15 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
         }
         holder.tvfoodname.setText(dm.getFoodName());
         holder.tvprice.setText(dm.getFoodPrice());
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] imageBytes = baos.toByteArray();
-        imageBytes = Base64.decode(dm.getFoodImage(), Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.ivphoto.setImageBitmap(decodedImage);
+        try {
+            Log.d("##", dm.getFoodImage());
+            Glide.with(ctx)
+                    .load(dm.getFoodImage())
+                    .into(holder.ivphoto);
+        }
+        catch (Exception e){
+
+        }
         if(type.equals("admin")){
             binding.getRoot().setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -99,7 +114,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
                     alertbox.setPositiveButton("yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            deleteTrainFood(dm.getFoodId(),view);
+                            deleteTrainFood(dm.getFoodId(),view,dm.getFoodName());
 
                         }
                     });
@@ -165,7 +180,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
 
 
     }
-    private void deleteTrainFood(String doc_name, View view) {
+    private void deleteTrainFood(String doc_name, View view,String foodname) {
         //Log.d("@", "showData: Called")
 
         final ProgressDialog progressDoalog = new ProgressDialog(view.getRootView().getContext());
@@ -179,7 +194,7 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
                     @Override
                     public void onSuccess(Void unused) {
                         Navigation.findNavController(view).navigate(R.id.action_foodListFragment_self);
-                        Toast.makeText(view.getRootView().getContext(), "food removed successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(view.getRootView().getContext(), foodname+" removed successfully", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -217,4 +232,38 @@ public class FoodAdapter extends RecyclerView.Adapter<FoodAdapter.MyviewHolder> 
 
         }
     }
+    @Override
+    public Filter getFilter() {
+        return exampleFilter;
+    }
+
+    private Filter exampleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Foodmodel> filteredList = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(exampleListFull);
+            } else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for (Foodmodel item : exampleListFull) {
+                    try {
+                        if (item.getFoodName().toLowerCase().contains(filterPattern)){
+                            filteredList.add(item);
+                        }
+                    }catch (Exception e){}
+
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            fooodList.clear();
+            fooodList.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
 }

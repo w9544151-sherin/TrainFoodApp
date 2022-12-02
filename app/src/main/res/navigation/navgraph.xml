@@ -133,6 +133,12 @@
         <action
             android:id="@+id/action_cafeFragment_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_cafeFragment_self"
+            app:destination="@id/cafeFragment" />
+        <action
+            android:id="@+id/action_cafeFragment_to_orderListFragment"
+            app:destination="@id/orderListFragment" />
     </fragment>
     <fragment
         android:id="@+id/foodListFragment"
@@ -172,6 +178,12 @@
         <action
             android:id="@+id/action_DBoyHomeFragment_to_orderListFragment"
             app:destination="@id/orderListFragment" />
+        <action
+            android:id="@+id/action_DBoyHomeFragment_self"
+            app:destination="@id/DBoyHomeFragment" />
+        <action
+            android:id="@+id/action_DBoyHomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -189,6 +201,12 @@
         <action
             android:id="@+id/action_orderListFragment_to_passengerHome"
             app:destination="@id/passengerHome" />
+        <action
+            android:id="@+id/action_orderListFragment_to_cafeFragment"
+            app:destination="@id/cafeFragment" />
+        <action
+            android:id="@+id/action_orderListFragment_to_DBoyHomeFragment"
+            app:destination="@id/DBoyHomeFragment" />
     </fragment>
     <fragment
         android:id="@+id/feedbackListFragment"
@@ -292,6 +310,9 @@
         <action
             android:id="@+id/action_passengerHome_to_placeOrderFragment"
             app:destination="@id/placeOrderFragment" />
+        <action
+            android:id="@+id/action_passengerHome_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

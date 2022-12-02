@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import androidx.annotation.NonNull;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -57,11 +59,15 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyviewHolder> 
 
         holder.itemName.setText(dm.getItemName());
         holder.price.setText(dm.getItemPrice()+"*"+dm.getItemQuantity()+"="+dm.getTotalAmount());
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        byte[] imageBytes = baos.toByteArray();
-        imageBytes = Base64.decode(dm.getImage(), Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        holder.image.setImageBitmap(decodedImage);
+        try {
+            Log.d("##", dm.getImage());
+            Glide.with(holder.image.getContext())
+                    .load(dm.getImage())
+                    .into(holder.image);
+        }
+        catch (Exception e){
+
+        }
         //holder.image.setImageBitmap(dm.getImage());
 
        /* holder.delete.setOnClickListener(new View.OnClickListener() {

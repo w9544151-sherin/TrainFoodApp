@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,8 +41,10 @@ import uk.ac.tees.w9544151.databinding.FragmentFoodHomeBinding;
 
 public class PassengerHome extends Fragment implements ActionCallback {
     FragmentFoodHomeBinding binding;
+    ProgressDialog progressDoalog;
     FoodAdapter adapter;
     String total;
+    public List<Foodmodel> exampleListFull= new ArrayList();
     private ActionCallback action;
     // public List<Foodmodel> foodList;
     List<Foodmodel> foodList = new ArrayList();
@@ -60,6 +64,7 @@ public class PassengerHome extends Fragment implements ActionCallback {
         String name = sp.getString("userName", "Welcome");
         String heading = "Welcome " + name;
         binding.tvHeading.setText(heading);
+        getCartCount();
         Log.d("in userhome q", sp.getString("userType", "error"));
         /*for(int i=0;i<10;i++) {
             foodList.add(new Foodmodel("i","Chicken Biriyani", "260", "R.drawable.foodmenu2"));
@@ -116,7 +121,7 @@ public class PassengerHome extends Fragment implements ActionCallback {
                         editor.putString("userMobile", "");
                         editor.putString("userId", "");
                         editor.commit();
-                        Navigation.findNavController(getView()).navigateUp();
+                        Navigation.findNavController(getView()).navigate(R.id.action_passengerHome_to_loginFragment);
 
                     }
                 });
@@ -137,9 +142,10 @@ public class PassengerHome extends Fragment implements ActionCallback {
 
     private void showData() {
         //Log.d("@", "showData: Called")
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
+        progressDoalog.setCancelable(false);
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         foodList.clear();
@@ -160,9 +166,39 @@ public class PassengerHome extends Fragment implements ActionCallback {
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice")
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodImage")));
                         }
+                        if (foodList.isEmpty()){
+                            binding.labelNoData.setVisibility(View.VISIBLE);
+                        }
+                        else {
+                            binding.labelNoData.setVisibility(View.GONE);
+                        }
                         adapter.fooodList = foodList;
+                        exampleListFull=foodList;
+                        adapter.exampleListFull=exampleListFull;
                         binding.rvFoodMenu.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+                        binding.etSearch.addTextChangedListener(new TextWatcher() {
+                            @Override
+                            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                            }
+
+                            @Override
+                            public void afterTextChanged(Editable s) {
+                                if(s.toString().isEmpty()){
+                                    showData();
+                                }
+                                //after the change calling the method and passing the search input
+                                adapter.getFilter().filter(s.toString());
+
+                            }
+                        });
+                        progressDoalog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -170,11 +206,37 @@ public class PassengerHome extends Fragment implements ActionCallback {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
 
     }
 
+    private void getCartCount() {
 
+        //Log.d("@", "showData: Called")
+        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+        String uid = sp.getString("userId", "error");
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("Cart").whereEqualTo("userid", uid)
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        Log.d("@", queryDocumentSnapshots + "");
+                      String count=String.valueOf(queryDocumentSnapshots.getDocuments().size());
+                       // Toast.makeText(getContext(), count, Toast.LENGTH_SHORT).show();
+                        binding.labelCount.setText(count);
+                        }
+
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+    }
     @Override
     public void onBuyCallback(String s, String foodName, String foodImage, String foodPrice, String type) {
         if (type.equals("cart")) {
@@ -188,7 +250,7 @@ public class PassengerHome extends Fragment implements ActionCallback {
             Log.d("price", "total price" + total);
             //to db
             final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-            progressDoalog.setMessage("Checking....");
+            progressDoalog.setMessage("Adding to cart....");
             progressDoalog.setTitle("Please wait");
             progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDoalog.show();
@@ -199,8 +261,9 @@ public class PassengerHome extends Fragment implements ActionCallback {
                     addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
-
+                            progressDoalog.dismiss();
                             Snackbar.make(requireView(), "Item Added to Cart", Snackbar.LENGTH_LONG).show();
+                            getCartCount();
                         }
                     }).
                     addOnFailureListener(new OnFailureListener() {
@@ -212,7 +275,7 @@ public class PassengerHome extends Fragment implements ActionCallback {
                         }
                     });
            // Toast.makeText(requireContext(), "Qunatity" + total, Toast.LENGTH_SHORT).show();
-            progressDoalog.dismiss();
+
         } else {
             String amount;
             amount = String.valueOf(Integer.parseInt(s) * Integer.parseInt(foodPrice));

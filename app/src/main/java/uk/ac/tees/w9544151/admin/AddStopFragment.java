@@ -1,6 +1,7 @@
 package uk.ac.tees.w9544151.admin;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,6 +36,7 @@ public class AddStopFragment extends Fragment implements CallBackTwice {
     static String selectedValue = "";
     public static BottomSheetDialog response;
     private CallBackTwice mAdapterCallback;
+    ProgressDialog progressDoalog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,6 +63,8 @@ public class AddStopFragment extends Fragment implements CallBackTwice {
         binding.btnAddStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     if (binding.etAddTrainNumber.getText().toString().isEmpty()) {
                         binding.etAddTrainNumber.setError("Enter a valid train number");
                     } else if (binding.etRoute.getText().toString().isEmpty()) {
@@ -94,8 +99,8 @@ public class AddStopFragment extends Fragment implements CallBackTwice {
 
 
     private void addStopToDatabase() {
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog=new ProgressDialog(getContext());
+        progressDoalog.setMessage("Data adding....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
@@ -110,8 +115,10 @@ public class AddStopFragment extends Fragment implements CallBackTwice {
                     public void onSuccess(DocumentReference documentReference) {
                         //Log.d("TAG", "onSuccess: Success");
                         binding.etAddTrainNumber.setText("");
+                        binding.etRoute.setText("");
                         binding.etStopName.setText("");
                         binding.etStopNumber.setText("");
+                        progressDoalog.dismiss();
                         Snackbar.make(requireView(), "Stop Successfully Added", Snackbar.LENGTH_LONG).show();
                     }
                 }).
@@ -123,7 +130,7 @@ public class AddStopFragment extends Fragment implements CallBackTwice {
 
                     }
                 });
-        progressDoalog.dismiss();
+
     }
 
 

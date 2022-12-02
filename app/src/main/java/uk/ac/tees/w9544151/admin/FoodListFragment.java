@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -36,6 +38,7 @@ import uk.ac.tees.w9544151.databinding.FragmentFoodListBinding;
 public class FoodListFragment extends Fragment implements ActionCallback {
     FragmentFoodListBinding binding;
     FoodAdapter adapter;
+    ProgressDialog progressDoalog;
     List<Foodmodel> foodList = new ArrayList();
 
     @Override
@@ -63,6 +66,7 @@ public class FoodListFragment extends Fragment implements ActionCallback {
         Log.d("in admin home q", sp.getString("userType", "error"));
         adapter = new FoodAdapter(this, getContext(), sp.getString("userType", "error"));
         binding.rvFood.setLayoutManager(new LinearLayoutManager(requireContext()));
+
         showData();
         Log.d("size", "onViewCreated: " + foodList.size());
 
@@ -71,8 +75,8 @@ public class FoodListFragment extends Fragment implements ActionCallback {
 
     private void showData() {
         //Log.d("@", "showData: Called")
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
@@ -94,9 +98,13 @@ public class FoodListFragment extends Fragment implements ActionCallback {
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodPrice")
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodImage")));
                         }
+                        if (foodList.isEmpty()) {
+                            Snackbar.make(requireView(), "Food Menu  Not Available", Snackbar.LENGTH_LONG).show();
+                        }
                         adapter.fooodList = foodList;
                         binding.rvFood.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
+                        progressDoalog.dismiss();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -104,7 +112,7 @@ public class FoodListFragment extends Fragment implements ActionCallback {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
     }
 
     @Override

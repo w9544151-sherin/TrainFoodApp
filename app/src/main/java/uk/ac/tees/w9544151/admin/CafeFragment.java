@@ -50,6 +50,12 @@ FragmentCafeBinding binding;
                 Navigation.findNavController(getView()).navigate(R.id.action_cafeFragment_to_foodListFragment);
             }
         });
+        binding.orderList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(getView()).navigate(R.id.action_cafeFragment_to_orderListFragment);
+            }
+        });
 
     }
 }

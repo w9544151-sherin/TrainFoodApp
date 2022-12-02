@@ -17,6 +17,8 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.provider.Settings;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +53,8 @@ FragmentHomeBinding binding;
 SharedPreferences sp;
     HomeAdapter adapter;
     List<Foodmodel> foodList = new ArrayList();
+    public List<Foodmodel> exampleListFull= new ArrayList();
+    ProgressDialog progressDoalog;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,6 +64,7 @@ SharedPreferences sp;
     }
     @Override
     public void onMethodCallback() {
+        
        Navigation.findNavController(getView()).navigate(R.id.action_homeFragment_to_loginFragment);
     }
     @Override
@@ -162,9 +167,10 @@ SharedPreferences sp;
 
     private void showData() {
         //Log.d("@", "showData: Called")
-        final ProgressDialog progressDoalog = new ProgressDialog(requireContext());
-        progressDoalog.setMessage("Checking....");
+        progressDoalog = new ProgressDialog(requireContext());
+        progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
+        progressDoalog.setCancelable(false);
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         foodList.clear();
@@ -186,16 +192,42 @@ SharedPreferences sp;
                                     , queryDocumentSnapshots.getDocuments().get(i).getString("foodImage")));
                         }
                         adapter.fooodList=foodList;
+                        exampleListFull=foodList;
+                        adapter.exampleListFull=exampleListFull;
                         binding.rvFoodMenu.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
-                    }
+
+                     binding.etSearch.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+                            if(s.toString().isEmpty()){
+                                showData();
+                            }
+                            //after the change calling the method and passing the search input
+                            adapter.getFilter().filter(s.toString());
+
+                        }
+                    });
+
+                        progressDoalog.dismiss();
+                }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
-        progressDoalog.dismiss();
+
 
     }
 
