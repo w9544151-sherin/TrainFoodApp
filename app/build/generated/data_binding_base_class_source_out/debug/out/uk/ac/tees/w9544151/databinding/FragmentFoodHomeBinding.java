@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -34,6 +35,12 @@ public final class FragmentFoodHomeBinding implements ViewBinding {
   public final AppCompatImageView ivcart;
 
   @NonNull
+  public final AppCompatTextView labelCount;
+
+  @NonNull
+  public final AppCompatTextView labelNoData;
+
+  @NonNull
   public final ConstraintLayout moci;
 
   @NonNull
@@ -57,16 +64,23 @@ public final class FragmentFoodHomeBinding implements ViewBinding {
   @NonNull
   public final FloatingActionButton usertrackOrder;
 
+  @NonNull
+  public final View view;
+
   private FragmentFoodHomeBinding(@NonNull ConstraintLayout rootView, @NonNull EditText etSearch,
       @NonNull FloatingActionMenu floatingMenu, @NonNull AppCompatImageView ivcart,
+      @NonNull AppCompatTextView labelCount, @NonNull AppCompatTextView labelNoData,
       @NonNull ConstraintLayout moci, @NonNull RecyclerView rvFoodMenu,
       @NonNull ConstraintLayout searchBar, @NonNull ConstraintLayout searchBox,
       @NonNull TextView tvHeading, @NonNull FloatingActionButton userFeedback,
-      @NonNull FloatingActionButton userlog, @NonNull FloatingActionButton usertrackOrder) {
+      @NonNull FloatingActionButton userlog, @NonNull FloatingActionButton usertrackOrder,
+      @NonNull View view) {
     this.rootView = rootView;
     this.etSearch = etSearch;
     this.floatingMenu = floatingMenu;
     this.ivcart = ivcart;
+    this.labelCount = labelCount;
+    this.labelNoData = labelNoData;
     this.moci = moci;
     this.rvFoodMenu = rvFoodMenu;
     this.searchBar = searchBar;
@@ -75,6 +89,7 @@ public final class FragmentFoodHomeBinding implements ViewBinding {
     this.userFeedback = userFeedback;
     this.userlog = userlog;
     this.usertrackOrder = usertrackOrder;
+    this.view = view;
   }
 
   @Override
@@ -119,6 +134,18 @@ public final class FragmentFoodHomeBinding implements ViewBinding {
       id = R.id.ivcart;
       AppCompatImageView ivcart = ViewBindings.findChildViewById(rootView, id);
       if (ivcart == null) {
+        break missingId;
+      }
+
+      id = R.id.labelCount;
+      AppCompatTextView labelCount = ViewBindings.findChildViewById(rootView, id);
+      if (labelCount == null) {
+        break missingId;
+      }
+
+      id = R.id.labelNoData;
+      AppCompatTextView labelNoData = ViewBindings.findChildViewById(rootView, id);
+      if (labelNoData == null) {
         break missingId;
       }
 
@@ -170,9 +197,15 @@ public final class FragmentFoodHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.view;
+      View view = ViewBindings.findChildViewById(rootView, id);
+      if (view == null) {
+        break missingId;
+      }
+
       return new FragmentFoodHomeBinding((ConstraintLayout) rootView, etSearch, floatingMenu,
-          ivcart, moci, rvFoodMenu, searchBar, searchBox, tvHeading, userFeedback, userlog,
-          usertrackOrder);
+          ivcart, labelCount, labelNoData, moci, rvFoodMenu, searchBar, searchBox, tvHeading,
+          userFeedback, userlog, usertrackOrder, view);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

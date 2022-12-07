@@ -170,7 +170,7 @@ SharedPreferences sp;
         progressDoalog = new ProgressDialog(requireContext());
         progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
-        progressDoalog.setCancelable(false);
+        progressDoalog.setCancelable(true);
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         foodList.clear();

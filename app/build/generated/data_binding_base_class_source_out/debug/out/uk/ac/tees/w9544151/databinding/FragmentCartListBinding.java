@@ -24,12 +24,17 @@ public final class FragmentCartListBinding implements ViewBinding {
   public final AppCompatTextView btnPlaceOrder;
 
   @NonNull
+  public final AppCompatTextView labelNoData;
+
+  @NonNull
   public final RecyclerView rvCarts;
 
   private FragmentCartListBinding(@NonNull ConstraintLayout rootView,
-      @NonNull AppCompatTextView btnPlaceOrder, @NonNull RecyclerView rvCarts) {
+      @NonNull AppCompatTextView btnPlaceOrder, @NonNull AppCompatTextView labelNoData,
+      @NonNull RecyclerView rvCarts) {
     this.rootView = rootView;
     this.btnPlaceOrder = btnPlaceOrder;
+    this.labelNoData = labelNoData;
     this.rvCarts = rvCarts;
   }
 
@@ -66,13 +71,20 @@ public final class FragmentCartListBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.labelNoData;
+      AppCompatTextView labelNoData = ViewBindings.findChildViewById(rootView, id);
+      if (labelNoData == null) {
+        break missingId;
+      }
+
       id = R.id.rvCarts;
       RecyclerView rvCarts = ViewBindings.findChildViewById(rootView, id);
       if (rvCarts == null) {
         break missingId;
       }
 
-      return new FragmentCartListBinding((ConstraintLayout) rootView, btnPlaceOrder, rvCarts);
+      return new FragmentCartListBinding((ConstraintLayout) rootView, btnPlaceOrder, labelNoData,
+          rvCarts);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

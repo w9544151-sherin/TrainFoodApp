@@ -25,10 +25,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTrain"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvHead"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/train_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

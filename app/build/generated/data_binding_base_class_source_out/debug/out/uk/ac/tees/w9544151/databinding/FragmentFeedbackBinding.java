@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,14 +29,18 @@ public final class FragmentFeedbackBinding implements ViewBinding {
   public final EditText etFeedback;
 
   @NonNull
+  public final RatingBar ratingStar;
+
+  @NonNull
   public final TextView textView11;
 
   private FragmentFeedbackBinding(@NonNull FrameLayout rootView,
       @NonNull AppCompatTextView btnAddComplaint, @NonNull EditText etFeedback,
-      @NonNull TextView textView11) {
+      @NonNull RatingBar ratingStar, @NonNull TextView textView11) {
     this.rootView = rootView;
     this.btnAddComplaint = btnAddComplaint;
     this.etFeedback = etFeedback;
+    this.ratingStar = ratingStar;
     this.textView11 = textView11;
   }
 
@@ -78,6 +83,12 @@ public final class FragmentFeedbackBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ratingStar;
+      RatingBar ratingStar = ViewBindings.findChildViewById(rootView, id);
+      if (ratingStar == null) {
+        break missingId;
+      }
+
       id = R.id.textView11;
       TextView textView11 = ViewBindings.findChildViewById(rootView, id);
       if (textView11 == null) {
@@ -85,7 +96,7 @@ public final class FragmentFeedbackBinding implements ViewBinding {
       }
 
       return new FragmentFeedbackBinding((FrameLayout) rootView, btnAddComplaint, etFeedback,
-          textView11);
+          ratingStar, textView11);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

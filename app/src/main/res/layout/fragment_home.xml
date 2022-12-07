@@ -13,7 +13,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/amaranth"
-        android:text="Welcome to ReilFood"
+        android:text="Welcome to RelFood"
         android:textColor="@color/purple_700"
         android:textSize="24dp"
         android:textStyle="bold"

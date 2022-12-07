@@ -25,6 +25,7 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyviewHolder> 
     public DataAdapter(CallBackTwice callback) {
         this.mAdapterCallback = callback;
     }
+
     @NonNull
     @Override
     public DataAdapter.MyviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -67,11 +68,12 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyviewHolder> 
 
     public class MyviewHolder extends RecyclerView.ViewHolder {
         TextView itemName;
-ConstraintLayout root;
+        ConstraintLayout root;
+
         public MyviewHolder(@NonNull DataCardBinding binding) {
             super(binding.getRoot());
-            itemName= binding.tvItem;
-root=binding.clRoot;
+            itemName = binding.tvItem;
+            root = binding.clRoot;
         }
     }
 }

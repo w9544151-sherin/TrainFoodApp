@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
 MERGED from [androidx.databinding:viewbinding:7.3.1] C:\Users\HP\.gradle\caches\transforms-3\a5f066d319bc85a77060b85bfa754b91\transformed\jetified-viewbinding-7.3.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.navigation:navigation-ui:2.5.3] C:\Users\HP\.gradle\caches\transforms-3\1ab57c492f421a8bdc7838b54395eaac\transformed\navigation-ui-2.5.3\AndroidManifest.xml:17:1-24:12
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\HP\.gradle\caches\transforms-3\d77026ee8d62b148795bc6d7e17908eb\transformed\jetified-dexter-5.0.0\AndroidManifest.xml:17:1-32:12
@@ -18,6 +18,7 @@ MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\HP\.gradle\cache
 MERGED from [com.google.firebase:firebase-storage:20.1.0] C:\Users\HP\.gradle\caches\transforms-3\3d1da5e2138039acb2f7d4e673638d8b\transformed\jetified-firebase-storage-20.1.0\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\caches\transforms-3\ab66caf7c5804c30c4535c044d857dcd\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:2:1-26:12
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\HP\.gradle\caches\transforms-3\a4cf0be48697fad04ed435333d5f982c\transformed\jetified-fab-1.6.4\AndroidManifest.xml:2:1-14:12
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\c049571be468a2ea0ebf4e7ff79e88e1\transformed\jetified-glide-4.11.0\AndroidManifest.xml:2:1-12:12
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\fbea62eda655c1ae306a6835208aaf9c\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.fragment:fragment-ktx:1.5.4] C:\Users\HP\.gradle\caches\transforms-3\3e5f2de870200e10f04bc7b7d68048b6\transformed\jetified-fragment-ktx-1.5.4\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] C:\Users\HP\.gradle\caches\transforms-3\e862f38a07538d3f8483bcb9d4f92f8f\transformed\jetified-firebase-appcheck-interop-16.1.0\AndroidManifest.xml:15:1-25:12
@@ -64,6 +65,8 @@ MERGED from [androidx.savedstate:savedstate:1.2.0] C:\Users\HP\.gradle\caches\tr
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\132f0038de43ddeabec8a216a692e5f1\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:17.0.1] C:\Users\HP\.gradle\caches\transforms-3\525bbb18af1a2791d801e6e33e2d4fd6\transformed\jetified-firebase-components-17.0.1\AndroidManifest.xml:15:1-23:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\8712e245f52d045884bdb96a82b2af05\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\73ee2ec619b3c5337a48f83988b08bfc\transformed\jetified-gifdecoder-4.11.0\AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4f3182744663a80c396aee38481d7f00\transformed\exifinterface-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\f57dc32da872b14c04c7971ef63703b8\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\a0f45d4ecc0e0d70ea73db877a39d59e\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\bbdf55842576286c2d58980929d5419a\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
@@ -77,27 +80,27 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\HP\.gradle\caches\transforms-3
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\HP\.gradle\caches\transforms-3\f3b080ea363857bd08014b0dc99f987b\transformed\jetified-annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\HP\.gradle\caches\transforms-3\426bf887dedd6fd7c22ea435b327d57a\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\HP\.gradle\caches\transforms-3\763128f73b64d46d6da540ffcc732c5c\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:2:1-13:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
 	package
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:1-42:12
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:1-44:12
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:5-67
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:4:5-67
 MERGED from [com.google.firebase:firebase-database:20.1.0] C:\Users\HP\.gradle\caches\transforms-3\120a151daddca3044a3478db6b931538\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-database:20.1.0] C:\Users\HP\.gradle\caches\transforms-3\120a151daddca3044a3478db6b931538\transformed\jetified-firebase-database-20.1.0\AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\HP\.gradle\caches\transforms-3\9cd45a11b045238402e335d79a9254bb\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:23:5-67
@@ -107,33 +110,37 @@ MERGED from [com.google.firebase:firebase-storage:20.1.0] C:\Users\HP\.gradle\ca
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\caches\transforms-3\ab66caf7c5804c30c4535c044d857dcd\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\caches\transforms-3\ab66caf7c5804c30c4535c044d857dcd\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:14:5-67
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:4:22-64
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:4:22-64
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:5-79
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:5:5-79
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:5:22-76
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:5:22-76
 uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:5-81
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:6:5-81
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:6:22-78
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:6:22-78
 uses-permission#android.permission.CAMERA
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:5-65
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:7:5-65
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:7:22-62
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:7:22-62
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:5-80
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:8:5-80
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:8:22-77
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:8:22-77
+uses-permission#android.permission.READ_MEDIA_IMAGES
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:9:22-73
 uses-permission-sdk-23#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:5-88
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:10:5-88
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:10:29-85
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:10:29-85
 uses-permission#android.permission.SEND_SMS
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:5-67
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:12:5-13:11
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:12:22-64
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:12:22-64
 application
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:14:5-40:19
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:16:5-42:19
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\HP\.gradle\caches\transforms-3\d77026ee8d62b148795bc6d7e17908eb\transformed\jetified-dexter-5.0.0\AndroidManifest.xml:26:5-30:19
 MERGED from [com.karumi:dexter:5.0.0] C:\Users\HP\.gradle\caches\transforms-3\d77026ee8d62b148795bc6d7e17908eb\transformed\jetified-dexter-5.0.0\AndroidManifest.xml:26:5-30:19
 MERGED from [com.google.android.material:material:1.7.0] C:\Users\HP\.gradle\caches\transforms-3\888ee2e8fcc41cb2c09b6c71362471b0\transformed\material-1.7.0\AndroidManifest.xml:24:5-20
@@ -152,6 +159,8 @@ MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\caches\transforms-3\ab66caf7c5804c30c4535c044d857dcd\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:16:5-24:19
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\HP\.gradle\caches\transforms-3\a4cf0be48697fad04ed435333d5f982c\transformed\jetified-fab-1.6.4\AndroidManifest.xml:12:5-20
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\HP\.gradle\caches\transforms-3\a4cf0be48697fad04ed435333d5f982c\transformed\jetified-fab-1.6.4\AndroidManifest.xml:12:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\c049571be468a2ea0ebf4e7ff79e88e1\transformed\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\c049571be468a2ea0ebf4e7ff79e88e1\transformed\jetified-glide-4.11.0\AndroidManifest.xml:10:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] C:\Users\HP\.gradle\caches\transforms-3\e862f38a07538d3f8483bcb9d4f92f8f\transformed\jetified-firebase-appcheck-interop-16.1.0\AndroidManifest.xml:23:5-20
 MERGED from [com.google.firebase:firebase-appcheck-interop:16.1.0] C:\Users\HP\.gradle\caches\transforms-3\e862f38a07538d3f8483bcb9d4f92f8f\transformed\jetified-firebase-appcheck-interop-16.1.0\AndroidManifest.xml:23:5-20
 MERGED from [com.google.android.gms:play-services-safetynet:17.0.0] C:\Users\HP\.gradle\caches\transforms-3\4f46c6f6ffb3bac5aeeb7b70dc82a38e\transformed\jetified-play-services-safetynet-17.0.0\AndroidManifest.xml:22:5-20
@@ -174,6 +183,8 @@ MERGED from [androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\1
 MERGED from [androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\102215101d21fdb02f0f27bbfd4ebd5d\transformed\core-1.8.0\AndroidManifest.xml:24:5-89
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\HP\.gradle\caches\transforms-3\89ff0e55e6ae9f2bfe5511814da6c859\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:25:5-35:19
 MERGED from [androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\HP\.gradle\caches\transforms-3\89ff0e55e6ae9f2bfe5511814da6c859\transformed\jetified-lifecycle-process-2.4.1\AndroidManifest.xml:25:5-35:19
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\73ee2ec619b3c5337a48f83988b08bfc\transformed\jetified-gifdecoder-4.11.0\AndroidManifest.xml:9:5-20
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\73ee2ec619b3c5337a48f83988b08bfc\transformed\jetified-gifdecoder-4.11.0\AndroidManifest.xml:9:5-20
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\f57dc32da872b14c04c7971ef63703b8\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\f57dc32da872b14c04c7971ef63703b8\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\bbdf55842576286c2d58980929d5419a\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
@@ -181,53 +192,53 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\HP
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.8.0] C:\Users\HP\.gradle\caches\transforms-3\102215101d21fdb02f0f27bbfd4ebd5d\transformed\core-1.8.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:21:9-35
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:23:9-35
 	android:label
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:19:9-41
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:21:9-41
 	android:fullBackupContent
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:17:9-54
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:19:9-54
 	android:roundIcon
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:20:9-53
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:22:9-43
 	tools:targetApi
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:24:9-29
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:26:9-29
 	android:largeHeap
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:22:9-33
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:24:9-33
 	android:icon
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:18:9-42
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:20:9-38
 	android:allowBackup
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:15:9-35
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:17:9-35
 	android:theme
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:23:9-48
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:25:9-48
 	android:dataExtractionRules
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:16:9-65
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:18:9-65
 activity#uk.ac.tees.w9544151.MainActivity
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:26:9-39:20
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:28:9-41:20
 	android:exported
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:28:13-36
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:30:13-36
 	android:theme
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:29:13-69
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:31:13-69
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:27:13-41
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:29:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:30:13-34:29
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:32:13-36:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:17-69
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:33:17-69
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:31:25-66
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:33:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:17-77
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:35:17-77
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:33:27-74
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:35:27-74
 meta-data#android.app.lib_name
-ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:36:13-38:36
+ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:38:13-40:36
 	android:value
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:38:17-33
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:40:17-33
 	android:name
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml:37:17-52
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml:39:17-52
 uses-sdk
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:7.3.1] C:\Users\HP\.gradle\caches\transforms-3\a5f066d319bc85a77060b85bfa754b91\transformed\jetified-viewbinding-7.3.1\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.databinding:viewbinding:7.3.1] C:\Users\HP\.gradle\caches\transforms-3\a5f066d319bc85a77060b85bfa754b91\transformed\jetified-viewbinding-7.3.1\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.navigation:navigation-ui:2.5.3] C:\Users\HP\.gradle\caches\transforms-3\1ab57c492f421a8bdc7838b54395eaac\transformed\navigation-ui-2.5.3\AndroidManifest.xml:20:5-22:41
@@ -256,6 +267,8 @@ MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\
 MERGED from [com.google.firebase:firebase-firestore:24.0.0] C:\Users\HP\.gradle\caches\transforms-3\ab66caf7c5804c30c4535c044d857dcd\transformed\jetified-firebase-firestore-24.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\HP\.gradle\caches\transforms-3\a4cf0be48697fad04ed435333d5f982c\transformed\jetified-fab-1.6.4\AndroidManifest.xml:8:5-10:41
 MERGED from [com.github.clans:fab:1.6.4] C:\Users\HP\.gradle\caches\transforms-3\a4cf0be48697fad04ed435333d5f982c\transformed\jetified-fab-1.6.4\AndroidManifest.xml:8:5-10:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\c049571be468a2ea0ebf4e7ff79e88e1\transformed\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
+MERGED from [com.github.bumptech.glide:glide:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\c049571be468a2ea0ebf4e7ff79e88e1\transformed\jetified-glide-4.11.0\AndroidManifest.xml:6:5-8:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\fbea62eda655c1ae306a6835208aaf9c\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager2:viewpager2:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\fbea62eda655c1ae306a6835208aaf9c\transformed\jetified-viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.fragment:fragment-ktx:1.5.4] C:\Users\HP\.gradle\caches\transforms-3\3e5f2de870200e10f04bc7b7d68048b6\transformed\jetified-fragment-ktx-1.5.4\AndroidManifest.xml:20:5-22:41
@@ -348,6 +361,10 @@ MERGED from [com.google.firebase:firebase-components:17.0.1] C:\Users\HP\.gradle
 MERGED from [com.google.firebase:firebase-components:17.0.1] C:\Users\HP\.gradle\caches\transforms-3\525bbb18af1a2791d801e6e33e2d4fd6\transformed\jetified-firebase-components-17.0.1\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\8712e245f52d045884bdb96a82b2af05\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\8712e245f52d045884bdb96a82b2af05\transformed\localbroadcastmanager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\73ee2ec619b3c5337a48f83988b08bfc\transformed\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.github.bumptech.glide:gifdecoder:4.11.0] C:\Users\HP\.gradle\caches\transforms-3\73ee2ec619b3c5337a48f83988b08bfc\transformed\jetified-gifdecoder-4.11.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4f3182744663a80c396aee38481d7f00\transformed\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.exifinterface:exifinterface:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\4f3182744663a80c396aee38481d7f00\transformed\exifinterface-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\f57dc32da872b14c04c7971ef63703b8\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\HP\.gradle\caches\transforms-3\f57dc32da872b14c04c7971ef63703b8\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\HP\.gradle\caches\transforms-3\a0f45d4ecc0e0d70ea73db877a39d59e\transformed\jetified-tracing-1.0.0\AndroidManifest.xml:20:5-22:41
@@ -374,16 +391,16 @@ MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\HP\
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\HP\.gradle\caches\transforms-3\426bf887dedd6fd7c22ea435b327d57a\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\HP\.gradle\caches\transforms-3\763128f73b64d46d6da540ffcc732c5c\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:7:5-9:41
 MERGED from [io.grpc:grpc-android:1.41.0] C:\Users\HP\.gradle\caches\transforms-3\763128f73b64d46d6da540ffcc732c5c\transformed\jetified-grpc-android-1.41.0\AndroidManifest.xml:7:5-9:41
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
-		INJECTED from C:\Users\HP\StudioProjects\Train\trainfoodapp_Original\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\HP\StudioProjects\RailFoodApp_Final\app\src\main\AndroidManifest.xml
 activity#com.karumi.dexter.DexterActivity
 ADDED from [com.karumi:dexter:5.0.0] C:\Users\HP\.gradle\caches\transforms-3\d77026ee8d62b148795bc6d7e17908eb\transformed\jetified-dexter-5.0.0\AndroidManifest.xml:27:9-29:72
 	android:theme

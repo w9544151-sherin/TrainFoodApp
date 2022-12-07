@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
@@ -21,14 +22,19 @@ public final class FragmentOrderListBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final AppCompatTextView labelNoData;
+
+  @NonNull
   public final RecyclerView rvOrders;
 
   @NonNull
   public final TextView tvHeading;
 
   private FragmentOrderListBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView rvOrders, @NonNull TextView tvHeading) {
+      @NonNull AppCompatTextView labelNoData, @NonNull RecyclerView rvOrders,
+      @NonNull TextView tvHeading) {
     this.rootView = rootView;
+    this.labelNoData = labelNoData;
     this.rvOrders = rvOrders;
     this.tvHeading = tvHeading;
   }
@@ -60,6 +66,12 @@ public final class FragmentOrderListBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.labelNoData;
+      AppCompatTextView labelNoData = ViewBindings.findChildViewById(rootView, id);
+      if (labelNoData == null) {
+        break missingId;
+      }
+
       id = R.id.rvOrders;
       RecyclerView rvOrders = ViewBindings.findChildViewById(rootView, id);
       if (rvOrders == null) {
@@ -72,7 +84,8 @@ public final class FragmentOrderListBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentOrderListBinding((ConstraintLayout) rootView, rvOrders, tvHeading);
+      return new FragmentOrderListBinding((ConstraintLayout) rootView, labelNoData, rvOrders,
+          tvHeading);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

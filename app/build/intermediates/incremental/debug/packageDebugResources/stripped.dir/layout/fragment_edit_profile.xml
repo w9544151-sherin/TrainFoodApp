@@ -19,6 +19,7 @@
         <ImageView
             android:id="@+id/BackArrow"
             android:layout_width="50dp"
+            android:visibility="gone"
             android:layout_height="30dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_baseline_arrow_back_24"
@@ -40,6 +41,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.cardview.widget.CardView
+            android:visibility="gone"
             android:id="@+id/CameraContainer"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -91,23 +93,6 @@
             app:layout_constraintTop_toBottomOf="@id/tvHeadingName" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvDBoyEmail"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:background="@drawable/curved"
-            android:text="boy@gmail.com"
-            android:gravity="center_vertical"
-            android:textSize="16sp"
-            android:textColor="@color/black"
-            android:paddingStart="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDBoyId" />
-
-        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDBoyPoint"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -122,7 +107,7 @@
             android:paddingStart="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvDBoyEmail" />
+            app:layout_constraintTop_toBottomOf="@id/tvDBoyId" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDBoyMob"
@@ -143,7 +128,7 @@
             app:layout_constraintTop_toBottomOf="@id/tvDBoyPoint" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/btn_addTeacher"
+            android:id="@+id/btn_addBack"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_marginHorizontal="48dp"
@@ -152,7 +137,7 @@
             android:background="@drawable/app_btn"
             android:fontFamily="@font/amaranth"
             android:gravity="center"
-            android:text="Update "
+            android:text="Back "
             android:textAllCaps="false"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"

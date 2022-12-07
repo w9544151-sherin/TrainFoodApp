@@ -89,6 +89,7 @@ public class TrainListFragment extends Fragment  implements AdapterCallback , Ca
                         Log.d("@", queryDocumentSnapshots + "");
                         int i;
                         if (queryDocumentSnapshots.getDocuments().size() > 0) {
+                            Log.d("size","Train-List" + String.valueOf(queryDocumentSnapshots.size()));
                             for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
                             /*Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getId());
                             Log.d("!", queryDocumentSnapshots.getDocuments().get(i).getString("foodName"));

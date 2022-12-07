@@ -273,7 +273,7 @@ public class AddBoyFragment extends Fragment implements CallBackTwice {
             progressDoalog = new ProgressDialog(requireContext());
             progressDoalog.setMessage("Uploading....");
             progressDoalog.setTitle("Please wait");
-            progressDoalog.setCancelable(false);
+            progressDoalog.setCancelable(true);
             progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
             progressDoalog.show();
             Log.d("## filepath:", filePath+"");

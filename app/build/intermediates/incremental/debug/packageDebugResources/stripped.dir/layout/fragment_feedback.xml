@@ -34,12 +34,20 @@
             android:background="@drawable/input_holder"
             android:hint="Type your feedbacks or suggestions.... "
             android:textSize="16sp"
-
             android:inputType="textPersonName"
             android:maxLines="5"
             android:padding="10dp"
             android:textColor="@color/ocean_blue"
             android:textColorHint="@color/black" />
+
+        <RatingBar
+            android:id="@+id/ratingStar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"/>
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/btnAddComplaint"
             android:layout_width="match_parent"

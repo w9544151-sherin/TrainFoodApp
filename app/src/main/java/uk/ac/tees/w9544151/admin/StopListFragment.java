@@ -95,6 +95,7 @@ public class StopListFragment extends Fragment implements CallBackTwice, Adapter
         progressDoalog=new ProgressDialog(getContext());
         progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
+        progressDoalog.setCancelable(true);
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         //Log.d("@", "showData: Called")

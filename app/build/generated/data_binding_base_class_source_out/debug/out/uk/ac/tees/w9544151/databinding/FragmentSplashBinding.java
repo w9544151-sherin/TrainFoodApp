@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -20,11 +21,15 @@ public final class FragmentSplashBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final AppCompatButton btnnext;
+
+  @NonNull
   public final LottieAnimationView lottieView;
 
   private FragmentSplashBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LottieAnimationView lottieView) {
+      @NonNull AppCompatButton btnnext, @NonNull LottieAnimationView lottieView) {
     this.rootView = rootView;
+    this.btnnext = btnnext;
     this.lottieView = lottieView;
   }
 
@@ -55,13 +60,19 @@ public final class FragmentSplashBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnnext;
+      AppCompatButton btnnext = ViewBindings.findChildViewById(rootView, id);
+      if (btnnext == null) {
+        break missingId;
+      }
+
       id = R.id.lottieView;
       LottieAnimationView lottieView = ViewBindings.findChildViewById(rootView, id);
       if (lottieView == null) {
         break missingId;
       }
 
-      return new FragmentSplashBinding((ConstraintLayout) rootView, lottieView);
+      return new FragmentSplashBinding((ConstraintLayout) rootView, btnnext, lottieView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

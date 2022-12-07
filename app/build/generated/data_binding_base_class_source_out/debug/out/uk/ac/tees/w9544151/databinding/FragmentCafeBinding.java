@@ -28,13 +28,17 @@ public final class FragmentCafeBinding implements ViewBinding {
   @NonNull
   public final View guideline;
 
+  @NonNull
+  public final AppCompatImageView orderList;
+
   private FragmentCafeBinding(@NonNull ConstraintLayout rootView,
       @NonNull AppCompatImageView addSymbol, @NonNull AppCompatImageView foodList,
-      @NonNull View guideline) {
+      @NonNull View guideline, @NonNull AppCompatImageView orderList) {
     this.rootView = rootView;
     this.addSymbol = addSymbol;
     this.foodList = foodList;
     this.guideline = guideline;
+    this.orderList = orderList;
   }
 
   @Override
@@ -82,7 +86,14 @@ public final class FragmentCafeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentCafeBinding((ConstraintLayout) rootView, addSymbol, foodList, guideline);
+      id = R.id.orderList;
+      AppCompatImageView orderList = ViewBindings.findChildViewById(rootView, id);
+      if (orderList == null) {
+        break missingId;
+      }
+
+      return new FragmentCafeBinding((ConstraintLayout) rootView, addSymbol, foodList, guideline,
+          orderList);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

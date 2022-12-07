@@ -30,6 +30,28 @@
         android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:id="@+id/view"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/round"
+        app:layout_constraintStart_toStartOf="@id/ivcart"
+        app:layout_constraintEnd_toEndOf="@id/ivcart"
+        app:layout_constraintTop_toTopOf="@id/ivcart"
+        android:layout_marginTop="-10dp"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/labelCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        tools:text="5"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="@id/view"
+        app:layout_constraintEnd_toEndOf="@id/view"
+        app:layout_constraintTop_toTopOf="@id/view"
+        app:layout_constraintBottom_toBottomOf="@id/view"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/moci"
         android:layout_width="match_parent"
@@ -95,6 +117,19 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/labelNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food menu is empty now"
+        android:textStyle="bold"
+        android:visibility="gone"
+       android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvFoodMenu"

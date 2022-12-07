@@ -89,7 +89,32 @@ public class PassengerHome extends Fragment implements ActionCallback {
         binding.userlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Navigation.findNavController(view).navigateUp();
+                AlertDialog.Builder alertbox = new AlertDialog.Builder(requireContext());
+                alertbox.setMessage("Do you really wants to logout from this app?");
+                alertbox.setTitle("Logout!!");
+
+                alertbox.setPositiveButton("Logout", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        SharedPreferences sp = getContext().getSharedPreferences("logDetails", Context.MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sp.edit();
+                        editor.putString("userType", "");
+                        editor.putString("userName", "");
+                        editor.putString("userMobile", "");
+                        editor.putString("userId", "");
+                        editor.commit();
+                        Navigation.findNavController(getView()).navigate(R.id.action_passengerHome_to_loginFragment);
+
+                    }
+                });
+                alertbox.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                alertbox.show();
             }
         });
         binding.ivcart.setOnClickListener(new View.OnClickListener() {
@@ -145,7 +170,7 @@ public class PassengerHome extends Fragment implements ActionCallback {
         progressDoalog = new ProgressDialog(requireContext());
         progressDoalog.setMessage("Loading....");
         progressDoalog.setTitle("Please wait");
-        progressDoalog.setCancelable(false);
+        progressDoalog.setCancelable(true);
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDoalog.show();
         foodList.clear();

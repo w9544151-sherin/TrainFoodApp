@@ -4,6 +4,7 @@ package uk.ac.tees.w9544151.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,9 @@ public final class FeedbackTileBinding implements ViewBinding {
   public final CardView feedbackCard;
 
   @NonNull
+  public final RatingBar rateStar;
+
+  @NonNull
   public final TextView tvFeedback;
 
   @NonNull
@@ -33,9 +37,11 @@ public final class FeedbackTileBinding implements ViewBinding {
   public final TextView tvRating;
 
   private FeedbackTileBinding(@NonNull ConstraintLayout rootView, @NonNull CardView feedbackCard,
-      @NonNull TextView tvFeedback, @NonNull TextView tvPassengerName, @NonNull TextView tvRating) {
+      @NonNull RatingBar rateStar, @NonNull TextView tvFeedback, @NonNull TextView tvPassengerName,
+      @NonNull TextView tvRating) {
     this.rootView = rootView;
     this.feedbackCard = feedbackCard;
+    this.rateStar = rateStar;
     this.tvFeedback = tvFeedback;
     this.tvPassengerName = tvPassengerName;
     this.tvRating = tvRating;
@@ -74,6 +80,12 @@ public final class FeedbackTileBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.rateStar;
+      RatingBar rateStar = ViewBindings.findChildViewById(rootView, id);
+      if (rateStar == null) {
+        break missingId;
+      }
+
       id = R.id.tvFeedback;
       TextView tvFeedback = ViewBindings.findChildViewById(rootView, id);
       if (tvFeedback == null) {
@@ -92,8 +104,8 @@ public final class FeedbackTileBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FeedbackTileBinding((ConstraintLayout) rootView, feedbackCard, tvFeedback,
-          tvPassengerName, tvRating);
+      return new FeedbackTileBinding((ConstraintLayout) rootView, feedbackCard, rateStar,
+          tvFeedback, tvPassengerName, tvRating);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

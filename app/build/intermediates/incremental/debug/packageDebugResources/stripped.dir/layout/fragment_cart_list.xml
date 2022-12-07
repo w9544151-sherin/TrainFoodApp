@@ -7,6 +7,21 @@
     android:background="@color/tint_white"
     tools:context=".Passenger.CartListFragment">
 
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/labelNoData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your cart is empty now"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnPlaceOrder"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCarts"
         android:layout_width="match_parent"
@@ -16,6 +31,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/btnPlaceOrder"/>
+
+
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/btnPlaceOrder"

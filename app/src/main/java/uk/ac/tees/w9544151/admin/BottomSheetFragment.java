@@ -127,7 +127,7 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
         routeList.clear();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("Stop").whereEqualTo("trainNumber", trainNumber)
+        db.collection("Stop").whereEqualTo("trainNumber", trainNumber).orderBy("stopNumber")
                 .get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
@@ -170,15 +170,35 @@ public class BottomSheetFragment extends BottomSheetDialogFragment implements Ad
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         if (queryDocumentSnapshots.getDocuments().size() > 0) {
-                            Log.d("@", queryDocumentSnapshots.getDocuments().size() + "");
+                            Log.d("size", "Total-Stop"+queryDocumentSnapshots.getDocuments().size() + "");
                             int i;
                             for (i = 0; i < queryDocumentSnapshots.getDocuments().size(); i++) {
-                                routeList.add(new DataModel(
+                                if(routeList.contains(queryDocumentSnapshots.getDocuments().get(i).getString("stopName")))
+                                {
+                                    Log.d("size", "on: Skipped");
+                                }
+                                else
+                                {
+                                    routeList.add(new DataModel(
                                         queryDocumentSnapshots.getDocuments().get(i).getString("stopName")
 
+
                                 ));
+                                    Log.d("size","after Stop-List-sort" + routeList.size());
+
+                                }
                                 // Log.d("@", queryDocumentSnapshots.getDocuments().get(i).getString("path") + "");
                             }
+                          /*  for (i=0;i< routeList.size();i++){
+                                String x=routeList.get(i).getRouteName().toString();
+                                System.out.println(x);
+                                if(routeList.contains(x))
+                                {System.out.println("Skiped");}
+                                else {
+                                    System.out.println(routeList.get(i).getRouteName().toString());
+                                }
+                                //Log.d("size", "data: - "+ routeList.get(i));
+                            }*/
                             adapter.routeList = routeList;
                             binding.rvData.setAdapter(adapter);
                             adapter.notifyDataSetChanged();

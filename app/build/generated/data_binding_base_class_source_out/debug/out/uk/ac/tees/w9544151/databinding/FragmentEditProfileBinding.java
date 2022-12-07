@@ -29,7 +29,7 @@ public final class FragmentEditProfileBinding implements ViewBinding {
   public final CardView CameraContainer;
 
   @NonNull
-  public final AppCompatTextView btnAddTeacher;
+  public final AppCompatTextView btnAddBack;
 
   @NonNull
   public final ImageView cameraImage;
@@ -39,9 +39,6 @@ public final class FragmentEditProfileBinding implements ViewBinding {
 
   @NonNull
   public final ImageView image;
-
-  @NonNull
-  public final AppCompatTextView tvDBoyEmail;
 
   @NonNull
   public final AppCompatTextView tvDBoyId;
@@ -57,19 +54,17 @@ public final class FragmentEditProfileBinding implements ViewBinding {
 
   private FragmentEditProfileBinding(@NonNull ConstraintLayout rootView,
       @NonNull ImageView BackArrow, @NonNull CardView CameraContainer,
-      @NonNull AppCompatTextView btnAddTeacher, @NonNull ImageView cameraImage,
+      @NonNull AppCompatTextView btnAddBack, @NonNull ImageView cameraImage,
       @NonNull ConstraintLayout clSub, @NonNull ImageView image,
-      @NonNull AppCompatTextView tvDBoyEmail, @NonNull AppCompatTextView tvDBoyId,
-      @NonNull AppCompatTextView tvDBoyMob, @NonNull AppCompatTextView tvDBoyPoint,
-      @NonNull TextView tvHeadingName) {
+      @NonNull AppCompatTextView tvDBoyId, @NonNull AppCompatTextView tvDBoyMob,
+      @NonNull AppCompatTextView tvDBoyPoint, @NonNull TextView tvHeadingName) {
     this.rootView = rootView;
     this.BackArrow = BackArrow;
     this.CameraContainer = CameraContainer;
-    this.btnAddTeacher = btnAddTeacher;
+    this.btnAddBack = btnAddBack;
     this.cameraImage = cameraImage;
     this.clSub = clSub;
     this.image = image;
-    this.tvDBoyEmail = tvDBoyEmail;
     this.tvDBoyId = tvDBoyId;
     this.tvDBoyMob = tvDBoyMob;
     this.tvDBoyPoint = tvDBoyPoint;
@@ -115,9 +110,9 @@ public final class FragmentEditProfileBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.btn_addTeacher;
-      AppCompatTextView btnAddTeacher = ViewBindings.findChildViewById(rootView, id);
-      if (btnAddTeacher == null) {
+      id = R.id.btn_addBack;
+      AppCompatTextView btnAddBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddBack == null) {
         break missingId;
       }
 
@@ -136,12 +131,6 @@ public final class FragmentEditProfileBinding implements ViewBinding {
       id = R.id.image;
       ImageView image = ViewBindings.findChildViewById(rootView, id);
       if (image == null) {
-        break missingId;
-      }
-
-      id = R.id.tvDBoyEmail;
-      AppCompatTextView tvDBoyEmail = ViewBindings.findChildViewById(rootView, id);
-      if (tvDBoyEmail == null) {
         break missingId;
       }
 
@@ -170,8 +159,7 @@ public final class FragmentEditProfileBinding implements ViewBinding {
       }
 
       return new FragmentEditProfileBinding((ConstraintLayout) rootView, BackArrow, CameraContainer,
-          btnAddTeacher, cameraImage, clSub, image, tvDBoyEmail, tvDBoyId, tvDBoyMob, tvDBoyPoint,
-          tvHeadingName);
+          btnAddBack, cameraImage, clSub, image, tvDBoyId, tvDBoyMob, tvDBoyPoint, tvHeadingName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

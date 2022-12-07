@@ -25,14 +25,18 @@ public final class FragmentAdminHomeBinding implements ViewBinding {
   public final ConstraintLayout clCafe;
 
   @NonNull
+  public final ConstraintLayout clFeedback;
+
+  @NonNull
   public final ConstraintLayout clTrain;
 
   private FragmentAdminHomeBinding(@NonNull ConstraintLayout rootView,
       @NonNull ConstraintLayout clBoys, @NonNull ConstraintLayout clCafe,
-      @NonNull ConstraintLayout clTrain) {
+      @NonNull ConstraintLayout clFeedback, @NonNull ConstraintLayout clTrain) {
     this.rootView = rootView;
     this.clBoys = clBoys;
     this.clCafe = clCafe;
+    this.clFeedback = clFeedback;
     this.clTrain = clTrain;
   }
 
@@ -75,13 +79,20 @@ public final class FragmentAdminHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.clFeedback;
+      ConstraintLayout clFeedback = ViewBindings.findChildViewById(rootView, id);
+      if (clFeedback == null) {
+        break missingId;
+      }
+
       id = R.id.clTrain;
       ConstraintLayout clTrain = ViewBindings.findChildViewById(rootView, id);
       if (clTrain == null) {
         break missingId;
       }
 
-      return new FragmentAdminHomeBinding((ConstraintLayout) rootView, clBoys, clCafe, clTrain);
+      return new FragmentAdminHomeBinding((ConstraintLayout) rootView, clBoys, clCafe, clFeedback,
+          clTrain);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
